@@ -119,8 +119,31 @@
     background: hsl(var(--background));
     color: hsl(var(--foreground));
   }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Vogun", sans-serif;
+  }
   .dark body {
     background: hsl(var(--background));
     color: hsl(var(--foreground));
+  }
+}
+
+@layer utilities {
+  button[data-slot="button"] {
+    cursor: pointer !important;
+    transition-property: all !important;
+    transition-duration: 200ms !important;
+    border: 1px solid currentColor !important;
+  }
+  button[data-slot="button"][data-variant="ghost"] {
+    border: none !important;
+  }
+  button[data-slot="button"]:hover {
+    transform: scale(1.02);
   }
 }
