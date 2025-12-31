@@ -146,4 +146,13 @@
   button[data-slot="button"]:hover {
     transform: scale(1.02);
   }
+
+  a[data-slot="link"] {
+    cursor: pointer !important;
+    transition-property: all !important;
+    transition-duration: 200ms !important;
+  }
+  a[data-slot="link"]:hover {
+    transform: scale(1.02);
+  }
 }
