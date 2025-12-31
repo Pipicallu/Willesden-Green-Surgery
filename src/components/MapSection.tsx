@@ -1,21 +1,131 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { APIProvider, Map, Marker } from "@vis.gl/react-google-maps";
 import LabeledSwitch from "./ui/LabeledSwitch";
 
 const locations = {
   willesdenGreen: {
     name: "Willesden Green",
-    lat: 51.5494,
-    lng: -0.2245,
+    address: "59 Anson Road, London, England, NW2 3UY",
+    lat: 51.5628,
+    lng: -0.2216,
   },
   queensPark: {
     name: "Queens Park",
-    lat: 51.5341,
-    lng: -0.2046,
+    address: "Albert Road, London, England, NW6 5DE",
+    lat: 51.5347,
+    lng: -0.2067,
   },
 };
 
+const GOOGLE_MAPS_API_KEY = import.meta.env.PUBLIC_GOOGLE_MAPS_API_KEY || "";
+
+// Light mode map styling
+const lightMapStyles = [
+  {
+    featureType: "all",
+    elementType: "geometry",
+    stylers: [{ color: "#f0f0f5" }], // Light background
+  },
+  {
+    featureType: "water",
+    elementType: "geometry",
+    stylers: [{ color: "#7c83fd" }], // Primary color (239 84% 67%)
+  },
+  {
+    featureType: "water",
+    elementType: "labels.text.fill",
+    stylers: [{ color: "#ffffff" }],
+  },
+  {
+    featureType: "road",
+    elementType: "geometry",
+    stylers: [{ color: "#ffffff" }],
+  },
+  {
+    featureType: "road",
+    elementType: "labels.text.fill",
+    stylers: [{ color: "#1a1a2e" }], // Foreground
+  },
+  {
+    featureType: "poi",
+    elementType: "geometry",
+    stylers: [{ color: "#e8e8f5" }], // Muted
+  },
+  {
+    featureType: "poi.park",
+    elementType: "geometry",
+    stylers: [{ color: "#c5c9ff" }], // Lighter primary
+  },
+  {
+    featureType: "transit",
+    elementType: "geometry",
+    stylers: [{ color: "#e8e8f5" }],
+  },
+];
+
+// Dark mode map styling
+const darkMapStyles = [
+  {
+    featureType: "all",
+    elementType: "geometry",
+    stylers: [{ color: "#2a2a40" }], // Dark background (239 30% 20%)
+  },
+  {
+    featureType: "all",
+    elementType: "labels.text.fill",
+    stylers: [{ color: "#e8e8f5" }], // Light text
+  },
+  {
+    featureType: "all",
+    elementType: "labels.text.stroke",
+    stylers: [{ color: "#2a2a40" }],
+  },
+  {
+    featureType: "water",
+    elementType: "geometry",
+    stylers: [{ color: "#7c83fd" }], // Primary color
+  },
+  {
+    featureType: "water",
+    elementType: "labels.text.fill",
+    stylers: [{ color: "#ffffff" }],
+  },
+  {
+    featureType: "road",
+    elementType: "geometry",
+    stylers: [{ color: "#3d3d5c" }], // Dark muted (239 30% 28%)
+  },
+  {
+    featureType: "road",
+    elementType: "labels.text.fill",
+    stylers: [{ color: "#e8e8f5" }],
+  },
+  {
+    featureType: "road.highway",
+    elementType: "geometry",
+    stylers: [{ color: "#4a4a6d" }],
+  },
+  {
+    featureType: "poi",
+    elementType: "geometry",
+    stylers: [{ color: "#333350" }],
+  },
+  {
+    featureType: "poi.park",
+    elementType: "geometry",
+    stylers: [{ color: "#5a5a85" }],
+  },
+  {
+    featureType: "transit",
+    elementType: "geometry",
+    stylers: [{ color: "#3d3d5c" }],
+  },
+];
+
 function MapSection() {
   const [isQueensPark, setIsQueensPark] = useState(false);
+  const [isDark, setIsDark] = useState(false);
+
   const currentLocation = isQueensPark
     ? locations.queensPark
     : locations.willesdenGreen;
@@ -23,6 +133,26 @@ function MapSection() {
   const handleLocationChange = () => {
     setIsQueensPark(!isQueensPark);
   };
+
+  // Detect dark mode
+  useEffect(() => {
+    const checkDarkMode = () => {
+      setIsDark(document.documentElement.classList.contains("dark"));
+    };
+
+    checkDarkMode();
+
+    // Watch for dark mode changes
+    const observer = new MutationObserver(checkDarkMode);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const mapStyles = isDark ? darkMapStyles : lightMapStyles;
 
   return (
     <section className="py-20 px-4">
@@ -40,19 +170,20 @@ function MapSection() {
           />
         </div>
 
-        <div className="rounded-lg border overflow-hidden bg-muted h-96">
-          {/* Google Maps will be integrated here */}
-          <div className="w-full h-full flex items-center justify-center text-muted-foreground">
-            <div className="text-center space-y-2">
-              <p>Map will be displayed here</p>
-              <p className="text-sm">
-                Current: {currentLocation.name}
-                <br />
-                Lat: {currentLocation.lat}, Lng: {currentLocation.lng}
-              </p>
-            </div>
+        <APIProvider apiKey={GOOGLE_MAPS_API_KEY}>
+          <div className="rounded-lg border overflow-hidden h-96 w-full">
+            <Map
+              defaultCenter={currentLocation}
+              center={currentLocation}
+              defaultZoom={15}
+              gestureHandling="greedy"
+              disableDefaultUI={false}
+              styles={mapStyles}
+            >
+              <Marker position={currentLocation} title={currentLocation.name} />
+            </Map>
           </div>
-        </div>
+        </APIProvider>
       </div>
     </section>
   );
