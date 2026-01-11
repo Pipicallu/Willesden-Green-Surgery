@@ -25,12 +25,43 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <a
-              href=""
+              href="/"
               className="text-foreground [&_svg]:h-14 [&_svg]:w-auto [&_path]:fill-current [&_line]:stroke-current"
             >
               {logo}
             </a>
           </div>
+          <ul className="flex items-center gap-8">
+            <li>
+              <a
+                data-slot="link"
+                className="text-foreground  text-sm inline-block"
+                href="/#mapSection"
+              >
+                locations
+              </a>
+            </li>
+            <li>
+              {" "}
+              <a
+                data-slot="link"
+                className="text-foreground text-sm inline-block"
+                href="/new-patients"
+              >
+                New Patients
+              </a>
+            </li>
+            <li>
+              {" "}
+              <a
+                data-slot="link"
+                className="text-foreground text-sm inline-block"
+                href="#mapSection"
+              >
+                Patient Corner
+              </a>
+            </li>
+          </ul>
           <div className="flex items-center gap-2 dark:gap-2">
             <Button size="lg">Register New Patient</Button>
             <ThemeToggle />

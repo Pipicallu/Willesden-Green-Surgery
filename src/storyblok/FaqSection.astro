@@ -1,0 +1,38 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import RegistrationCard from "@/components/ui/RegistrationCard";
+const { blok } = Astro.props;
+import Faq from "@/components/ui/faq";
+---
+
+<section
+  {...storyblokEditable(blok)}
+  class="min-h-screen flex flex-col items-center justify-center px-8 pt-24"
+>
+  <div class="mx-auto text-center space-y-8 mt-8 mb-8">
+    <h2 class="text-4xl font-bold">{blok.title}</h2>
+    <p class="text-lg text-muted-foreground">{blok.subtitle}</p>
+  </div>
+  <Faq faqs={blok.faqs} client:load />
+  <!-- <div class="flex flex-row items-center justify-center gap-2 mt-8">
+    <h2 class="text-xl font-medium">
+      Download in person registration form here:
+    </h2>
+    <a
+      href={blok.linkToPdf || "#"}
+      download="registration_form.pdf"
+      class="text-primary underline inline-flex items-center gap-2"
+    >
+      <img src={blok.downloadIcon.filename} alt="Download" class="w-10 h-10" />
+    </a>
+  </div> -->
+
+  <!-- Registration Options Section -->
+  <div class="mt-8 w-full max-w-4xl grid md:grid-cols-2 gap-8 mb-8">
+    {
+      blok.registrationOptions?.map((option) => (
+        <RegistrationCard client:load option={option} />
+      ))
+    }
+  </div>
+</section>
