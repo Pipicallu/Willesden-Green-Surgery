@@ -23,11 +23,11 @@ const config: StorybookConfig = {
         "@": join(dirname(__dirname), "src"),
       };
     }
-
+    
     // Add Tailwind CSS Vite plugin
     config.plugins = config.plugins || [];
     config.plugins.push(tailwindcss());
-
+    
     return config;
   },
 };
