@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-interface NumberCounterProps {
+export interface NumberCounterProps {
   target: number;
   duration?: number;
   suffix?: string;
@@ -48,7 +48,7 @@ export default function NumberCounter({
           observer.disconnect();
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.5 },
     );
 
     observer.observe(element);

@@ -6,7 +6,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Button } from "./button";
-type FaqProps = {
+export type FaqProps = {
   question: string;
   answer: string;
   showLink: boolean;
