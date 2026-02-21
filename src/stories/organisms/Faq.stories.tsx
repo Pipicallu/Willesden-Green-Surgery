@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import Faq, { type FaqProps } from "@/components/ui/faq";
+import Faq, { type FaqProps } from "@/components/organisms/faq";
 
 const defaultFaqs: FaqProps[] = [
   {
@@ -29,7 +29,7 @@ const defaultFaqs: FaqProps[] = [
 ];
 
 const meta = {
-  title: "Components/Faq",
+  title: "Organisms/Faq",
   component: Faq,
   parameters: {
     layout: "fullscreen",

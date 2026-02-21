@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { APIProvider, Map, Marker } from "@vis.gl/react-google-maps";
-import LabeledSwitch from "./ui/LabeledSwitch";
+import LabeledSwitch from "@/components/molecules/LabeledSwitch";
 
 const locations = {
   willesdenGreen: {

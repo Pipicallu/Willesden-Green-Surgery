@@ -1,13 +1,20 @@
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/atoms/button";
 
-type RegistrationCardProps = {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  buttonText: string;
-  buttonVariant?: "default" | "outline";
-  link?: string;
-  download?: boolean;
+export type RegistrationCardProps = {
+  option: {
+    icon: {
+      filename: string;
+      alt?: string;
+    };
+    title: string;
+    description: string;
+    buttonText: string;
+    buttonVariant?: "default" | "outline";
+    link?: {
+      url: string;
+    };
+    download?: boolean;
+  };
 };
 
 export default function RegistrationCard({ option }: RegistrationCardProps) {

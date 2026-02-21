@@ -1,61 +1,73 @@
 ---
-import '../styles/global.css';
-import ThemeToggle from '../components/ThemeToggle';
-import Navbar from '../components/Navbar';
+import "../styles/global.css";
+import ThemeToggle from "@/components/molecules/ThemeToggle";
+import Navbar from "@/components/organisms/Navbar";
 ---
 
 <!doctype html>
 <html lang="en" class="scroll-smooth">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Willsden Green Surgery</title>
-	</head>
-	<body>
-		<Navbar client:load />
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Willsden Green Surgery</title>
+  </head>
+  <body>
+    <Navbar client:load />
+    <slot />
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-	
-	body {
-		background: 
-			radial-gradient(ellipse 80% 50% at 50% 0%, 
-				hsl(239 84% 67% / 0.25), 
-				transparent),
-			radial-gradient(ellipse 50% 50% at 0% 100%, 
-				hsl(239 84% 67% / 0.12), 
-				transparent),
-			radial-gradient(ellipse 50% 50% at 100% 100%, 
-				hsl(239 84% 67% / 0.12), 
-				transparent),
-			hsl(var(--background));
-		background-attachment: fixed;
-		min-height: 100vh;
-		transition: background 0.3s ease;
-	}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
 
-	.dark body {
-		background: 
-			radial-gradient(ellipse 80% 50% at 50% 0%, 
-				hsl(239 84% 67% / 0.2), 
-				transparent),
-			radial-gradient(ellipse 50% 50% at 0% 100%, 
-				hsl(239 84% 67% / 0.1), 
-				transparent),
-			radial-gradient(ellipse 50% 50% at 100% 100%, 
-				hsl(239 84% 67% / 0.1), 
-				transparent),
-			hsl(var(--background));
-		background-attachment: fixed;
-	}
+  body {
+    background:
+      radial-gradient(
+        ellipse 80% 50% at 50% 0%,
+        hsl(239 84% 67% / 0.25),
+        transparent
+      ),
+      radial-gradient(
+        ellipse 50% 50% at 0% 100%,
+        hsl(239 84% 67% / 0.12),
+        transparent
+      ),
+      radial-gradient(
+        ellipse 50% 50% at 100% 100%,
+        hsl(239 84% 67% / 0.12),
+        transparent
+      ),
+      hsl(var(--background));
+    background-attachment: fixed;
+    min-height: 100vh;
+    transition: background 0.3s ease;
+  }
+
+  .dark body {
+    background:
+      radial-gradient(
+        ellipse 80% 50% at 50% 0%,
+        hsl(239 84% 67% / 0.2),
+        transparent
+      ),
+      radial-gradient(
+        ellipse 50% 50% at 0% 100%,
+        hsl(239 84% 67% / 0.1),
+        transparent
+      ),
+      radial-gradient(
+        ellipse 50% 50% at 100% 100%,
+        hsl(239 84% 67% / 0.1),
+        transparent
+      ),
+      hsl(var(--background));
+    background-attachment: fixed;
+  }
 </style>

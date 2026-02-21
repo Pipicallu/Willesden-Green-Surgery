@@ -1,19 +1,17 @@
 ---
-import { storyblokEditable } from '@storyblok/astro'
-import { Button } from '@/components/ui/button'
-import AppearOnScrollWrapper from '@/components/ui/AppearOnScrollWrapper'
-const { blok } = Astro.props
+import { storyblokEditable } from "@storyblok/astro";
+import { Button } from "@/components/atoms/button";
+import AppearOnScrollWrapper from "@/components/atoms/AppearOnScrollWrapper";
+const { blok } = Astro.props;
 type Card = {
+  icon?: string;
 
-  icon?: string
+  heading?: string;
 
-  heading?: string
+  description?: string;
 
-  description?: string
-
-  link?: string
-
-}
+  link?: string;
+};
 ---
 
 <section
@@ -33,33 +31,42 @@ type Card = {
     <div class="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
       {
         blok.cards?.map((card: Card, index: number) => (
-          <AppearOnScrollWrapper client:visible className="w-full h-full" transitionDuration={500 + (index * 500)}>
+          <AppearOnScrollWrapper
+            client:visible
+            className="w-full h-full"
+            transitionDuration={500 + index * 500}
+          >
             <a
-              href={card.link || '#'}
+              href={card.link || "#"}
               data-slot="link"
               class="flex flex-col items-center text-center gap-4 group p-6 rounded-lg border bg-card hover:bg-accent transition-colors h-full"
             >
-            <div class="[&_svg]:w-8 [&_svg]:h-8" set:html={card.icon} />
-            <div>
-              <h2 class="text-lg font-semibold mb-2 group-hover:text-accent-foreground">
-                {card.heading}
-              </h2>
-              <p class="text-sm text-muted-foreground">
-                {card.description}
-              </p>
-            </div>
-          </a>
-         </AppearOnScrollWrapper>
+              <div class="[&_svg]:w-8 [&_svg]:h-8" set:html={card.icon} />
+              <div>
+                <h2 class="text-lg font-semibold mb-2 group-hover:text-accent-foreground">
+                  {card.heading}
+                </h2>
+                <p class="text-sm text-muted-foreground">{card.description}</p>
+              </div>
+            </a>
+          </AppearOnScrollWrapper>
         ))
       }
     </div>
 
-    {blok.show_button && (
-      <div class="pt-6">
-        <Button client:load size="lg" variant="default" className="text-base px-8">
-          {blok.button_text}
-        </Button>
-      </div>
-    )}
+    {
+      blok.show_button && (
+        <div class="pt-6">
+          <Button
+            client:load
+            size="lg"
+            variant="default"
+            className="text-base px-8"
+          >
+            {blok.button_text}
+          </Button>
+        </div>
+      )
+    }
   </div>
 </section>

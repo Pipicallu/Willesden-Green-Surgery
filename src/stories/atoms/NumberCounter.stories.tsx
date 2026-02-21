@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import NumberCounter, {
   type NumberCounterProps,
-} from "@/components/ui/NumberCounter";
+} from "@/components/atoms/NumberCounter";
 
 const meta = {
-  title: "Components/NumberCounter",
+  title: "Atoms/NumberCounter",
   component: NumberCounter,
   parameters: {
     layout: "centered",

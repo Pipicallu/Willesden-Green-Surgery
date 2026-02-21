@@ -1,103 +1,150 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { Button } from "@/components/ui/button"
-import AutoCarousel from '../components/AutoCarousel';
-import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
-import { getStory } from '@/lib/storyblok'
-import type { SbBlokData } from '@storyblok/astro'
-import NumberCounter from '../components/ui/NumberCounter';
-import AppearOnScrollWrapper from '@/components/ui/AppearOnScrollWrapper';
-import MapSection from '../components/MapSection';
-const story = await getStory('home')
+import Layout from "../layouts/Layout.astro";
+import { Button } from "@/components/atoms/button";
+import AutoCarousel from "@/components/organisms/AutoCarousel";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import { getStory } from "@/lib/storyblok";
+import type { SbBlokData } from "@storyblok/astro";
+import NumberCounter from "@/components/atoms/NumberCounter";
+import AppearOnScrollWrapper from "@/components/atoms/AppearOnScrollWrapper";
+import MapSection from "@/components/organisms/MapSection";
+const story = await getStory("home");
 ---
 
 <Layout>
-	<!-- Hero Section - From Storyblok -->
-	{
-		story.content.body?.filter((blok: SbBlokData) => blok.component === 'Hero').map((blok: SbBlokData) => (
-			<StoryblokComponent blok={blok} />
-		))
-	}
+  <!-- Hero Section - From Storyblok -->
+  {
+    story.content.body
+      ?.filter((blok: SbBlokData) => blok.component === "Hero")
+      .map((blok: SbBlokData) => <StoryblokComponent blok={blok} />)
+  }
 
-	<!-- Contact Us Section -->
-	<section class="pb-20 px-4 bg-muted/50">
-		<AppearOnScrollWrapper client:visible transitionDuration={1000}>
-		<div class="max-w-4xl mx-auto">
-			<div class="flex flex-col md:flex-row items-center justify-between gap-8">
-				<div class="flex-1 space-y-4">
-					<h2 class="text-3xl md:text-4xl font-bold">
-						Contact us online for appointments and administration issues!
-					</h2>
-				</div>
-				<div class="flex-shrink-0">
-					<Button client:load size="lg" className="text-base px-8">
-						AccuRx Portal
-					</Button>
-				</div>
-			</div>
-		</div>
-		</AppearOnScrollWrapper>
-	</section>
+  <!-- Contact Us Section -->
+  <section class="pb-20 px-4 bg-muted/50">
+    <AppearOnScrollWrapper client:visible transitionDuration={1000}>
+      <div class="max-w-4xl mx-auto">
+        <div
+          class="flex flex-col md:flex-row items-center justify-between gap-8"
+        >
+          <div class="flex-1 space-y-4">
+            <h2 class="text-3xl md:text-4xl font-bold">
+              Contact us online for appointments and administration issues!
+            </h2>
+          </div>
+          <div class="flex-shrink-0">
+            <Button client:load size="lg" className="text-base px-8">
+              AccuRx Portal
+            </Button>
+          </div>
+        </div>
+      </div>
+    </AppearOnScrollWrapper>
+  </section>
 
-	<!-- Statistics Section -->
-	<section class="py-20 px-4">
-		<div class="max-w-6xl mx-auto">
-			<div class="text-center space-y-4 mb-12">
-				<h2 class="text-3xl md:text-4xl font-bold">Our Achievements</h2>
-				<p class="text-xl text-muted-foreground">Excellence in healthcare delivery</p>
-			</div>
-			<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-				<div class="text-center space-y-4 p-8 rounded-lg border bg-card">
-					<NumberCounter client:visible target={24} suffix="/7" className="text-5xl font-bold text-primary" />
-					<h3 class="text-xl font-semibold">Online Consultation Access</h3>
-					<p class="text-muted-foreground">That we never switch off</p>
-				</div>
-				<div class="text-center space-y-4 p-8 rounded-lg border bg-card">
-					<NumberCounter client:visible  duration={2000} target={60} suffix="%" className="text-5xl font-bold text-primary" />
-					<h3 class="text-xl font-semibold">More GP Appointments</h3>
-					<p class="text-muted-foreground">Per patient compared to the national average</p>
-				</div>
-				<div class="text-center space-y-4 p-8 rounded-lg border bg-card">
-					<NumberCounter client:visible  target={95} suffix="%" className="text-5xl font-bold text-primary" />
-					<h3 class="text-xl font-semibold">Good Patient Rating</h3>
-					<p class="text-muted-foreground">In both national GP and friends and family test</p>
-				</div>
-				<div class="text-center space-y-4 p-8 rounded-lg border bg-card">
-					<NumberCounter client:visible reverse target={2} suffix=" min" className="text-5xl font-bold text-primary" />
-					<h3 class="text-xl font-semibold">Average Call Wait</h3>
-					<p class="text-muted-foreground">With callback options</p>
-				</div>
-				<div class="text-center space-y-4 p-8 rounded-lg border bg-card">
-					<NumberCounter client:visible reverse target={1} suffix="st" className="text-5xl font-bold text-primary" />
-					<h3 class="text-xl font-semibold">Ultrasound Guided Surgery</h3>
-					<p class="text-muted-foreground">GP practice in the UK to provide this service</p>
-				</div>
-				<div class="text-center space-y-4 p-8 rounded-lg border bg-card">
-					<NumberCounter client:visible  target={65} suffix="%" className="text-5xl font-bold text-primary" />
-					<h3 class="text-xl font-semibold">Early Cancer Detection</h3>
-					<p class="text-muted-foreground">5 year rolling rate, the highest in Brent</p>
-				</div>
-			</div>
-		</div>
-	</section>
+  <!-- Statistics Section -->
+  <section class="py-20 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center space-y-4 mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold">Our Achievements</h2>
+        <p class="text-xl text-muted-foreground">
+          Excellence in healthcare delivery
+        </p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="text-center space-y-4 p-8 rounded-lg border bg-card">
+          <NumberCounter
+            client:visible
+            target={24}
+            suffix="/7"
+            className="text-5xl font-bold text-primary"
+          />
+          <h3 class="text-xl font-semibold">Online Consultation Access</h3>
+          <p class="text-muted-foreground">That we never switch off</p>
+        </div>
+        <div class="text-center space-y-4 p-8 rounded-lg border bg-card">
+          <NumberCounter
+            client:visible
+            duration={2000}
+            target={60}
+            suffix="%"
+            className="text-5xl font-bold text-primary"
+          />
+          <h3 class="text-xl font-semibold">More GP Appointments</h3>
+          <p class="text-muted-foreground">
+            Per patient compared to the national average
+          </p>
+        </div>
+        <div class="text-center space-y-4 p-8 rounded-lg border bg-card">
+          <NumberCounter
+            client:visible
+            target={95}
+            suffix="%"
+            className="text-5xl font-bold text-primary"
+          />
+          <h3 class="text-xl font-semibold">Good Patient Rating</h3>
+          <p class="text-muted-foreground">
+            In both national GP and friends and family test
+          </p>
+        </div>
+        <div class="text-center space-y-4 p-8 rounded-lg border bg-card">
+          <NumberCounter
+            client:visible
+            reverse
+            target={2}
+            suffix=" min"
+            className="text-5xl font-bold text-primary"
+          />
+          <h3 class="text-xl font-semibold">Average Call Wait</h3>
+          <p class="text-muted-foreground">With callback options</p>
+        </div>
+        <div class="text-center space-y-4 p-8 rounded-lg border bg-card">
+          <NumberCounter
+            client:visible
+            reverse
+            target={1}
+            suffix="st"
+            className="text-5xl font-bold text-primary"
+          />
+          <h3 class="text-xl font-semibold">Ultrasound Guided Surgery</h3>
+          <p class="text-muted-foreground">
+            GP practice in the UK to provide this service
+          </p>
+        </div>
+        <div class="text-center space-y-4 p-8 rounded-lg border bg-card">
+          <NumberCounter
+            client:visible
+            target={65}
+            suffix="%"
+            className="text-5xl font-bold text-primary"
+          />
+          <h3 class="text-xl font-semibold">Early Cancer Detection</h3>
+          <p class="text-muted-foreground">
+            5 year rolling rate, the highest in Brent
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-	<!-- Meet the Team Section - From Storyblok -->
-	{
-		story.content.body?.filter((blok: SbBlokData) => blok.component === 'team').map((blok: SbBlokData) => (
-			<StoryblokComponent blok={blok} />
-		))
-	}
+  <!-- Meet the Team Section - From Storyblok -->
+  {
+    story.content.body
+      ?.filter((blok: SbBlokData) => blok.component === "team")
+      .map((blok: SbBlokData) => <StoryblokComponent blok={blok} />)
+  }
 
-	<!-- Map Section -->
-	<MapSection client:load />
-		<!-- Carousel Section -->
-	<section class="py-20 px-4 bg-muted/50">
-		<div class="max-w-6xl mx-auto">
-			<div class="text-center space-y-4 mb-12">
-				<h2 class="text-3xl md:text-4xl font-bold">Why Choose Us</h2>
-				<p class="text-xl text-muted-foreground">Discover what makes us different</p>
-			</div>
-			<AutoCarousel client:load />
-		</div>
-	</section>
+  <!-- Map Section -->
+  <MapSection client:load />
+  <!-- Carousel Section -->
+  <section class="py-20 px-4 bg-muted/50">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center space-y-4 mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold">Why Choose Us</h2>
+        <p class="text-xl text-muted-foreground">
+          Discover what makes us different
+        </p>
+      </div>
+      <AutoCarousel client:load />
+    </div>
+  </section>
 </Layout>
