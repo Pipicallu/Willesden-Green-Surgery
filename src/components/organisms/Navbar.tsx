@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
-import ThemeToggle from "./ThemeToggle";
+import { Button } from "@/components/atoms/button";
+import ThemeToggle from "@/components/molecules/ThemeToggle";
 import { logo } from "@/assets/logo";
 import { useState, useEffect } from "react";
 
