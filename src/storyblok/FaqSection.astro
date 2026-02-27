@@ -26,13 +26,4 @@ import Faq from "@/components/organisms/faq";
       <img src={blok.downloadIcon.filename} alt="Download" class="w-10 h-10" />
     </a>
   </div>
-
-  <!-- Registration Options Section -->
-  <div class="mt-8 w-full max-w-4xl grid md:grid-cols-2 gap-8 mb-8">
-    {
-      blok.registrationOptions?.map((option) => (
-        <RegistrationCard client:load option={option} />
-      ))
-    }
-  </div>
 </section>

@@ -2,6 +2,8 @@
 import { storyblokEditable } from "@storyblok/astro";
 import { Button } from "@/components/atoms/button";
 import AppearOnScrollWrapper from "@/components/atoms/AppearOnScrollWrapper";
+import { Title } from "@/components/atoms/Title";
+import { Subtitle } from "@/components/atoms/Subtitle";
 const { blok } = Astro.props;
 type Card = {
   icon?: string;
@@ -20,12 +22,12 @@ type Card = {
 >
   <div class="max-w-4xl mx-auto text-center space-y-12">
     <div class="space-y-6">
-      <h1 class="text-5xl md:text-6xl font-bold tracking-tight">
+      <Title as="h1" className="text-5xl md:text-6xl tracking-tight">
         {blok.title}
-      </h1>
-      <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+      </Title>
+      <Subtitle className="text-xl max-w-2xl mx-auto">
         {blok.subtitle}
-      </p>
+      </Subtitle>
     </div>
 
     <div class="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">

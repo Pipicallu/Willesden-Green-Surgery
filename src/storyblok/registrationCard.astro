@@ -1,0 +1,11 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import RegistrationCardComponent from "@/components/organisms/RegistrationCard";
+const { blok } = Astro.props;
+---
+
+<RegistrationCardComponent
+  client:load
+  option={blok}
+  {...storyblokEditable(blok)}
+/>

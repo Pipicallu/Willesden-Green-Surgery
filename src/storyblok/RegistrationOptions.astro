@@ -1,0 +1,18 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import RegistrationCard from "@/components/organisms/RegistrationCard";
+const { blok } = Astro.props;
+---
+
+<section
+  {...storyblokEditable(blok)}
+  class="min-h-screen flex flex-col items-center justify-center px-8 pt-24"
+>
+  <div class="mt-8 w-full max-w-4xl grid md:grid-cols-2 gap-8 mb-8">
+    {
+      blok?.registrationOptions?.map((option) => (
+        <RegistrationCard client:load option={option} />
+      ))
+    }
+  </div>
+</section>
