@@ -10,7 +10,7 @@ const { blok } = Astro.props;
 >
   <div class="mt-8 w-full max-w-4xl grid md:grid-cols-2 gap-8 mb-8">
     {
-      blok?.registrationOptions?.map((option) => (
+      blok?.registrationOptions?.map((option: any) => (
         <RegistrationCard client:load option={option} />
       ))
     }

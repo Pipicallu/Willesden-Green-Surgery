@@ -1,4 +1,4 @@
-import { Badge } from "@/components/atoms/badge";
+import { Badge } from "@/components/atoms/Badge";
 import { Button, buttonVariants } from "@/components/atoms/Button";
 import { type VariantProps } from "class-variance-authority";
 import {

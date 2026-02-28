@@ -12,7 +12,7 @@ const { blok } = Astro.props;
     </div>
     <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
       {
-        blok.members?.map((member, index) => (
+        blok.members?.map((member: any, index: number) => (
           <AppearOnScrollWrapper
             client:visible
             transitionDuration={2000 - index * 500}
