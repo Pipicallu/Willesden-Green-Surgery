@@ -5,7 +5,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/molecules/accordion";
-import { Button } from "@/components/atoms/button";
+import { Button } from "@/components/atoms/Button";
 export type FaqProps = {
   question: string;
   answer: string;

@@ -1,4 +1,4 @@
-import { Button } from "@/components/atoms/button";
+import { Button } from "@/components/atoms/Button";
 import ThemeToggle from "@/components/molecules/ThemeToggle";
 import { logo } from "@/assets/logo";
 import { useState, useEffect } from "react";
