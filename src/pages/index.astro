@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { Button } from "@/components/atoms/button";
+import { Button } from "@/components/atoms/Button";
 import AutoCarousel from "@/components/organisms/AutoCarousel";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import { getStory } from "@/lib/storyblok";
@@ -126,6 +126,34 @@ const story = await getStory("home");
     </div>
   </section>
 
+  <!--Team video section-->
+  <section class="py-20 px-4 bg-muted/50">
+    <div class="max-w-4xl mx-auto">
+      <div
+        class="relative group rounded-lg shadow-lg cursor-pointer transition-transform duration-500 ease-in-out hover:scale-150"
+      >
+        <video autoplay loop muted playsinline class="w-full rounded-lg">
+          <source src="/team.mp4" type="video/mp4" />
+        </video>
+        <div
+          class="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-lg"
+        >
+          <div
+            class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          >
+            <Button
+              client:load
+              size="lg"
+              variant="default"
+              className="pointer-events-auto"
+            >
+              Meet the Team
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   <!-- Meet the Team Section - From Storyblok -->
   {
     story.content.body
