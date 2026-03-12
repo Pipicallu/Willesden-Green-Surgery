@@ -144,10 +144,9 @@ const story = await getStory("home");
             <Button
               client:load
               size="lg"
-              variant="default"
-              className="pointer-events-auto"
+              className="pointer-events-auto text-white text-base px-8"
             >
-              Meet the Team
+              <a href="/team">Meet the Team</a>
             </Button>
           </div>
         </div>
@@ -155,11 +154,11 @@ const story = await getStory("home");
     </div>
   </section>
   <!-- Meet the Team Section - From Storyblok -->
-  {
+  <!-- {
     story.content.body
       ?.filter((blok: SbBlokData) => blok.component === "team")
       .map((blok: SbBlokData) => <StoryblokComponent blok={blok} />)
-  }
+  } -->
 
   <!-- Map Section -->
   <MapSection client:load />
