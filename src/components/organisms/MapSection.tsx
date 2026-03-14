@@ -1,5 +1,10 @@
 import { useState, useEffect } from "react";
-import { APIProvider, Map, Marker } from "@vis.gl/react-google-maps";
+import {
+  APIProvider,
+  Map,
+  Marker,
+  InfoWindow,
+} from "@vis.gl/react-google-maps";
 import LabeledSwitch from "@/components/molecules/LabeledSwitch";
 
 const locations = {
@@ -169,21 +174,37 @@ function MapSection() {
             onCheckedChange={handleLocationChange}
           />
         </div>
-
-        <APIProvider apiKey={GOOGLE_MAPS_API_KEY}>
-          <div className="rounded-lg border overflow-hidden h-96 w-full">
-            <Map
-              defaultCenter={currentLocation}
-              center={currentLocation}
-              defaultZoom={15}
-              gestureHandling="greedy"
-              disableDefaultUI={false}
-              styles={mapStyles}
-            >
-              <Marker position={currentLocation} title={currentLocation.name} />
-            </Map>
-          </div>
-        </APIProvider>
+        <div className="flex justify-center">
+          <div></div>
+          <APIProvider apiKey={GOOGLE_MAPS_API_KEY}>
+            <div className="rounded-lg border overflow-hidden h-96 w-full">
+              <Map
+                defaultCenter={currentLocation}
+                center={currentLocation}
+                defaultZoom={15}
+                minZoom={12}
+                gestureHandling="greedy"
+                disableDefaultUI={false}
+                styles={mapStyles}
+              >
+                <Marker
+                  position={currentLocation}
+                  title={currentLocation.name}
+                />
+                <InfoWindow position={currentLocation}>
+                  <div className="p-2">
+                    <h3 className="font-semibold text-base mb-1">
+                      {currentLocation.name}
+                    </h3>
+                    <p className="text-sm text-gray-600">
+                      {currentLocation.address}
+                    </p>
+                  </div>
+                </InfoWindow>
+              </Map>
+            </div>
+          </APIProvider>
+        </div>
       </div>
     </section>
   );
