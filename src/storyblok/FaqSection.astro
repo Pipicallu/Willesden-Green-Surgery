@@ -1,8 +1,8 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
-import RegistrationCard from "@/components/organisms/RegistrationCard";
 const { blok } = Astro.props;
 import Faq from "@/components/organisms/faq";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 ---
 
 <section
@@ -14,25 +14,11 @@ import Faq from "@/components/organisms/faq";
     <p class="text-lg text-muted-foreground">{blok.subtitle}</p>
   </div>
   <Faq faqs={blok.faqs} client:load />
-  <div class="flex flex-row items-center justify-center gap-2 mt-8">
-    <h2 class="text-xl font-medium">
-      Download in person registration form here:
-    </h2>
-    <a
-      href={blok.linkToPdf || "#"}
-      download="registration_form.pdf"
-      class="text-primary underline inline-flex items-center gap-2"
-    >
-      <img src={blok.downloadIcon.filename} alt="Download" class="w-10 h-10" />
-    </a>
-  </div>
 
-  <!-- Registration Options Section -->
-  <div class="mt-8 w-full max-w-4xl grid md:grid-cols-2 gap-8 mb-8">
-    {
-      blok.registrationOptions?.map((option) => (
-        <RegistrationCard client:load option={option} />
-      ))
-    }
-  </div>
+  <!-- Render nested bloks (DownloadIcon and Registration Options) -->
+  {
+    blok.body?.map((nestedBlok: any) => (
+      <StoryblokComponent blok={nestedBlok} />
+    ))
+  }
 </section>
