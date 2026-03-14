@@ -49,3 +49,35 @@ export const YesNo: Story = {
     rightLabel: "Yes",
   },
 };
+
+export const Vertical: Story = {
+  args: {
+    leftLabel: "Top",
+    rightLabel: "Bottom",
+    orientation: "vertical",
+  },
+};
+
+export const VerticalToggle: Story = {
+  args: {
+    leftLabel: "On",
+    rightLabel: "Off",
+    orientation: "vertical",
+    defaultChecked: true,
+  },
+};
+
+export const TeamFilter: Story = {
+  args: {
+    labels: ["Doctors", "Healthcare", "Admin", "Support"],
+    defaultSelected: 0,
+  },
+};
+
+export const TeamFilterVertical: Story = {
+  args: {
+    labels: ["Doctors", "Healthcare Team", "Administrative", "Back of House"],
+    orientation: "vertical",
+    defaultSelected: 0,
+  },
+};

@@ -1,0 +1,22 @@
+---
+import Layout from "../layouts/Layout.astro";
+import TeamFilter from "@/components/organisms/TeamFilter";
+import { teamData } from "@/data/teamData";
+---
+
+<Layout>
+  <section class="py-20 pt-20 pb-4">
+    <div class="max-w-7xl mx-auto">
+      <!-- Header with Title -->
+      <div class="text-center space-y-4 mt-16 mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold">Meet Our Team</h1>
+        <p class="text-xl text-muted-foreground">
+          Excellence in care, delivered together
+        </p>
+      </div>
+
+      <!-- Grid Layout: Team Cards (9fr) | Filter (1fr) -->
+      <TeamFilter client:load teamData={teamData} />
+    </div>
+  </section>
+</Layout>
