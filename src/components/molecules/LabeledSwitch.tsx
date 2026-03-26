@@ -79,7 +79,7 @@ function LabeledSwitch(props: LabeledSwitchProps) {
           <button
             key={label}
             onClick={() => handleSelect(index)}
-            className={`text-2xl relative z-10 px-2 py-4 rounded-full font-medium transition-all duration-300 font-[Vogun] ${
+            className={`text-2xl relative z-10 px-6 py-4 rounded-full font-medium transition-all duration-300 font-[Vogun] text-center ${
               selectedIndex === index
                 ? "text-foreground"
                 : "text-muted-foreground opacity-60 blur-[0.5px]"
@@ -112,20 +112,30 @@ function LabeledSwitch(props: LabeledSwitchProps) {
   return (
     <div
       className={`relative border inline-grid gap-0 p-1 bg-muted ${
-        isVertical ? "grid-rows-2 rounded-3xl" : "grid-cols-2 rounded-full"
+        isVertical ? "rounded-3xl" : "rounded-full"
       } ${className}`}
+      style={{
+        [isVertical ? "gridTemplateRows" : "gridTemplateColumns"]: "1fr 1fr",
+      }}
     >
       {/* Sliding bubble background */}
       <div
-        className={`absolute ${
+        className="absolute rounded-full bg-background shadow-sm transition-all duration-300 ease-in-out"
+        style={
           isVertical
-            ? `left-1 right-1 h-[calc(50%-0.25rem)] transition-all duration-300 ease-in-out ${
-                isChecked ? "top-[calc(50%+0.125rem)]" : "top-1"
-              }`
-            : `top-1 bottom-1 w-[calc(50%-0.25rem)] transition-all duration-300 ease-in-out ${
-                isChecked ? "left-[calc(50%+0.125rem)]" : "left-1"
-              }`
-        } rounded-full bg-background shadow-sm`}
+            ? {
+                left: "0.25rem",
+                right: "0.25rem",
+                height: "calc(50% - 0.5rem)",
+                top: isChecked ? "calc(50% + 0.25rem)" : "0.25rem",
+              }
+            : {
+                top: "0.25rem",
+                bottom: "0.25rem",
+                width: "calc(50% - 0.5rem)",
+                left: isChecked ? "calc(50% + 0.25rem)" : "0.25rem",
+              }
+        }
       />
 
       {/* Buttons with relative positioning */}
