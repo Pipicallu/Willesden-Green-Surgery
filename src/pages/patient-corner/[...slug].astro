@@ -1,0 +1,39 @@
+---
+import { useStoryblokApi } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import Layout from "@/layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const storyblokApi = useStoryblokApi();
+  const { data } = await storyblokApi.get("cdn/links/");
+  const links = data.links;
+  const paths = Object.keys(links)
+    .filter((key) => key.startsWith("patient-corner/"))
+    .map((key) => {
+      const slug = key
+        .replace("patient-corner/", "")
+        .split("/")
+        .filter(Boolean);
+      return { params: { slug } };
+    });
+  return { paths, fallback: false };
+}
+
+const storyblokApi = useStoryblokApi();
+const { slug } = Astro.params;
+
+// slug from [...slug] is string | string[] | undefined
+const slugArray = slug as string[] | undefined;
+const slugPath = slugArray?.join("/") || "";
+const fullPath = `patient-corner/${slugPath}`;
+
+const { data } = await storyblokApi.get(`cdn/stories/${fullPath}`, {
+  version: "draft",
+});
+
+const story = data.story;
+---
+
+<Layout>
+  <StoryblokComponent blok={story.content} />
+</Layout>
