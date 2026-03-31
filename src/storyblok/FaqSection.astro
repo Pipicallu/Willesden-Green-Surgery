@@ -7,12 +7,16 @@ import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 
 <section
   {...storyblokEditable(blok)}
-  class="min-h-screen flex flex-col items-center justify-center px-8 pt-24"
+  class="min-h-screen flex flex-col items-center justify-center px-8"
 >
-  <div class="mx-auto text-center space-y-8 mt-8 mb-8">
-    <h2 class="text-4xl font-bold">{blok.title}</h2>
-    <p class="text-lg text-muted-foreground">{blok.subtitle}</p>
-  </div>
+  {
+    blok.title && blok.subtitle && (
+      <div class="mx-auto text-center space-y-8 mt-8 mb-8">
+        <h2 class="text-4xl font-bold">{blok.title}</h2>
+        <p class="text-lg text-muted-foreground">{blok.subtitle}</p>
+      </div>
+    )
+  }
   <Faq faqs={blok.faqs} client:load />
 
   <!-- Render nested bloks (DownloadIcon and Registration Options) -->
