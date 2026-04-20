@@ -2,8 +2,24 @@ import { Button } from "@/components/atoms/button";
 import ThemeToggle from "@/components/molecules/ThemeToggle";
 import { logo } from "@/assets/logo";
 import { useState, useEffect } from "react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/molecules/dropdown-menu";
+import { ChevronDown } from "lucide-react";
 
-export default function Navbar() {
+interface PatientCornerPage {
+  title: string;
+  slug: string;
+}
+
+export default function Navbar({
+  patientCornerPages = [],
+}: {
+  patientCornerPages?: PatientCornerPage[];
+}) {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -52,14 +68,24 @@ export default function Navbar() {
               </a>
             </li>
             <li>
-              {" "}
-              <a
-                data-slot="link"
-                className="text-foreground text-sm inline-block"
-                href="#mapSection"
-              >
-                Patient Corner
-              </a>
+              <DropdownMenu>
+                <DropdownMenuTrigger className="flex items-center gap-1 text-foreground text-sm outline-none hover:scale-[1.02] transition-transform">
+                  Patient Corner
+                  <ChevronDown className="h-4 w-4" />
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-56">
+                  {patientCornerPages.map((page) => (
+                    <DropdownMenuItem key={page.slug} asChild>
+                      <a
+                        href={`/patient-corner/${page.slug}`}
+                        className="cursor-pointer"
+                      >
+                        {page.title}
+                      </a>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
             </li>
           </ul>
           <div className="flex items-center gap-2 dark:gap-2">
