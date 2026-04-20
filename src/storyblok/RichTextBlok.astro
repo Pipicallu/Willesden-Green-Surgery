@@ -5,4 +5,10 @@ const { blok } = Astro.props;
 const renderedContent = renderRichText(blok.content);
 ---
 
-<div {...storyblokEditable(blok)} set:html={renderedContent} />
+<div
+  id="rich-text-wrapper"
+  class="prose prose-md max-w-default"
+  {...storyblokEditable(blok)}
+>
+  <div {...storyblokEditable(blok)} set:html={renderedContent} />
+</div>
