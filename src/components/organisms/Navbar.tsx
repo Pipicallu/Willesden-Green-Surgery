@@ -10,7 +10,7 @@ import {
 } from "@/components/molecules/dropdown-menu";
 import { ChevronDown } from "lucide-react";
 
-interface PatientCornerPage {
+export interface PatientCornerPage {
   title: string;
   slug: string;
 }

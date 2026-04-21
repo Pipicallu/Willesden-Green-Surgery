@@ -38,7 +38,7 @@ const patientCornerPages = Object.keys(links)
     <slot />
     </div>
     </section>
-    <Footer client:load />
+    <Footer patientCornerPages={patientCornerPages} client:load />
     <FloatingActionButton client:load />
   </body>
 </html>

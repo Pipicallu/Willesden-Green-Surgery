@@ -15,10 +15,24 @@ type Card = {
 ---
 
 <section
-  class="min-h-screen flex items-center justify-center px-4"
+  class="min-h-screen flex items-center justify-center px-4 relative overflow-hidden"
   {...storyblokEditable(blok)}
 >
-  <div class="max-w-4xl mx-auto text-center space-y-12">
+  <!-- Background Image with Overlay -->
+  <div class="absolute inset-0 z-0">
+    <img
+      src="/building-hero.png"
+      alt="Willesden Green Surgery Building"
+      class="w-full h-full object-cover animate-fade-in object-center"
+      style="object-position: 40% center;"
+    />
+    <div
+      class="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background"
+    >
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto text-center space-y-12 relative z-10">
     <div class="space-y-6">
       <h1 class="text-5xl md:text-6xl font-bold tracking-tight">
         {blok.title}
@@ -39,7 +53,7 @@ type Card = {
             <a
               href={card.link || "#"}
               data-slot="link"
-              class="flex flex-col items-center text-center gap-4 group p-6 rounded-lg border bg-card hover:bg-accent transition-colors h-full"
+              class="flex flex-col items-center text-center gap-4 group p-6 rounded-lg border bg-card/80 backdrop-blur-md hover:bg-accent/90 transition-all h-full shadow-lg"
             >
               <div class="[&_svg]:w-8 [&_svg]:h-8" set:html={card.icon} />
               <div>
@@ -61,7 +75,7 @@ type Card = {
             client:load
             size="lg"
             variant="default"
-            className="text-base px-8"
+            className="text-base px-8 backdrop-blur-md bg-primary/90 hover:bg-primary shadow-lg"
           >
             {blok.button_text}
           </Button>

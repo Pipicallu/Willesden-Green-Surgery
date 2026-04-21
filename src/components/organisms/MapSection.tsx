@@ -10,12 +10,14 @@ import LabeledSwitch from "@/components/molecules/LabeledSwitch";
 const locations = {
   willesdenGreen: {
     name: "Willesden Green",
+    openingHours: "Mon-Fri 9am-6:30pm | Sat 10am-3pm",
     address: "59 Anson Road, London, England, NW2 3UY",
     lat: 51.5628,
     lng: -0.2216,
   },
   queensPark: {
     name: "Queens Park",
+    openingHours: "Mon-Fri 9am-6:30pm | Sat Closed",
     address: "Albert Road, London, England, NW6 5DE",
     lat: 51.5347,
     lng: -0.2067,
@@ -196,8 +198,11 @@ function MapSection() {
                     <h3 className="font-semibold text-base mb-1">
                       {currentLocation.name}
                     </h3>
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-gray-600 mb-2">
                       {currentLocation.address}
+                    </p>
+                    <p className="text-sm font-medium text-gray-700">
+                      {currentLocation.openingHours}
                     </p>
                   </div>
                 </InfoWindow>
