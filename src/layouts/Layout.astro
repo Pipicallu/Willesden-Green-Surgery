@@ -1,21 +1,45 @@
 ---
+// @ts-nocheck
 import "../styles/global.css";
 import ThemeToggle from "@/components/molecules/ThemeToggle";
 import Navbar from "@/components/organisms/Navbar";
+import Footer from "@/components/organisms/Footer";
+import FloatingActionButton from "@/components/organisms/FloatingActionButton";
+import { useStoryblokApi } from "@storyblok/astro";
+
+// Fetch patient corner pages for the dropdown
+const storyblokApi = useStoryblokApi();
+const { data } = await storyblokApi.get("cdn/links/");
+const links = data.links;
+
+const patientCornerPages = Object.keys(links)
+  .map((key) => links[key])
+  .filter((link) => link.slug && link.slug.startsWith("patient-corner/"))
+  .map((link) => ({
+    title: link.name.replace(/-/g, ' ').charAt(0).toUpperCase()
+  + link.name.replace(/-/g, ' ').slice(1), // split out into its own function if this gets more complex
+    slug: link.slug.replace("patient-corner/", ""),
+  }));
 ---
 
 <!doctype html>
 <html lang="en" class="scroll-smooth">
   <head>
-    <meta charset="UTF-8" />
+    <meta charSet="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>Willsden Green Surgery</title>
   </head>
   <body>
-    <Navbar client:load />
+    <Navbar client:load patientCornerPages={patientCornerPages} />
+    <section class="py-20 pt-20 pb-4">
+    <div class="max-w-7xl mx-auto">
     <slot />
+    </div>
+    </section>
+    <Footer client:load />
+    <FloatingActionButton client:load />
   </body>
 </html>
 

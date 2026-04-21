@@ -1,0 +1,41 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+
+const { blok } = Astro.props;
+
+// Get the column configuration (1 or 2 columns)
+const columns = blok.columns || 1;
+
+// Get max width setting - narrow, medium, wide, or full
+const maxWidth = blok.maxWidth || "medium";
+
+// Map columns to Tailwind grid classes
+const gridClasses = {
+  1: "grid-cols-1",
+  2: "grid-cols-1 md:grid-cols-2",
+};
+
+// Map max width options to CSS classes
+const widthClasses = {
+  narrow: "max-w-3xl mx-auto px-4 md:px-8", // ~768px
+  medium: "max-w-5xl mx-auto px-4 md:px-8", // ~1024px
+  wide: "max-w-7xl mx-auto px-4 md:px-8", // ~1280px
+  full: "w-full px-4 md:px-8", // No max width
+};
+
+const gridClass =
+  gridClasses[columns as keyof typeof gridClasses] || gridClasses[1];
+const widthClass =
+  widthClasses[maxWidth as keyof typeof widthClasses] || widthClasses.medium;
+---
+
+<div {...storyblokEditable(blok)} class={widthClass}>
+  <div class={`grid ${gridClass} gap-6`}>
+    {
+      blok.RichTextBlock?.map((nestedBlok: any) => (
+        <StoryblokComponent blok={nestedBlok} />
+      ))
+    }
+  </div>
+</div>

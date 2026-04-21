@@ -134,6 +134,23 @@
 }
 
 @layer utilities {
+  /* Content width constraints */
+  .content-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .content-wrapper {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
   button[data-slot="button"] {
     cursor: pointer !important;
     transition-property: all !important;

@@ -21,6 +21,8 @@ export default defineConfig({
         feature: "storyblok/Feature",
         hero: "storyblok/Hero",
         team: "storyblok/Team",
+        wrapper: "storyblok/Wrapper",
+        richTextBlok: "storyblok/RichTextBlok",
       },
     }),
   ],
