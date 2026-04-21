@@ -13,6 +13,7 @@ export async function getStaticPaths() {
     .map((key) => links[key])
     .filter((link) => link.slug && link.slug.startsWith("patient-corner/"))
     .map((link) => {
+      console.log("Found patient corner link:", link.slug);
       const slugPath = link.slug.replace("patient-corner/", "");
       const slugArray = slugPath.split("/").filter(Boolean);
       console.log("Processing:", link.slug, "->", slugArray);
