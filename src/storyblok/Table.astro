@@ -1,0 +1,29 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import { CustomTable } from "@/components/organisms/CustomTable";
+import type { TableCellData } from "@/components/organisms/CustomTable";
+
+const { blok } = Astro.props;
+
+const headings: string[] = blok.headings?.map((h: any) => h.value) ?? [];
+
+function mapCell(cell: any): string | TableCellData {
+  if (cell.href) return { value: cell.value, href: cell.href.cached_url };
+  return cell.value;
+}
+
+const rows: (string | TableCellData)[][] =
+  blok.rows?.map((row: any) => row.cells?.map(mapCell) ?? []) ?? [];
+const footer: (string | TableCellData)[] | undefined =
+  blok.footer?.map(mapCell);
+---
+
+<div {...storyblokEditable(blok)}>
+  <CustomTable
+    client:load
+    caption={blok.caption}
+    headings={headings}
+    rows={rows}
+    footer={footer}
+  />
+</div>

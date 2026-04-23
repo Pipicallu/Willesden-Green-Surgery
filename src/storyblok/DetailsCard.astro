@@ -1,0 +1,24 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import { DetailsCard as DetailsCardComponent } from "@/components/molecules/DetailsCard";
+import type { DetailItem } from "@/components/molecules/DetailsCard";
+
+const { blok } = Astro.props;
+
+const details: DetailItem[] =
+  blok.details?.map((d: any) => ({
+    title: d.title,
+    value: d.value,
+    href: d.href || undefined,
+    divider: d.divider || "border-bottom",
+  })) ?? [];
+---
+
+<div {...storyblokEditable(blok)}>
+  <DetailsCardComponent
+    client:load
+    heading={blok.heading}
+    description={blok.description}
+    details={details}
+  />
+</div>

@@ -23,6 +23,8 @@ export default defineConfig({
         team: "storyblok/Team",
         wrapper: "storyblok/Wrapper",
         richTextBlok: "storyblok/RichTextBlok",
+        table: "storyblok/Table",
+        detailsCard: "storyblok/DetailsCard",
       },
     }),
   ],
