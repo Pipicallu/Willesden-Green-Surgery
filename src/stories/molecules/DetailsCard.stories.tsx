@@ -72,6 +72,27 @@ export const StopSmoking: Story = {
   },
 };
 
+export const AlertVariant: Story = {
+  args: {
+    heading: "Urgent: Missing Repeat Prescription",
+    description:
+      "Your repeat prescription request has not been processed. Please contact the surgery as soon as possible.",
+    alertVariant: true,
+    details: [
+      {
+        title: "Telephone",
+        value: "020 8459 3788",
+        href: "tel:02084593788",
+      },
+      {
+        title: "Email",
+        value: "wgspractice@nhs.net",
+        href: "mailto:wgspractice@nhs.net",
+      },
+    ],
+  },
+};
+
 export const ServiceGroup: Story = {
   render: () => (
     <div className="space-y-6 max-w-xl">

@@ -21,7 +21,7 @@ const story = await getStory("home");
   }
 
   <!-- Contact Us Section -->
-  <section class="pb-20 px-4 bg-muted/50">
+  <section class="pb-20 px-4">
     <AppearOnScrollWrapper client:visible transitionDuration={1000}>
       <div class="max-w-4xl mx-auto">
         <div
@@ -52,7 +52,9 @@ const story = await getStory("home");
         </p>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="text-center space-y-4 p-8 rounded-lg border bg-card">
+        <div
+          class="text-center space-y-4 p-8 rounded-lg border border-border bg-white/5"
+        >
           <NumberCounter
             client:visible
             target={24}
@@ -62,7 +64,9 @@ const story = await getStory("home");
           <h3 class="text-xl font-semibold">Online Consultation Access</h3>
           <p class="text-muted-foreground">That we never switch off</p>
         </div>
-        <div class="text-center space-y-4 p-8 rounded-lg border bg-card">
+        <div
+          class="text-center space-y-4 p-8 rounded-lg border border-border bg-white/5"
+        >
           <NumberCounter
             client:visible
             duration={2000}
@@ -75,7 +79,9 @@ const story = await getStory("home");
             Per patient compared to the national average
           </p>
         </div>
-        <div class="text-center space-y-4 p-8 rounded-lg border bg-card">
+        <div
+          class="text-center space-y-4 p-8 rounded-lg border border-border bg-white/5"
+        >
           <NumberCounter
             client:visible
             target={95}
@@ -87,7 +93,9 @@ const story = await getStory("home");
             In both national GP and friends and family test
           </p>
         </div>
-        <div class="text-center space-y-4 p-8 rounded-lg border bg-card">
+        <div
+          class="text-center space-y-4 p-8 rounded-lg border border-border bg-white/5"
+        >
           <NumberCounter
             client:visible
             reverse
@@ -98,7 +106,9 @@ const story = await getStory("home");
           <h3 class="text-xl font-semibold">Average Call Wait</h3>
           <p class="text-muted-foreground">With callback options</p>
         </div>
-        <div class="text-center space-y-4 p-8 rounded-lg border bg-card">
+        <div
+          class="text-center space-y-4 p-8 rounded-lg border border-border bg-white/5"
+        >
           <NumberCounter
             client:visible
             reverse
@@ -111,7 +121,9 @@ const story = await getStory("home");
             GP practice in the UK to provide this service
           </p>
         </div>
-        <div class="text-center space-y-4 p-8 rounded-lg border bg-card">
+        <div
+          class="text-center space-y-4 p-8 rounded-lg border border-border bg-white/5"
+        >
           <NumberCounter
             client:visible
             target={65}
@@ -128,7 +140,7 @@ const story = await getStory("home");
   </section>
 
   <!--Team video section-->
-  <section class="py-20 px-4 bg-muted/50">
+  <section class="py-20 px-4">
     <div class="max-w-4xl mx-auto">
       <div
         class="relative group rounded-lg shadow-lg cursor-pointer transition-all duration-500 ease-in-out scale-150 my-12 lg:scale-100 lg:my-0 lg:hover:scale-150 lg:hover:my-12"
@@ -164,7 +176,7 @@ const story = await getStory("home");
   <!-- Map Section -->
   <MapSection client:load />
   <!-- Carousel Section -->
-  <section class="py-20 px-4 bg-muted/50">
+  <section class="py-20 px-4">
     <div class="max-w-6xl mx-auto">
       <div class="text-center space-y-4 mb-12">
         <h2 class="text-3xl md:text-4xl font-bold">Why Choose Us</h2>

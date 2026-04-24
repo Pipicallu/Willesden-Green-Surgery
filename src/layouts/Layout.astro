@@ -16,8 +16,9 @@ const patientCornerPages = Object.keys(links)
   .map((key) => links[key])
   .filter((link) => link.slug && link.slug.startsWith("patient-corner/"))
   .map((link) => ({
-    title: link.name.replace(/-/g, ' ').charAt(0).toUpperCase()
-  + link.name.replace(/-/g, ' ').slice(1), // split out into its own function if this gets more complex
+    title:
+      link.name.replace(/-/g, " ").charAt(0).toUpperCase() +
+      link.name.replace(/-/g, " ").slice(1), // split out into its own function if this gets more complex
     slug: link.slug.replace("patient-corner/", ""),
   }));
 ---
@@ -34,9 +35,9 @@ const patientCornerPages = Object.keys(links)
   <body>
     <Navbar client:load patientCornerPages={patientCornerPages} />
     <section class="py-20 pt-20 pb-4">
-    <div class="max-w-7xl mx-auto">
-    <slot />
-    </div>
+      <div class="max-w-7xl mx-auto">
+        <slot />
+      </div>
     </section>
     <Footer patientCornerPages={patientCornerPages} client:load />
     <FloatingActionButton client:load />
@@ -55,17 +56,17 @@ const patientCornerPages = Object.keys(links)
     background:
       radial-gradient(
         ellipse 80% 50% at 50% 0%,
-        hsl(239 84% 67% / 0.25),
+        hsl(239 100% 70% / 0.7),
         transparent
       ),
       radial-gradient(
         ellipse 50% 50% at 0% 100%,
-        hsl(239 84% 67% / 0.12),
+        hsl(262 100% 65% / 0.45),
         transparent
       ),
       radial-gradient(
         ellipse 50% 50% at 100% 100%,
-        hsl(239 84% 67% / 0.12),
+        hsl(239 100% 65% / 0.45),
         transparent
       ),
       hsl(var(--background));
@@ -74,21 +75,21 @@ const patientCornerPages = Object.keys(links)
     transition: background 0.3s ease;
   }
 
-  .dark body {
+  :global(.dark) body {
     background:
       radial-gradient(
         ellipse 80% 50% at 50% 0%,
-        hsl(239 84% 67% / 0.2),
+        hsl(239 100% 70% / 0.5),
         transparent
       ),
       radial-gradient(
         ellipse 50% 50% at 0% 100%,
-        hsl(239 84% 67% / 0.1),
+        hsl(262 100% 65% / 0.3),
         transparent
       ),
       radial-gradient(
         ellipse 50% 50% at 100% 100%,
-        hsl(239 84% 67% / 0.1),
+        hsl(239 100% 65% / 0.3),
         transparent
       ),
       hsl(var(--background));
