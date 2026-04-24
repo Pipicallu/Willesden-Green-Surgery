@@ -1,0 +1,30 @@
+---
+/**
+ * Storyblok schema — nestable block: "banner"
+ *
+ *   variant  (Single-option: info / warning / alert)   default: info
+ *   width    (Single-option: full / contained)          default: full
+ *   spacing  (Single-option: none / sm / md / lg / xl) default: none
+ *   title    (Text — optional)
+ *   body     (Textarea or Rich text)
+ */
+import { storyblokEditable } from "@storyblok/astro";
+import { Banner as BannerComponent } from "@/components/molecules/Banner";
+import type {
+  BannerVariant,
+  BannerWidth,
+  BannerSpacing,
+} from "@/components/molecules/Banner";
+
+const { blok } = Astro.props;
+---
+
+<BannerComponent
+  {...storyblokEditable(blok)}
+  variant={(blok.variant as BannerVariant) || "info"}
+  width={(blok.width as BannerWidth) || "full"}
+  spacing={(blok.spacing as BannerSpacing) || "none"}
+  title={blok.title}
+>
+  {blok.body}
+</BannerComponent>

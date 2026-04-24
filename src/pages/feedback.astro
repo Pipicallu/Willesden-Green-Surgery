@@ -1,0 +1,33 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { FeedbackFormPage } from "@/components/organisms/FeedbackFormPage";
+---
+
+<Layout>
+  <div class="max-w-2xl mx-auto px-4 sm:px-6 py-12 space-y-8">
+    <!-- Page header -->
+    <div class="space-y-3">
+      <p class="text-sm font-semibold uppercase tracking-widest text-primary">
+        Patient feedback
+      </p>
+      <h1 class="text-4xl font-bold text-foreground">Share your experience</h1>
+      <p class="text-muted-foreground text-base leading-relaxed">
+        Your feedback helps us improve the care we provide. All responses are
+        sent directly to our team and reviewed regularly. This form is for
+        feedback only — if you have an urgent medical concern please call
+        <a
+          href="tel:02084593788"
+          class="text-primary underline underline-offset-2 hover:opacity-80 transition-opacity"
+          >020 8459 3788</a
+        >
+        or dial <strong>999</strong>.
+      </p>
+    </div>
+
+    <!-- Divider -->
+    <hr class="border-border" />
+
+    <!-- Form — client:load so React hooks work -->
+    <FeedbackFormPage client:load />
+  </div>
+</Layout>

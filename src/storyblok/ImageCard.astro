@@ -1,0 +1,37 @@
+---
+/**
+ * Storyblok schema fields:
+ *   src       (Asset — image)
+ *   alt       (Text)
+ *   effect    (Single-option: none / grayscale / invert-dark / fade / sepia)   default: none
+ *   fit       (Single-option: cover / contain / fill)                           default: cover
+ *   ratio     (Single-option: square / video / portrait / auto)                default: video
+ *   radius    (Single-option: none / sm / md / lg / xl / full)                 default: lg
+ *   shadow    (Single-option: none / sm / md / lg)                             default: sm
+ *   caption   (Text — optional)
+ *   hoverable (Boolean)                                                         default: false
+ */
+import { storyblokEditable } from "@storyblok/astro";
+import { ImageCard as ImageCardComponent } from "@/components/atoms/ImageCard";
+import type {
+  ImageEffect,
+  ImageFit,
+  ImageRatio,
+  ImageRadius,
+} from "@/components/atoms/ImageCard";
+
+const { blok } = Astro.props;
+---
+
+<ImageCardComponent
+  {...storyblokEditable(blok)}
+  src={blok.src?.filename ?? blok.src}
+  alt={blok.alt || ""}
+  effect={(blok.effect as ImageEffect) || "none"}
+  fit={(blok.fit as ImageFit) || "cover"}
+  ratio={(blok.ratio as ImageRatio) || "video"}
+  radius={(blok.radius as ImageRadius) || "lg"}
+  shadow={blok.shadow || "sm"}
+  caption={blok.caption}
+  hoverable={blok.hoverable ?? false}
+/>

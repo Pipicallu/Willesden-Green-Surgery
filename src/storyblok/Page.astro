@@ -1,15 +1,20 @@
 ---
-import { storyblokEditable } from '@storyblok/astro'
-import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
-import type { SbBlokData } from '@storyblok/astro'
+import { storyblokEditable } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import type { SbBlokData } from "@storyblok/astro";
+import Layout from "@/layouts/Layout.astro";
 
-const { blok } = Astro.props
+const { blok } = Astro.props;
 ---
 
-<main {...storyblokEditable(blok)}>
-  {
-    blok.body?.map((blok:SbBlokData) => {
-      return <StoryblokComponent blok={blok} />
-    })
-  }
-</main>
+<Layout>
+  <!-- Banners render full-width above the page content -->
+  <div slot="banner" {...storyblokEditable(blok)}>
+    {blok.banner?.map((b: SbBlokData) => <StoryblokComponent blok={b} />)}
+  </div>
+
+  <!-- Main page body -->
+  <main {...storyblokEditable(blok)}>
+    {blok.body?.map((b: SbBlokData) => <StoryblokComponent blok={b} />)}
+  </main>
+</Layout>

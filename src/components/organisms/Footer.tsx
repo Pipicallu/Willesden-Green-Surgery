@@ -91,6 +91,14 @@ export default function Footer({
             <h3 className="text-xl font-semibold mb-4">Resources</h3>
             <ul className="space-y-2">
               <li>
+                <a
+                  href="/feedback"
+                  className="text-sm text-foreground hover:scale-[1.02] transition-transform inline-block"
+                >
+                  Patient feedback
+                </a>
+              </li>
+              <li>
                 <DropdownMenu>
                   <DropdownMenuTrigger className="flex items-center gap-1 text-foreground text-sm outline-none hover:scale-[1.02] transition-transform">
                     Patient Corner
