@@ -38,6 +38,7 @@ function TeamFilter({ teamData }: TeamFilterProps) {
           defaultSelected={selectedCategory}
           onSelectedChange={setSelectedCategory}
           orientation="horizontal"
+          className="w-full"
         />
       </div>
 

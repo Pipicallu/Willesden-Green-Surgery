@@ -46,7 +46,7 @@ function LabeledSwitch(props: LabeledSwitchProps) {
 
     return (
       <div
-        className={`relative border inline-grid gap-0 p-1 bg-muted ${
+        className={`relative border grid gap-0 p-1 bg-muted ${
           isVertical ? `rounded-3xl` : "rounded-full"
         } ${className}`}
         style={{
@@ -79,7 +79,7 @@ function LabeledSwitch(props: LabeledSwitchProps) {
           <button
             key={label}
             onClick={() => handleSelect(index)}
-            className={`text-2xl relative z-10 px-6 py-4 rounded-full font-medium transition-all duration-300 font-[Vogun] text-center ${
+            className={`text-sm md:text-2xl relative z-10 px-2 py-2 md:px-6 md:py-4 rounded-full font-medium transition-all duration-300 font-[Vogun] text-center ${
               selectedIndex === index
                 ? "text-foreground"
                 : "text-muted-foreground opacity-60 blur-[0.5px]"

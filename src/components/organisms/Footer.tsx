@@ -15,7 +15,7 @@ export default function Footer({
   patientCornerPages?: PatientCornerPage[];
 }) {
   return (
-    <footer className="bg-muted/30 border-t rounded-xl mt-20">
+    <footer className="bg-muted/30 border-t rounded-xl mt-10 lg:mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <nav className="grid grid-cols-1  p-4 lg:grid-cols-3 gap-12 lg:gap-16">
           {/* CTAs Section */}

@@ -1,0 +1,47 @@
+---
+// @ts-nocheck
+import { useStoryblokApi } from "@storyblok/astro";
+import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+
+export async function getStaticPaths() {
+  // Slugs handled by dedicated .astro files — exclude them from dynamic routing
+  const EXCLUDED_SLUGS = ["feedback", "new-patients", "team"];
+
+  const storyblokApi = useStoryblokApi();
+  const { data } = await storyblokApi.get("cdn/links/");
+  const links = data.links;
+
+  const paths = Object.keys(links)
+    .map((key) => links[key])
+    .filter((link) => {
+      if (!link.slug) return false;
+      // Exclude the home page
+      if (link.slug === "home" || link.slug === "") return false;
+      // Exclude dedicated static pages (check top-level segment only)
+      const topSegment = link.slug.split("/")[0];
+      if (EXCLUDED_SLUGS.includes(topSegment)) return false;
+      return true;
+    })
+    .map((link) => {
+      console.log("Found dynamic link:", link.slug);
+      return {
+        params: {
+          slug: link.slug,
+        },
+      };
+    });
+
+  return paths;
+}
+
+const storyblokApi = useStoryblokApi();
+const { slug } = Astro.params;
+
+const { data } = await storyblokApi.get(`cdn/stories/${slug}`, {
+  version: "draft",
+});
+
+const story = data.story;
+---
+
+<StoryblokComponent blok={story.content} />

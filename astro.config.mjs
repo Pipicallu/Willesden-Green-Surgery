@@ -18,6 +18,7 @@ export default defineConfig({
       },
       components: {
         page: "storyblok/Page",
+        banner: "storyblok/Banner",
         feature: "storyblok/Feature",
         hero: "storyblok/Hero",
         team: "storyblok/Team",

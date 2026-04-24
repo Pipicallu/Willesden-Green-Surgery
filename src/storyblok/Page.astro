@@ -9,12 +9,28 @@ const { blok } = Astro.props;
 
 <Layout>
   <!-- Banners render full-width above the page content -->
-  <div slot="banner" {...storyblokEditable(blok)}>
+  <div slot="banner" class="pt-20" {...storyblokEditable(blok)}>
     {blok.banner?.map((b: SbBlokData) => <StoryblokComponent blok={b} />)}
   </div>
 
   <!-- Main page body -->
   <main {...storyblokEditable(blok)}>
+    {
+      (blok.Title || blok.title || blok.Subtitle || blok.subtitle) && (
+        <div class="max-w-4xl mx-auto text-center space-y-4 mb-12 pt-8">
+          {(blok.Title || blok.title) && (
+            <h1 class="text-4xl md:text-5xl font-bold">
+              {blok.Title ?? blok.title}
+            </h1>
+          )}
+          {(blok.Subtitle || blok.subtitle) && (
+            <p class="text-xl text-muted-foreground">
+              {blok.Subtitle ?? blok.subtitle}
+            </p>
+          )}
+        </div>
+      )
+    }
     {blok.body?.map((b: SbBlokData) => <StoryblokComponent blok={b} />)}
   </main>
 </Layout>

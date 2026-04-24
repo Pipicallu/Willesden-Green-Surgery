@@ -34,6 +34,7 @@ const patientCornerPages = Object.keys(links)
   </head>
   <body>
     <Navbar client:load patientCornerPages={patientCornerPages} />
+    <slot name="banner" />
     <section class="py-20 pt-20 pb-4">
       <div class="max-w-7xl mx-auto">
         <slot />
@@ -60,8 +61,8 @@ const patientCornerPages = Object.keys(links)
         transparent
       ),
       radial-gradient(
-        ellipse 50% 50% at 0% 100%,
-        hsl(262 100% 65% / 0.45),
+        ellipse 70% 60% at 0% 100%,
+        hsl(262 100% 65% / 0.65),
         transparent
       ),
       radial-gradient(
@@ -83,8 +84,8 @@ const patientCornerPages = Object.keys(links)
         transparent
       ),
       radial-gradient(
-        ellipse 50% 50% at 0% 100%,
-        hsl(262 100% 65% / 0.3),
+        ellipse 70% 60% at 0% 100%,
+        hsl(262 100% 65% / 0.45),
         transparent
       ),
       radial-gradient(
