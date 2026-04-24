@@ -1,41 +1,87 @@
 ---
+/**
+ * Storyblok schema fields:
+ *   width         (Single-option: narrow / medium / wide / full)          default: medium
+ *   columns       (Single-option: 1 / 2)                                  default: 1
+ *   spacing       (Single-option: none / sm / md / lg / xl)               default: md
+ *   background    (Single-option: default / muted / card)                 default: default
+ *   gap           (Single-option: tight / normal / loose)                 default: normal
+ *   verticalAlign (Single-option: start / center / end)                   default: start
+ *   body          (Blocks — nestable bloks)
+ */
 import { storyblokEditable } from "@storyblok/astro";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
+import type {
+  WrapperBackground,
+  WrapperSpacing,
+  WrapperMaxWidth,
+  WrapperColumns,
+  WrapperGap,
+  WrapperVerticalAlign,
+} from "@/components/organisms/Wrapper";
 
 const { blok } = Astro.props;
 
-// Get the column configuration (1 or 2 columns)
-const columns = blok.columns || 1;
+const background: WrapperBackground = blok.background || "default";
+const spacing: WrapperSpacing = blok.spacing || "md";
+const maxWidth: WrapperMaxWidth = blok.width || "medium";
+const columns: WrapperColumns =
+  Number(blok.columns ?? blok.Columns) === 2 ? 2 : 1;
+const gap: WrapperGap = blok.gap || "normal";
+const vAlign: WrapperVerticalAlign = blok.verticalAlign || "start";
 
-// Get max width setting - narrow, medium, wide, or full
-const maxWidth = blok.maxWidth || "medium";
+const backgroundClasses: Record<WrapperBackground, string> = {
+  default: "",
+  muted: "bg-muted",
+  card: "bg-card border-y border-border",
+};
 
-// Map columns to Tailwind grid classes
-const gridClasses = {
+const spacingClasses: Record<WrapperSpacing, string> = {
+  none: "py-0",
+  sm: "py-6",
+  md: "py-12",
+  lg: "py-20",
+  xl: "py-32",
+};
+
+const widthClasses: Record<WrapperMaxWidth, string> = {
+  narrow: "max-w-3xl mx-auto px-4 md:px-8",
+  medium: "max-w-5xl mx-auto px-4 md:px-8",
+  wide: "max-w-7xl mx-auto px-4 md:px-8",
+  full: "w-full px-4 md:px-8",
+};
+
+const gapClasses: Record<WrapperGap, string> = {
+  tight: "gap-3",
+  normal: "gap-6",
+  loose: "gap-12",
+};
+
+const vAlignClasses: Record<WrapperVerticalAlign, string> = {
+  start: "items-start",
+  center: "items-center",
+  end: "items-end",
+};
+
+const columnClasses: Record<WrapperColumns, string> = {
   1: "grid-cols-1",
   2: "grid-cols-1 md:grid-cols-2",
 };
-
-// Map max width options to CSS classes
-const widthClasses = {
-  narrow: "max-w-3xl mx-auto px-4 md:px-8", // ~768px
-  medium: "max-w-5xl mx-auto px-4 md:px-8", // ~1024px
-  wide: "max-w-7xl mx-auto px-4 md:px-8", // ~1280px
-  full: "w-full px-4 md:px-8", // No max width
-};
-
-const gridClass =
-  gridClasses[columns as keyof typeof gridClasses] || gridClasses[1];
-const widthClass =
-  widthClasses[maxWidth as keyof typeof widthClasses] || widthClasses.medium;
 ---
 
-<div {...storyblokEditable(blok)} class={widthClass}>
-  <div class={`grid ${gridClass} gap-6`}>
-    {
-      blok.RichTextBlock?.map((nestedBlok: any) => (
-        <StoryblokComponent blok={nestedBlok} />
-      ))
-    }
+<section
+  {...storyblokEditable(blok)}
+  class={`${backgroundClasses[background]} ${spacingClasses[spacing]}`}
+>
+  <div class={widthClasses[maxWidth]}>
+    <div
+      class={`grid ${columnClasses[columns]} ${gapClasses[gap]} ${vAlignClasses[vAlign]}`}
+    >
+      {
+        blok.body?.map((nestedBlok: any) => (
+          <StoryblokComponent blok={nestedBlok} />
+        ))
+      }
+    </div>
   </div>
-</div>
+</section>

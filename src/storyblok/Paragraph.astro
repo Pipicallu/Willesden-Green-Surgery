@@ -1,0 +1,21 @@
+---
+/**
+ * Storyblok schema fields expected on this blok:
+ *   text      (Textarea)
+ *   size      (Single-option: xs / sm / base / lg / xl)        default: base
+ *   align     (Single-option: start / center / end)            default: start
+ *   color     (Single-option: foreground / muted / primary)    default: foreground
+ */
+import { storyblokEditable } from "@storyblok/astro";
+import { Paragraph } from "@/components/atoms/Paragraph";
+
+const { blok } = Astro.props;
+---
+
+<Paragraph
+  {...storyblokEditable(blok)}
+  size={blok.size || "base"}
+  align={blok.align || "start"}
+  color={blok.color || "foreground"}
+  text={blok.text}
+/>

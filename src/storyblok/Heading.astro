@@ -1,0 +1,23 @@
+---
+/**
+ * Storyblok schema fields expected on this blok:
+ *   text      (Text)
+ *   level     (Single-option: h1 / h2 / h3 / h4 / h5 / h6)  default: h2
+ *   align     (Single-option: start / center / end)           default: start
+ *   weight    (Single-option: normal / medium / semibold / bold) default: bold
+ *   color     (Single-option: foreground / muted / primary)   default: foreground
+ */
+import { storyblokEditable } from "@storyblok/astro";
+import { Heading } from "@/components/atoms/Heading";
+
+const { blok } = Astro.props;
+---
+
+<Heading
+  {...storyblokEditable(blok)}
+  level={blok.level || "h2"}
+  align={blok.align || "start"}
+  weight={blok.weight || "bold"}
+  color={blok.color || "foreground"}
+  text={blok.text}
+/>

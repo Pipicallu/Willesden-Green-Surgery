@@ -1,0 +1,27 @@
+---
+/**
+ * Storyblok schema fields expected on this blok:
+ *   text       (Text)
+ *   size       (Single-option: xs / sm)                        default: xs
+ *   align      (Single-option: start / center / end)           default: start
+ *   color      (Single-option: foreground / muted / primary)   default: muted
+ *   uppercase  (Boolean)                                        default: true
+ *   withDot    (Boolean)                                        default: false
+ *   block      (Boolean)                                        default: false
+ */
+import { storyblokEditable } from "@storyblok/astro";
+import { EyebrowLabel } from "@/components/atoms/EyebrowLabel";
+
+const { blok } = Astro.props;
+---
+
+<EyebrowLabel
+  {...storyblokEditable(blok)}
+  size={blok.size || "xs"}
+  align={blok.align || "start"}
+  color={blok.color || "muted"}
+  uppercase={blok.uppercase ?? true}
+  withDot={blok.withDot ?? false}
+  block={blok.block ?? false}
+  text={blok.text}
+/>
