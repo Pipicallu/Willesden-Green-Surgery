@@ -9,7 +9,7 @@ const { blok } = Astro.props;
 
 <Layout>
   <!-- Banners render full-width above the page content -->
-  <div slot="banner" class="pt-20" {...storyblokEditable(blok)}>
+  <div slot="banner" class="pt-20 px-4 sm:px-6" {...storyblokEditable(blok)}>
     {blok.banner?.map((b: SbBlokData) => <StoryblokComponent blok={b} />)}
   </div>
 
