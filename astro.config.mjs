@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from "astro/config";
+import { loadEnv } from "vite";
 
 import react from "@astrojs/react";
 
@@ -7,12 +8,14 @@ import tailwindcss from "@tailwindcss/vite";
 
 import { storyblok } from "@storyblok/astro";
 
+const env = loadEnv(process.env.NODE_ENV ?? "development", process.cwd(), "");
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [
     react(),
     storyblok({
-      accessToken: "JkbwzdQ6GhohMiRxjCTpNAtt",
+      accessToken: env.STORYBLOK_ACCESS_TOKEN,
       apiOptions: {
         region: "eu",
       },

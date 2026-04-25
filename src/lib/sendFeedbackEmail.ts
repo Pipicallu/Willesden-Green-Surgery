@@ -22,9 +22,9 @@ import type { FeedbackFormValues } from "@/components/organisms/FeedbackForm";
  * to the addresses configured in your EmailJS template, so exposure is low-risk.
  * Do NOT store a Private Key here.
  */
-const SERVICE_ID = "YOUR_SERVICE_ID";   // e.g. "service_abc123"
-const TEMPLATE_ID = "YOUR_TEMPLATE_ID"; // e.g. "template_xyz789"
-const PUBLIC_KEY = "YOUR_PUBLIC_KEY";   // e.g. "abcDEFghiJKL..."
+const SERVICE_ID = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID;
+const TEMPLATE_ID = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID;
+const PUBLIC_KEY = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY;
 
 const STAR_LABELS: Record<number, string> = {
   1: "Poor",
