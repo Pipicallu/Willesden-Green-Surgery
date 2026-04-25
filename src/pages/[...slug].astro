@@ -15,6 +15,8 @@ export async function getStaticPaths() {
     .map((key) => links[key])
     .filter((link) => {
       if (!link.slug) return false;
+      // Exclude folders (no story content to render)
+      if (link.is_folder) return false;
       // Exclude the home page
       if (link.slug === "home" || link.slug === "") return false;
       // Exclude dedicated static pages (check top-level segment only)
