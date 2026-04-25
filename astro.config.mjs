@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 import { loadEnv } from "vite";
+import path from "path";
 
 import react from "@astrojs/react";
 
@@ -37,7 +38,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
     resolve: {
       alias: {
-        "@": "/src",
+        "@": path.resolve("./src"),
       },
     },
   },
