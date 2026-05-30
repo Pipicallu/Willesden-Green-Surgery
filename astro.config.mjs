@@ -30,6 +30,7 @@ export default defineConfig({
         richTextBlok: "storyblok/RichTextBlok",
         table: "storyblok/Table",
         detailsCard: "storyblok/DetailsCard",
+        link: "storyblok/Link",
       },
     }),
   ],

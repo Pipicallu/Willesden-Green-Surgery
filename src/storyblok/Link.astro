@@ -1,0 +1,27 @@
+---
+/**
+ * Storyblok schema fields expected on this blok:
+ *   label         (Text)                                                  required
+ *   href          (Text)                                                  required
+ *   variant       (Single-option: default / underline / subtle / muted)   default: default
+ *   size          (Single-option: sm / default / lg)                      default: default
+ *   weight        (Single-option: normal / medium / semibold)             default: medium
+ *   iconPosition  (Single-option: none / left / right)                    default: right
+ *   external      (Boolean)                                               default: false
+ */
+import { storyblokEditable } from "@storyblok/astro";
+import { Link as LinkAtom } from "@/components/atoms/Link";
+
+const { blok } = Astro.props;
+---
+
+<LinkAtom
+  {...storyblokEditable(blok)}
+  label={blok.label}
+  href={blok.href}
+  variant={blok.variant || "default"}
+  size={blok.size || "default"}
+  weight={blok.weight || "medium"}
+  iconPosition={blok.iconPosition || "right"}
+  external={blok.external ?? false}
+/>
