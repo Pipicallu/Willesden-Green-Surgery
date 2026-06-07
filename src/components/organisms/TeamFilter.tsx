@@ -52,7 +52,7 @@ function TeamFilter({ teamData }: TeamFilterProps) {
           >
             {/* Circular Image Placeholder */}
             <img
-              src={`https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&size=96&background=7c7cf4&color=fff&bold=true&font-size=0.4`}
+              src={`https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&size=96&background=3b82f6&color=fff&bold=true&font-size=0.4`}
               alt={member.name}
               className="w-24 h-24 mx-auto rounded-full object-cover font-[Vogun]"
             />
