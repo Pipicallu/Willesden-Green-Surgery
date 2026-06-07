@@ -10,14 +10,14 @@ import LabeledSwitch from "@/components/molecules/LabeledSwitch";
 const locations = {
   willesdenGreen: {
     name: "Willesden Green",
-    openingHours: "Mon-Fri 9am-6:30pm | Sat 10am-3pm",
+    openingHours: "Mon-Fri 8am-6:30pm | Sat 10am-1pm",
     address: "59 Anson Road, London, England, NW2 3UY",
     lat: 51.5628,
     lng: -0.2216,
   },
   queensPark: {
     name: "Queens Park",
-    openingHours: "Mon-Fri 9am-6:30pm | Sat Closed",
+    openingHours: "Mon-Fri 9am-5pm | Sat Closed",
     address: "Albert Road, London, England, NW6 5DE",
     lat: 51.5347,
     lng: -0.2067,
@@ -185,13 +185,19 @@ function MapSection() {
                 center={currentLocation}
                 defaultZoom={15}
                 minZoom={12}
-                gestureHandling="greedy"
+                gestureHandling="cooperative"
                 disableDefaultUI={false}
                 styles={mapStyles}
               >
                 <Marker
                   position={currentLocation}
                   title={currentLocation.name}
+                  onClick={() =>
+                    window.open(
+                      `https://www.google.com/maps/search/?api=1&query=${currentLocation.lat},${currentLocation.lng}`,
+                      "_blank",
+                    )
+                  }
                 />
                 <InfoWindow position={currentLocation}>
                   <div className="p-2">

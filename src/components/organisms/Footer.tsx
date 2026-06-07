@@ -66,9 +66,9 @@ export default function Footer({
                 London, NW2 3UY
               </p>
               <p className="text-muted-foreground text-sm font-medium mt-2">
-                Mon-Fri: 9am-6:30pm
+                Mon-Fri: 8am-6:30pm
                 <br />
-                Sat: 10am-3pm
+                Sat: 10am-1pm
               </p>
             </div>
             <div>
@@ -79,7 +79,7 @@ export default function Footer({
                 London, NW6 5DE
               </p>
               <p className="text-muted-foreground text-sm font-medium mt-2">
-                Mon-Fri: 9am-6:30pm
+                Mon-Fri: 9am-5pm
                 <br />
                 Sat: Closed
               </p>
