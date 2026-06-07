@@ -12,15 +12,16 @@ const locations = {
     name: "Willesden Green",
     openingHours: "Mon-Fri 8am-6:30pm | Sat 10am-1pm",
     address: "59 Anson Road, London, England, NW2 3UY",
-    lat: 51.5628,
-    lng: -0.2216,
+    lat: 51.55381618972602,
+    lng: -0.2168939614034659,
   },
+
   queensPark: {
     name: "Queens Park",
     openingHours: "Mon-Fri 9am-5pm | Sat Closed",
     address: "Albert Road, London, England, NW6 5DE",
-    lat: 51.5347,
-    lng: -0.2067,
+    lat: 51.534111758179867,
+    lng: -0.2013367875283005,
   },
 };
 
