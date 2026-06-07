@@ -36,94 +36,96 @@ export default function Navbar({ pages = [] }: { pages?: sortedLinksProps[] }) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-sm transition-all duration-300 ${
-        isScrolled ? "shadow-sm bg-background/40" : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <div className="flex items-center">
-            <a
-              href="/"
-              className="text-foreground [&_svg]:h-14 [&_svg]:w-auto [&_path]:fill-current [&_line]:stroke-current"
-            >
-              {logo}
-            </a>
-          </div>
-
-          {/* Desktop nav */}
-          <ul className="hidden md:flex items-center gap-8">
-            <li>
+      <div
+        className={`backdrop-blur-sm transition-all duration-300 ${isScrolled ? "shadow-sm bg-background/40" : "bg-transparent"}`}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            {/* Logo */}
+            <div className="flex items-center">
               <a
-                data-slot="link"
-                className="text-foreground text-sm inline-block"
-                href="/#mapSection"
+                href="/"
+                className="text-foreground [&_svg]:h-14 [&_svg]:w-auto [&_path]:fill-current [&_line]:stroke-current"
               >
-                Locations
+                {logo}
               </a>
-            </li>
-            {pages.length > 0 &&
-              pages.map((page) => {
-                if (!page.childLinks) {
-                  return (
-                    <li key={page.slug}>
-                      <a
-                        href={`/${page.slug}`}
-                        className="text-foreground text-sm inline-block"
-                      >
-                        {page.name}
-                      </a>
-                    </li>
-                  );
-                } else if (page.childLinks) {
-                  const patientCornerPages = page.childLinks;
-                  return (
-                    <li key={page.slug}>
-                      <DropdownMenu>
-                        <DropdownMenuTrigger className="flex items-center gap-1 text-foreground text-sm outline-none hover:scale-[1.02] transition-transform">
+            </div>
+
+            {/* Desktop nav */}
+            <ul className="hidden md:flex items-center gap-8">
+              <li>
+                <a
+                  data-slot="link"
+                  className="text-foreground text-sm inline-block"
+                  href="/#mapSection"
+                >
+                  Locations
+                </a>
+              </li>
+              {pages.length > 0 &&
+                pages.map((page) => {
+                  if (!page.childLinks) {
+                    return (
+                      <li key={page.slug}>
+                        <a
+                          href={`/${page.slug}`}
+                          className="text-foreground text-sm inline-block"
+                        >
                           {page.name}
-                          <ChevronDown className="h-4 w-4" />
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="start" className="w-56">
-                          {patientCornerPages.map((childPage) => (
-                            <DropdownMenuItem key={childPage.slug} asChild>
-                              <a
-                                href={`/${childPage.slug}`}
-                                className="cursor-pointer"
-                              >
-                                {childPage.name}
-                              </a>
-                            </DropdownMenuItem>
-                          ))}
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    </li>
-                  );
-                }
-              })}
-          </ul>
+                        </a>
+                      </li>
+                    );
+                  } else if (page.childLinks) {
+                    const patientCornerPages = page.childLinks;
+                    return (
+                      <li key={page.slug}>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger className="flex items-center gap-1 text-foreground text-sm outline-none hover:scale-[1.02] transition-transform">
+                            {page.name}
+                            <ChevronDown className="h-4 w-4" />
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="start" className="w-56">
+                            {patientCornerPages.map((childPage) => (
+                              <DropdownMenuItem key={childPage.slug} asChild>
+                                <a
+                                  href={`/${childPage.slug}`}
+                                  className="cursor-pointer"
+                                >
+                                  {childPage.name}
+                                </a>
+                              </DropdownMenuItem>
+                            ))}
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </li>
+                    );
+                  }
+                })}
+            </ul>
 
-          {/* Desktop actions */}
-          <div className="hidden md:flex items-center gap-2">
-            <Button size="lg">Register New Patient</Button>
-            <ThemeToggle />
-          </div>
+            {/* Desktop actions */}
+            <div className="hidden md:flex items-center gap-2">
+              <Button size="lg">Register New Patient</Button>
+              <ThemeToggle />
+            </div>
 
-          {/* Mobile: theme toggle + hamburger */}
-          <div className="flex md:hidden items-center gap-2">
-            <ThemeToggle />
-            <button
-              aria-label="Toggle menu"
-              onClick={() => setMobileOpen((prev) => !prev)}
-              className="p-2 rounded-md text-foreground hover:bg-accent transition-colors"
-            >
-              {mobileOpen ? (
-                <X className="h-5 w-5" />
-              ) : (
-                <Menu className="h-5 w-5" />
-              )}
-            </button>
+            {/* Mobile: theme toggle + hamburger */}
+            <div className="flex md:hidden items-center gap-2">
+              <ThemeToggle />
+              <button
+                aria-label="Toggle menu"
+                onClick={() => setMobileOpen((prev) => !prev)}
+                className="p-2 rounded-md text-foreground hover:bg-accent transition-colors"
+              >
+                {mobileOpen ? (
+                  <X className="h-5 w-5" />
+                ) : (
+                  <Menu className="h-5 w-5" />
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </div>
