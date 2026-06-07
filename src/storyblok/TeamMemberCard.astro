@@ -1,0 +1,22 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import AppearOnScrollWrapper from "@/components/atoms/AppearOnScrollWrapper";
+import { TeamMemberCard as TeamMemberCardComponent } from "@/components/organisms/TeamMemberCard";
+
+const { blok } = Astro.props;
+---
+
+<AppearOnScrollWrapper
+  client:visible
+  transitionDuration={600}
+  {...storyblokEditable(blok)}
+>
+  <TeamMemberCardComponent
+    client:load
+    name={blok.name}
+    role={blok.role}
+    speciality={blok.speciality}
+    bio={blok.bio}
+    photo={blok.photo?.filename}
+  />
+</AppearOnScrollWrapper>

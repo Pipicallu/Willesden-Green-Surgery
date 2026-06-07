@@ -1,0 +1,43 @@
+---
+/**
+ * Storyblok schema:
+ *   title      Text
+ *   subtitle   Text (optional)
+ *   categories Blocks — only allows: teamCategory
+ *
+ * teamCategory schema (nestable blok, no Astro file needed):
+ *   label    Text
+ *   members  Blocks — only allows: teamMemberCard
+ */
+import { storyblokEditable } from "@storyblok/astro";
+import TeamSectionComponent from "@/components/organisms/TeamSection";
+
+const { blok } = Astro.props;
+
+const categories = (blok.categories ?? []).map((cat: any) => ({
+  label: cat.label ?? "",
+  members: (cat.members ?? []).map((m: any) => ({
+    name: m.name ?? "",
+    role: m.role ?? "",
+    speciality: m.speciality || undefined,
+    bio: m.bio || undefined,
+    photo: m.photo?.filename || undefined,
+  })),
+}));
+---
+
+<section class="py-20" {...storyblokEditable(blok)}>
+  <div class="max-w-6xl mx-auto px-4">
+    {
+      blok.title && (
+        <div class="text-center space-y-4 mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold">{blok.title}</h2>
+          {blok.subtitle && (
+            <p class="text-xl text-muted-foreground">{blok.subtitle}</p>
+          )}
+        </div>
+      )
+    }
+    <TeamSectionComponent client:load categories={categories} />
+  </div>
+</section>
