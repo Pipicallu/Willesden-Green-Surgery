@@ -31,12 +31,12 @@ const lightMapStyles = [
   {
     featureType: "all",
     elementType: "geometry",
-    stylers: [{ color: "#f0f0f5" }], // Light background
+    stylers: [{ color: "#eff6ff" }], // blue-50
   },
   {
     featureType: "water",
     elementType: "geometry",
-    stylers: [{ color: "#7c83fd" }], // Primary color (239 84% 67%)
+    stylers: [{ color: "#3b82f6" }], // blue-500
   },
   {
     featureType: "water",
@@ -51,22 +51,22 @@ const lightMapStyles = [
   {
     featureType: "road",
     elementType: "labels.text.fill",
-    stylers: [{ color: "#1a1a2e" }], // Foreground
+    stylers: [{ color: "#1e3a5f" }], // blue-950 tone
   },
   {
     featureType: "poi",
     elementType: "geometry",
-    stylers: [{ color: "#e8e8f5" }], // Muted
+    stylers: [{ color: "#dbeafe" }], // blue-100
   },
   {
     featureType: "poi.park",
     elementType: "geometry",
-    stylers: [{ color: "#c5c9ff" }], // Lighter primary
+    stylers: [{ color: "#bfdbfe" }], // blue-200
   },
   {
     featureType: "transit",
     elementType: "geometry",
-    stylers: [{ color: "#e8e8f5" }],
+    stylers: [{ color: "#dbeafe" }], // blue-100
   },
 ];
 
@@ -75,22 +75,22 @@ const darkMapStyles = [
   {
     featureType: "all",
     elementType: "geometry",
-    stylers: [{ color: "#2a2a40" }], // Dark background (239 30% 20%)
+    stylers: [{ color: "#1e3a5f" }], // blue-950
   },
   {
     featureType: "all",
     elementType: "labels.text.fill",
-    stylers: [{ color: "#e8e8f5" }], // Light text
+    stylers: [{ color: "#eff6ff" }], // blue-50
   },
   {
     featureType: "all",
     elementType: "labels.text.stroke",
-    stylers: [{ color: "#2a2a40" }],
+    stylers: [{ color: "#1e3a5f" }],
   },
   {
     featureType: "water",
     elementType: "geometry",
-    stylers: [{ color: "#7c83fd" }], // Primary color
+    stylers: [{ color: "#3b82f6" }], // blue-500
   },
   {
     featureType: "water",
@@ -100,32 +100,32 @@ const darkMapStyles = [
   {
     featureType: "road",
     elementType: "geometry",
-    stylers: [{ color: "#3d3d5c" }], // Dark muted (239 30% 28%)
+    stylers: [{ color: "#1d4ed8" }], // blue-700
   },
   {
     featureType: "road",
     elementType: "labels.text.fill",
-    stylers: [{ color: "#e8e8f5" }],
+    stylers: [{ color: "#eff6ff" }],
   },
   {
     featureType: "road.highway",
     elementType: "geometry",
-    stylers: [{ color: "#4a4a6d" }],
+    stylers: [{ color: "#2563eb" }], // blue-600
   },
   {
     featureType: "poi",
     elementType: "geometry",
-    stylers: [{ color: "#333350" }],
+    stylers: [{ color: "#1e40af" }], // blue-800
   },
   {
     featureType: "poi.park",
     elementType: "geometry",
-    stylers: [{ color: "#5a5a85" }],
+    stylers: [{ color: "#1d4ed8" }], // blue-700
   },
   {
     featureType: "transit",
     elementType: "geometry",
-    stylers: [{ color: "#3d3d5c" }],
+    stylers: [{ color: "#1d4ed8" }], // blue-700
   },
 ];
 
