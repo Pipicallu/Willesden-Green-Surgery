@@ -9,17 +9,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/molecules/dropdown-menu";
 import { ChevronDown, Menu, X } from "lucide-react";
+import { type sortedLinksProps } from "@/lib/dynamicNavLinks/dynamicNavLinkSorter";
 
-export interface PatientCornerPage {
-  title: string;
-  slug: string;
-}
-
-export default function Navbar({
-  patientCornerPages = [],
-}: {
-  patientCornerPages?: PatientCornerPage[];
-}) {
+export default function Navbar({ pages = [] }: { pages?: sortedLinksProps[] }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [patientCornerOpen, setPatientCornerOpen] = useState(false);
@@ -71,7 +63,7 @@ export default function Navbar({
                 Locations
               </a>
             </li>
-            <li>
+            {/* <li>
               <a
                 data-slot="link"
                 className="text-foreground text-sm inline-block"
@@ -79,27 +71,47 @@ export default function Navbar({
               >
                 New Patients
               </a>
-            </li>
-            <li>
-              <DropdownMenu>
-                <DropdownMenuTrigger className="flex items-center gap-1 text-foreground text-sm outline-none hover:scale-[1.02] transition-transform">
-                  Patient Corner
-                  <ChevronDown className="h-4 w-4" />
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="start" className="w-56">
-                  {patientCornerPages.map((page) => (
-                    <DropdownMenuItem key={page.slug} asChild>
+            </li> */}
+
+            {pages.length > 0 &&
+              pages.map((page) => {
+                if (!page.childLinks) {
+                  return (
+                    <li key={page.slug}>
                       <a
-                        href={`/patient-corner/${page.slug}`}
-                        className="cursor-pointer"
+                        href={`/${page.slug}`}
+                        className="text-foreground text-sm inline-block"
                       >
-                        {page.title}
+                        {page.name}
                       </a>
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </li>
+                    </li>
+                  );
+                } else if (page.childLinks) {
+                  const patientCornerPages = page.childLinks;
+                  return (
+                    <li key={page.slug}>
+                      <DropdownMenu>
+                        <DropdownMenuTrigger className="flex items-center gap-1 text-foreground text-sm outline-none hover:scale-[1.02] transition-transform">
+                          {page.name}
+                          <ChevronDown className="h-4 w-4" />
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="start" className="w-56">
+                          {patientCornerPages.map((childPage) => (
+                            <DropdownMenuItem key={childPage.slug} asChild>
+                              <a
+                                href={`/${childPage.slug}`}
+                                className="cursor-pointer"
+                              >
+                                {childPage.name}
+                              </a>
+                            </DropdownMenuItem>
+                          ))}
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    </li>
+                  );
+                }
+              })}
           </ul>
 
           {/* Desktop actions */}

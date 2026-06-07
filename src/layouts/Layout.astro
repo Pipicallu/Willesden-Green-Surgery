@@ -6,21 +6,14 @@ import Navbar from "@/components/organisms/Navbar";
 import Footer from "@/components/organisms/Footer";
 import FloatingActionButton from "@/components/organisms/FloatingActionButton";
 import { useStoryblokApi } from "@storyblok/astro";
+import { dynamicNavLinkSorter } from "@/lib/dynamicNavLinks/dynamicNavLinkSorter";
 
 // Fetch patient corner pages for the dropdown
 const storyblokApi = useStoryblokApi();
 const { data } = await storyblokApi.get("cdn/links/");
 const links = data.links;
-
-const patientCornerPages = Object.keys(links)
-  .map((key) => links[key])
-  .filter((link) => link.slug && link.slug.startsWith("patient-corner/"))
-  .map((link) => ({
-    title:
-      link.name.replace(/-/g, " ").charAt(0).toUpperCase() +
-      link.name.replace(/-/g, " ").slice(1), // split out into its own function if this gets more complex
-    slug: link.slug.replace("patient-corner/", ""),
-  }));
+console.log({ links }); // Debug log to check fetched links
+const pages = dynamicNavLinkSorter(links);
 ---
 
 <!doctype html>
@@ -39,14 +32,14 @@ const patientCornerPages = Object.keys(links)
     <title>Willsden Green Surgery</title>
   </head>
   <body>
-    <Navbar client:load patientCornerPages={patientCornerPages} />
+    <Navbar client:load pages={pages} />
     <slot name="banner" />
     <section class="py-20 pt-20 pb-4">
       <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <slot />
       </div>
     </section>
-    <Footer patientCornerPages={patientCornerPages} client:load />
+    <Footer client:load pages={pages} />
     <FloatingActionButton client:load />
   </body>
 </html>

@@ -1,5 +1,4 @@
 import { Button } from "@/components/atoms/button";
-import type { L } from "node_modules/vitest/dist/chunks/reporters.d.CWXNI2jG";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -7,13 +6,9 @@ import {
   DropdownMenuTrigger,
 } from "../molecules/dropdown-menu";
 import { ChevronDown } from "lucide-react";
-import { type PatientCornerPage } from "./Navbar";
+import { type sortedLinksProps } from "@/lib/dynamicNavLinks/dynamicNavLinkSorter";
 
-export default function Footer({
-  patientCornerPages = [],
-}: {
-  patientCornerPages?: PatientCornerPage[];
-}) {
+export default function Footer({ pages = [] }: { pages?: sortedLinksProps[] }) {
   return (
     <footer className="bg-muted/30 border-t rounded-xl mt-10 lg:mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -98,26 +93,37 @@ export default function Footer({
                   Patient feedback
                 </a>
               </li>
-              <li>
-                <DropdownMenu>
-                  <DropdownMenuTrigger className="flex items-center gap-1 text-foreground text-sm outline-none hover:scale-[1.02] transition-transform">
-                    Patient Corner
-                    <ChevronDown className="h-4 w-4" />
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="start" className="w-56">
-                    {patientCornerPages.map((page) => (
-                      <DropdownMenuItem key={page.slug} asChild>
-                        <a
-                          href={`/patient-corner/${page.slug}`}
-                          className="cursor-pointer"
-                        >
-                          {page.title}
-                        </a>
-                      </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </li>
+              {pages.map((page) => (
+                <li key={page.slug}>
+                  {page.childLinks ? (
+                    <DropdownMenu>
+                      <DropdownMenuTrigger className="flex items-center gap-1 text-foreground text-sm outline-none hover:scale-[1.02] transition-transform">
+                        {page.name}
+                        <ChevronDown className="h-4 w-4" />
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="start" className="w-56">
+                        {page.childLinks.map((childPage) => (
+                          <DropdownMenuItem key={childPage.slug} asChild>
+                            <a
+                              href={`/${childPage.slug}`}
+                              className="cursor-pointer"
+                            >
+                              {childPage.name}
+                            </a>
+                          </DropdownMenuItem>
+                        ))}
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  ) : (
+                    <a
+                      href={`/${page.slug}`}
+                      className="text-sm text-foreground hover:scale-[1.02] transition-transform inline-block"
+                    >
+                      {page.name}
+                    </a>
+                  )}
+                </li>
+              ))}
             </ul>
           </div>
         </nav>
