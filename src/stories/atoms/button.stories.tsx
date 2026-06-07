@@ -24,6 +24,24 @@ const meta = {
       control: "select",
       options: ["default", "sm", "lg", "icon", "icon-sm", "icon-lg"],
     },
+    align: {
+      control: "select",
+      options: ["start", "center", "end"],
+    },
+    spacing: {
+      control: "select",
+      options: ["none", "sm", "md", "lg", "xl"],
+    },
+    href: {
+      control: "text",
+    },
+    target: {
+      control: "select",
+      options: ["_self", "_blank"],
+    },
+    label: {
+      control: "text",
+    },
     disabled: {
       control: "boolean",
     },
@@ -36,63 +54,79 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    children: "Button",
+    label: "Button",
   },
 };
 
 export const Destructive: Story = {
   args: {
     variant: "destructive",
-    children: "Delete",
+    label: "Delete",
   },
 };
 
 export const Outline: Story = {
   args: {
     variant: "outline",
-    children: "Outline",
+    label: "Outline",
   },
 };
 
 export const Secondary: Story = {
   args: {
     variant: "secondary",
-    children: "Secondary",
+    label: "Secondary",
   },
 };
 
 export const Ghost: Story = {
   args: {
     variant: "ghost",
-    children: "Ghost",
+    label: "Ghost",
   },
 };
 
-export const Link: Story = {
+export const LinkVariant: Story = {
   args: {
     variant: "link",
-    children: "Link",
+    label: "Link",
   },
 };
 
 export const Small: Story = {
   args: {
     size: "sm",
-    children: "Small Button",
+    label: "Small Button",
   },
 };
 
 export const Large: Story = {
   args: {
     size: "lg",
-    children: "Large Button",
+    label: "Large Button",
   },
 };
 
 export const Disabled: Story = {
   args: {
     disabled: true,
-    children: "Disabled",
+    label: "Disabled",
+  },
+};
+
+export const AsLink: Story = {
+  args: {
+    label: "Go to Homepage",
+    href: "/",
+  },
+};
+
+export const AsExternalLink: Story = {
+  args: {
+    label: "Open in new tab",
+    href: "https://example.com",
+    target: "_blank",
+    variant: "outline",
   },
 };
 
@@ -117,6 +151,28 @@ export const AllSizes: Story = {
       <Button size="sm">Small</Button>
       <Button size="default">Default</Button>
       <Button size="lg">Large</Button>
+    </div>
+  ),
+};
+
+export const Alignment: Story = {
+  render: () => (
+    <div className="w-64 border p-4 space-y-2">
+      <Button align="start">Align Start</Button>
+      <Button align="center">Align Center</Button>
+      <Button align="end">Align End</Button>
+    </div>
+  ),
+};
+
+export const Spacing: Story = {
+  render: () => (
+    <div className="flex flex-col">
+      <p className="text-sm text-muted-foreground">Reference text</p>
+      <Button spacing="sm">Spacing sm (mt-4)</Button>
+      <Button spacing="md">Spacing md (mt-8)</Button>
+      <Button spacing="lg">Spacing lg (mt-12)</Button>
+      <Button spacing="xl">Spacing xl (mt-16)</Button>
     </div>
   ),
 };

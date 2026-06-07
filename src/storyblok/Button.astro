@@ -1,0 +1,27 @@
+---
+/**
+ * Storyblok schema fields expected on this blok:
+ *   label     (Text)
+ *   href      (Text)
+ *   target    (Single-option: _self / _blank)                  default: _self
+ *   variant   (Single-option: default / outline / ghost / secondary / destructive / link)  default: default
+ *   size      (Single-option: default / sm / lg / icon)        default: lg
+ *   align     (Single-option: start / center / end)            default: start
+ *   spacing   (Single-option: none / sm / md / lg / xl)        default: none
+ */
+import { storyblokEditable } from "@storyblok/astro";
+import { Button as ButtonComponent } from "@/components/atoms/button";
+
+const { blok } = Astro.props;
+---
+
+<ButtonComponent
+  {...storyblokEditable(blok)}
+  variant={blok.variant || "default"}
+  size={blok.size || "lg"}
+  align={blok.align || undefined}
+  spacing={blok.spacing || "none"}
+  href={blok.href || undefined}
+  target={blok.target || undefined}
+  label={blok.label}
+/>

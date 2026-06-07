@@ -23,10 +23,22 @@ const buttonVariants = cva(
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
         sm: "h-8 rounded-md gap-1.5 px-3 has-[>svg]:px-2.5",
-        lg: "h-10 rounded-md px-6 has-[>svg]:px-4",
+        lg: "h-10 rounded-md px-8 text-base has-[>svg]:px-6",
         icon: "size-9",
         "icon-sm": "size-8",
         "icon-lg": "size-10",
+      },
+      align: {
+        start: "block w-fit ml-0 mr-auto",
+        center: "block w-fit mx-auto",
+        end: "block w-fit ml-auto mr-0",
+      },
+      spacing: {
+        none: "",
+        sm: "mt-4",
+        md: "mt-8",
+        lg: "mt-12",
+        xl: "mt-16",
       },
     },
     defaultVariants: {
@@ -36,26 +48,69 @@ const buttonVariants = cva(
   },
 );
 
+type Variants = VariantProps<typeof buttonVariants>;
+
+export type ButtonVariant = NonNullable<Variants["variant"]>;
+export type ButtonSize = NonNullable<Variants["size"]>;
+export type ButtonAlign = NonNullable<Variants["align"]>;
+export type ButtonSpacing = NonNullable<Variants["spacing"]>;
+
+export interface ButtonProps extends React.ComponentProps<"button">, Variants {
+  asChild?: boolean;
+  /** Renders the button as an <a> element when provided */
+  href?: string;
+  target?: string;
+  rel?: string;
+  /** Convenience prop for text content (falls back to children) */
+  label?: string;
+}
+
 function Button({
   className,
   variant = "default",
   size = "default",
+  align,
+  spacing,
   asChild = false,
+  href,
+  target,
+  rel,
+  label,
+  children,
   ...props
-}: React.ComponentProps<"button"> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean;
-  }) {
-  const Comp = asChild ? Slot : "button";
+}: ButtonProps) {
+  const classes = cn(
+    buttonVariants({ variant, size, align, spacing }),
+    className,
+  );
 
+  if (href) {
+    return (
+      <a
+        href={href}
+        target={target}
+        rel={rel ?? (target === "_blank" ? "noopener noreferrer" : undefined)}
+        data-slot="button"
+        data-variant={variant}
+        data-size={size}
+        className={classes}
+      >
+        {label ?? children}
+      </a>
+    );
+  }
+
+  const Comp = asChild ? Slot : "button";
   return (
     <Comp
       data-slot="button"
       data-variant={variant}
       data-size={size}
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={classes}
       {...props}
-    />
+    >
+      {label ?? children}
+    </Comp>
   );
 }
 
