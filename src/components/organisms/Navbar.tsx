@@ -141,43 +141,50 @@ export default function Navbar({ pages = [] }: { pages?: sortedLinksProps[] }) {
                 Locations
               </a>
             </li>
-            <li>
-              <a
-                href="/new-patients"
-                onClick={() => setMobileOpen(false)}
-                className="block py-2 text-sm text-foreground hover:text-primary transition-colors"
-              >
-                New Patients
-              </a>
-            </li>
-            {patientCornerPages.length > 0 && (
-              <li>
-                <button
-                  onClick={() => setPatientCornerOpen((prev) => !prev)}
-                  className="flex items-center justify-between w-full py-2 text-sm text-foreground hover:text-primary transition-colors"
-                >
-                  Patient Corner
-                  <ChevronDown
-                    className={`h-4 w-4 transition-transform ${patientCornerOpen ? "rotate-180" : ""}`}
-                  />
-                </button>
-                {patientCornerOpen && (
-                  <ul className="pl-4 flex flex-col gap-1 mt-1 mb-1">
-                    {patientCornerPages.map((page) => (
-                      <li key={page.slug}>
-                        <a
-                          href={`/patient-corner/${page.slug}`}
-                          onClick={() => setMobileOpen(false)}
-                          className="block py-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
-                        >
-                          {page.title}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </li>
-            )}
+            {pages.map((page) => {
+              if (!page.childLinks) {
+                return (
+                  <li key={page.slug}>
+                    <a
+                      href={`/${page.slug}`}
+                      onClick={() => setMobileOpen(false)}
+                      className="block py-2 text-sm text-foreground hover:text-primary transition-colors"
+                    >
+                      {page.name}
+                    </a>
+                  </li>
+                );
+              } else {
+                return (
+                  <li key={page.slug}>
+                    <button
+                      onClick={() => setPatientCornerOpen((prev) => !prev)}
+                      className="flex items-center justify-between w-full py-2 text-sm text-foreground hover:text-primary transition-colors"
+                    >
+                      {page.name}
+                      <ChevronDown
+                        className={`h-4 w-4 transition-transform ${patientCornerOpen ? "rotate-180" : ""}`}
+                      />
+                    </button>
+                    {patientCornerOpen && (
+                      <ul className="pl-4 flex flex-col gap-1 mt-1 mb-1">
+                        {page.childLinks.map((childPage) => (
+                          <li key={childPage.slug}>
+                            <a
+                              href={`/${childPage.slug}`}
+                              onClick={() => setMobileOpen(false)}
+                              className="block py-1.5 text-sm text-muted-foreground hover:text-primary transition-colors"
+                            >
+                              {childPage.name}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                );
+              }
+            })}
           </ul>
           <div className="px-4 pb-4">
             <Button
