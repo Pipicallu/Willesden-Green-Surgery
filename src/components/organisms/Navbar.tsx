@@ -36,8 +36,8 @@ export default function Navbar({ pages = [] }: { pages?: sortedLinksProps[] }) {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm transition-shadow ${
-        isScrolled ? "shadow-sm" : ""
+      className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-sm transition-all duration-300 ${
+        isScrolled ? "shadow-sm bg-background/40" : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -63,16 +63,6 @@ export default function Navbar({ pages = [] }: { pages?: sortedLinksProps[] }) {
                 Locations
               </a>
             </li>
-            {/* <li>
-              <a
-                data-slot="link"
-                className="text-foreground text-sm inline-block"
-                href="/new-patients"
-              >
-                New Patients
-              </a>
-            </li> */}
-
             {pages.length > 0 &&
               pages.map((page) => {
                 if (!page.childLinks) {
