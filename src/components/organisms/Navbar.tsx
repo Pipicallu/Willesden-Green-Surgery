@@ -30,8 +30,17 @@ export default function Navbar({ pages = [] }: { pages?: sortedLinksProps[] }) {
     const handleResize = () => {
       if (window.innerWidth >= 768) setMobileOpen(false);
     };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    // Debounce to ignore iOS Safari address-bar resize events
+    let timer: ReturnType<typeof setTimeout>;
+    const debouncedResize = () => {
+      clearTimeout(timer);
+      timer = setTimeout(handleResize, 150);
+    };
+    window.addEventListener("resize", debouncedResize);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("resize", debouncedResize);
+    };
   }, []);
 
   return (
@@ -116,7 +125,10 @@ export default function Navbar({ pages = [] }: { pages?: sortedLinksProps[] }) {
               <ThemeToggle />
               <button
                 aria-label="Toggle menu"
-                onClick={() => setMobileOpen((prev) => !prev)}
+                onPointerDown={(e) => {
+                  e.preventDefault();
+                  setMobileOpen((prev) => !prev);
+                }}
                 className="p-2 rounded-md text-foreground hover:bg-accent transition-colors"
               >
                 {mobileOpen ? (
