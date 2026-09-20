@@ -23,7 +23,7 @@ function AppearOnScrollWrapper({
           observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     observer.observe(element);
@@ -36,7 +36,7 @@ function AppearOnScrollWrapper({
       ref={ref}
       className={className}
       style={{
-        opacity: isVisible ? 1 : 0,
+        opacity: isVisible ? 1 : 0.9,
         transform: isVisible ? "translateY(0)" : "translateY(20px)",
         transition: `opacity ${transitionDuration}ms ease-in-out, transform ${transitionDuration}ms ease-in-out`,
       }}
