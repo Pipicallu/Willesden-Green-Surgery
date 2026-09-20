@@ -7,7 +7,6 @@ import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import { getStory } from "@/lib/storyblok";
 import type { SbBlokData } from "@storyblok/astro";
 import NumberCounter from "@/components/atoms/NumberCounter";
-import AppearOnScrollWrapper from "@/components/atoms/AppearOnScrollWrapper";
 import MapSection from "@/components/organisms/MapSection";
 const story = await getStory("home");
 ---
@@ -21,25 +20,34 @@ const story = await getStory("home");
   }
 
   <!-- Contact Us Section -->
-  <section class="pt-20 pb-10">
-    <AppearOnScrollWrapper client:visible transitionDuration={1000}>
-      <div class="max-w-6xl mx-auto">
-        <div
-          class="flex flex-col md:flex-row items-center justify-between gap-8"
-        >
-          <div class="flex-1 space-y-4 text-center md:text-left">
-            <h2 class="text-3xl md:text-4xl font-bold">
-              Contact us online for appointments and administration issues!
-            </h2>
-          </div>
-          <div class="flex-shrink-0">
-            <Button client:load size="lg" className="text-base px-8">
-              AccuRx Portal
-            </Button>
-          </div>
+  <section class="px-4 py-12 sm:px-6 lg:py-16" aria-labelledby="contact-online-title">
+    <div
+      class="mx-auto max-w-6xl rounded-2xl border border-[#0B8888]/20 bg-card/90 p-6 shadow-lg sm:p-8 lg:p-10"
+    >
+      <div class="flex flex-col gap-7 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
+        <div class="max-w-2xl space-y-3">
+          <h2 id="contact-online-title" class="sr-only">Contact us online</h2>
+          <p class="text-xs font-bold uppercase tracking-[0.18em] text-[#0B8888] dark:text-[#63DBC0]">
+            Contact the practice
+          </p>
+          <p class="text-2xl font-semibold leading-snug text-foreground sm:text-3xl">
+            Need help
+          </p>
+          <p class="text-sm leading-relaxed text-muted-foreground sm:text-base">
+            Contact us online for appointments and administration issues
+          </p>
         </div>
+
+        <Button
+          href="https://accurx.nhs.uk/patient-initiated/E84702"
+          size="lg"
+          className="h-auto min-h-14 w-full flex-col gap-1 border border-[#0B8888] bg-white px-5 py-3 text-[#0B8888] hover:bg-[#eaf7f4] hover:text-[#0B8888] sm:w-fit sm:flex-row sm:gap-3 lg:shrink-0"
+        >
+          <span>Start an online request</span>
+          <img src="/accurx-logo.png" alt="Accurx" class="h-5 w-auto" />
+        </Button>
       </div>
-    </AppearOnScrollWrapper>
+    </div>
   </section>
 
   <!-- Statistics Section -->
@@ -179,9 +187,11 @@ const story = await getStory("home");
   <section class="py-10 lg:py-20 overflow-hidden">
     <div class="max-w-6xl mx-auto">
       <div class="text-center space-y-4 mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold">Why Choose Us</h2>
+        <h2 class="text-3xl md:text-4xl font-bold">
+          Our Accreditations and Awards
+        </h2>
         <p class="text-xl text-muted-foreground">
-          Discover what makes us different
+          The commitments and recognition behind our practice
         </p>
       </div>
       <AutoCarousel client:load />
