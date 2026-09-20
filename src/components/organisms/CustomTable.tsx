@@ -41,7 +41,7 @@ export function CustomTable({
   rows,
   footer,
 }: CustomTableProps) {
-  console.log("CustomTable props:", { caption, headings, rows, footer });
+  // console.log("CustomTable props:", { caption, headings, rows, footer });
   return (
     <Table>
       {caption && <TableCaption>{caption}</TableCaption>}

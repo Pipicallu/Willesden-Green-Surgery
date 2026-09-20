@@ -23,7 +23,7 @@ export const Default: Story = {
   args: {
     onSubmit: async (values) => {
       // In Storybook: log the validated payload instead of sending
-      console.log("Validated form values:", values);
+      // console.log("Validated form values:", values);
       await new Promise((r) => setTimeout(r, 1000)); // simulate async
     },
     submitted: false,

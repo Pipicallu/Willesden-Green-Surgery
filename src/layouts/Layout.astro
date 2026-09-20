@@ -12,7 +12,7 @@ import { dynamicNavLinkSorter } from "@/lib/dynamicNavLinks/dynamicNavLinkSorter
 const storyblokApi = useStoryblokApi();
 const { data } = await storyblokApi.get("cdn/links/");
 const links = data.links;
-console.log({ links }); // Debug log to check fetched links
+// console.log({ links }); // Debug log to check fetched links
 const pages = dynamicNavLinkSorter(links);
 ---
 

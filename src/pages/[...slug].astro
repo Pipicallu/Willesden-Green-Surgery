@@ -25,7 +25,7 @@ export async function getStaticPaths() {
       return true;
     })
     .map((link) => {
-      console.log("Found dynamic link:", link.slug);
+      // console.log("Found dynamic link:", link.slug);
       return {
         params: {
           slug: link.slug,
