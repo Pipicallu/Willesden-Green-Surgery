@@ -32,7 +32,9 @@ const pages = dynamicNavLinkSorter(links);
     <title>Willsden Green Surgery</title>
   </head>
   <body>
-    <Navbar client:load pages={pages} />
+    <header class="fixed inset-x-0 top-0 z-50">
+      <Navbar client:load pages={pages} />
+    </header>
     <slot name="banner" />
     <section class="py-20 pt-20 pb-4">
       <div class="max-w-7xl mx-auto px-4 sm:px-6">

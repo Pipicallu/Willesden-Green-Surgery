@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 
 import { logo } from "@/assets/logo";
@@ -17,34 +16,14 @@ type NavbarProps = {
 };
 
 export default function Navbar({ pages = [] }: NavbarProps) {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
-    };
-
-    // Handles Safari restoring the page at an existing scroll position.
-    handleScroll();
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
   return (
     <nav
       aria-label="Main navigation"
-      className={`
-        fixed inset-x-0 top-0 z-50 isolate
+      className="
+        relative
         pt-[env(safe-area-inset-top)]
-        bg-background
-        md:bg-background/75 md:backdrop-blur-md
-        transition-shadow duration-300
-        ${isScrolled ? "shadow-sm" : ""}
-      `}
+        bg-background md:bg-background/75 md:backdrop-blur-md
+      "
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
