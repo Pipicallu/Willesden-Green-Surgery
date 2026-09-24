@@ -168,7 +168,7 @@ function MapSection() {
         <div className="text-center space-y-4 mb-12">
           <h2 className="text-3xl md:text-4xl font-bold">Find Us</h2>
           <p className="text-xl text-muted-foreground">
-            Visit our practice locations
+            Be seen at one of our two sites. <br /> Open on Saturdays.
           </p>
           <LabeledSwitch
             leftLabel="Willesden Green"

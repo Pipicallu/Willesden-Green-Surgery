@@ -46,7 +46,7 @@ function LabeledSwitch(props: LabeledSwitchProps) {
 
     return (
       <div
-        className={`relative border grid gap-0 p-1 bg-muted ${
+        className={`relative grid gap-0 border border-primary/20 bg-primary/10 p-1 ${
           isVertical ? `rounded-3xl` : "rounded-full"
         } ${className}`}
         style={{
@@ -56,7 +56,7 @@ function LabeledSwitch(props: LabeledSwitchProps) {
       >
         {/* Sliding bubble background */}
         <div
-          className="absolute rounded-full bg-background shadow-sm transition-all duration-300 ease-in-out"
+          className="absolute rounded-full bg-primary shadow-sm transition-all duration-300 ease-in-out"
           style={
             isVertical
               ? {
@@ -81,8 +81,8 @@ function LabeledSwitch(props: LabeledSwitchProps) {
             onClick={() => handleSelect(index)}
             className={`text-sm md:text-2xl relative z-10 px-2 py-2 md:px-6 md:py-4 rounded-full font-medium transition-all duration-300 font-[Vogun] text-center ${
               selectedIndex === index
-                ? "text-foreground"
-                : "text-muted-foreground opacity-60 blur-[0.5px]"
+                ? "text-primary-foreground"
+                : "text-primary opacity-80"
             }`}
           >
             {label}
@@ -111,7 +111,7 @@ function LabeledSwitch(props: LabeledSwitchProps) {
 
   return (
     <div
-      className={`relative border inline-grid gap-0 p-1 bg-muted ${
+      className={`relative inline-grid gap-0 border border-primary/20 bg-primary/10 p-1 ${
         isVertical ? "rounded-3xl" : "rounded-full"
       } ${className}`}
       style={{
@@ -120,7 +120,7 @@ function LabeledSwitch(props: LabeledSwitchProps) {
     >
       {/* Sliding bubble background */}
       <div
-        className="absolute rounded-full bg-background shadow-sm transition-all duration-300 ease-in-out"
+        className="absolute rounded-full bg-primary shadow-sm transition-all duration-300 ease-in-out"
         style={
           isVertical
             ? {
@@ -142,9 +142,7 @@ function LabeledSwitch(props: LabeledSwitchProps) {
       <button
         onClick={() => handleCheckedChange(false)}
         className={`text-2xl relative z-10 px-4 py-2 rounded-full font-medium transition-all duration-300 font-[Vogun] ${
-          !isChecked
-            ? "text-foreground"
-            : "text-muted-foreground opacity-60 blur-[0.5px]"
+          !isChecked ? "text-primary-foreground" : "text-primary opacity-80"
         }`}
       >
         {leftLabel}
@@ -152,9 +150,7 @@ function LabeledSwitch(props: LabeledSwitchProps) {
       <button
         onClick={() => handleCheckedChange(true)}
         className={`text-2xl relative z-10 px-4 py-2 rounded-full font-medium transition-all duration-300 font-[Vogun] ${
-          isChecked
-            ? "text-foreground"
-            : "text-muted-foreground opacity-60 blur-[0.5px]"
+          isChecked ? "text-primary-foreground" : "text-primary opacity-80"
         }`}
       >
         {rightLabel}

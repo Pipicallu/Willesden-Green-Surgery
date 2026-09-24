@@ -60,7 +60,7 @@ export default function AutoCarousel() {
         {images.map((image) => (
           <CarouselItem
             key={image.src}
-            className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3"
+            className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/4"
           >
             <div className="flex h-96 w-full flex-col gap-3 rounded-lg border border-border p-4">
               <div className="flex min-h-0 flex-1 items-center justify-center">
@@ -71,7 +71,10 @@ export default function AutoCarousel() {
                   ratio="auto"
                   className="border-0 bg-transparent shadow-none [&_img]:rounded-lg"
                   style={{
-                    maxWidth: Math.min(image.width, (image.width / image.height) * 288),
+                    maxWidth: Math.min(
+                      image.width,
+                      (image.width / image.height) * 288,
+                    ),
                   }}
                 />
               </div>

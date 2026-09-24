@@ -1,6 +1,7 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
 import { Button } from "@/components/atoms/button";
+import { Banner } from "@/components/molecules/Banner";
 import AppearOnScrollWrapper from "@/components/atoms/AppearOnScrollWrapper";
 const { blok } = Astro.props;
 type Card = {
@@ -23,17 +24,15 @@ type Card = {
     <img
       src="/background-altered.png"
       alt="Willesden Green Surgery Building"
-      class="absolute inset-0 h-full w-full object-fill animate-fade-in"
+      class="absolute inset-0 h-full w-full object-scale-down animate-fade-in"
       style="object-position: center top;"
     />
-    <div
-      class="absolute inset-0 from-transparent via-background/40 to-background"
-    >
-    </div>
   </div>
 
-  <div class="max-w-4xl mx-auto text-center space-y-12 relative z-10">
-    <div class="space-y-6">
+  <div
+    class="max-w-4xl mx-auto text-center space-y-12 relative z-10 -translate-y-16"
+  >
+    <div class="space-y-4">
       <h1 class="text-5xl md:text-6xl font-bold tracking-tight">
         {blok.title}
       </h1>
@@ -42,25 +41,25 @@ type Card = {
       </p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+    <div class="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto translate-y-3/4">
       {
         blok.cards?.map((card: Card, index: number) => (
           <AppearOnScrollWrapper
             client:visible
-            className="w-full h-full"
+            className="w-full h-fit"
             transitionDuration={500 + index * 500}
           >
             <a
               href={card.link || "#"}
               data-slot="link"
-              class="flex flex-col items-center text-center gap-4 group p-6 rounded-lg border bg-card/80 backdrop-blur-md hover:bg-accent/90 transition-all h-full shadow-lg"
+              class="flex flex-col items-center text-center gap-2 group p-4 rounded-lg border bg-card/80 backdrop-blur-md hover:bg-accent/90 transition-all h-fit shadow-lg"
             >
-              <div class="[&_svg]:w-8 [&_svg]:h-8" set:html={card.icon} />
+              <div class="[&_svg]:w-8 [&_svg]:h-10" set:html={card.icon} />
               <div>
-                <h2 class="text-lg font-semibold mb-2 group-hover:text-accent-foreground">
+                <h2 class="text-lg font-sans font-semibold group-hover:text-accent-foreground">
                   {card.heading}
                 </h2>
-                <p class="text-sm text-muted-foreground">{card.description}</p>
+                {/* <p class="text-sm text-muted-foreground">{card.description}</p> */}
               </div>
             </a>
           </AppearOnScrollWrapper>
@@ -70,14 +69,24 @@ type Card = {
 
     {
       blok.show_button && (
-        <div class="pt-6">
+        <div class="pt-6 translate-y-3/4 gap-6">
           <Button
-            client:load
+            href="https://www.nhs.uk/nhs-app/"
+            target="_blank"
+            rel="noopener noreferrer"
             size="lg"
-            variant="default"
-            className="text-base px-8 backdrop-blur-md bg-primary/90 hover:bg-primary shadow-lg"
+            className="h-auto min-h-12 w-full max-w-[320px] flex-col gap-2 rounded-lg border border-primary/20 bg-primary px-4 py-2 text-primary-foreground shadow-lg transition-all hover:bg-primary/90 sm:flex-row sm:justify-between sm:gap-4"
           >
-            {blok.button_text}
+            <div class="w-full text-left">
+              <span class="block text-base font-semibold">
+                Download the NHS App
+              </span>
+            </div>
+            <img
+              src="/nhs.png"
+              alt="NHS App"
+              class=" w-auto max-w-[64px] object-scale-down shrink-0"
+            />
           </Button>
         </div>
       )

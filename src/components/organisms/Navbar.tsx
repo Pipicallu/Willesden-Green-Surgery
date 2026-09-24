@@ -22,11 +22,11 @@ export default function Navbar({ pages = [] }: NavbarProps) {
       className="
         relative
         pt-[env(safe-area-inset-top)]
-        bg-background md:bg-background/75 md:backdrop-blur-md
+        bg-background md:bg-background/40 md:backdrop-blur-md
       "
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-18 items-center justify-between">
           {/* Logo */}
           <a
             href="/"
@@ -135,8 +135,14 @@ export default function Navbar({ pages = [] }: NavbarProps) {
                   [&::-webkit-details-marker]:hidden
                 "
               >
-                <Menu aria-hidden="true" className="h-5 w-5 group-open:hidden" />
-                <X aria-hidden="true" className="hidden h-5 w-5 group-open:block" />
+                <Menu
+                  aria-hidden="true"
+                  className="h-5 w-5 group-open:hidden"
+                />
+                <X
+                  aria-hidden="true"
+                  className="hidden h-5 w-5 group-open:block"
+                />
               </summary>
 
               {/* Mobile navigation remains usable before React hydrates. */}

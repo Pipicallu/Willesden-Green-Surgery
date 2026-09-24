@@ -2,6 +2,7 @@
 // @ts-nocheck
 import Layout from "../layouts/Layout.astro";
 import { Button } from "@/components/atoms/button";
+import { Banner } from "@/components/molecules/Banner";
 import AutoCarousel from "@/components/organisms/AutoCarousel";
 import StoryblokComponent from "@storyblok/astro/StoryblokComponent.astro";
 import { getStory } from "@/lib/storyblok";
@@ -19,9 +20,9 @@ const story = await getStory("home");
       .map((blok: SbBlokData) => <StoryblokComponent blok={blok} />)
   }
 
-  <!-- Contact Us Section -->
+  <!-- Accurx Section -->
   <section
-    class="px-4 py-12 sm:px-6 lg:py-16"
+    class="px-4 pb-12 sm:px-6 lg:pb-16"
     aria-labelledby="contact-online-title"
   >
     <div
@@ -33,17 +34,18 @@ const story = await getStory("home");
         <div class="max-w-2xl space-y-3">
           <h2 id="contact-online-title" class="sr-only">Contact us online</h2>
           <p
-            class="text-xs font-bold uppercase tracking-[0.18em] text-[#0B8888] dark:text-[#63DBC0]"
+            class="text-xs font-bold uppercase tracking-[0.18em] text-[#0B8888] dark:text-[#0c8888]"
           >
             Contact the practice
           </p>
           <p
             class="text-2xl font-semibold leading-snug text-foreground sm:text-3xl"
           >
-            Need help
+            Submit an online consultation
           </p>
           <p class="text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Contact us online for appointments and administration issues
+            Available 27h 7d for appointments, sick notes and administrative
+            issues
           </p>
         </div>
 
@@ -63,9 +65,9 @@ const story = await getStory("home");
   <section class="pt-10 pb-20">
     <div class="max-w-6xl mx-auto">
       <div class="text-center space-y-4 mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold">Our Achievements</h2>
+        <h2 class="text-3xl md:text-4xl font-bold">Our impact in numbers</h2>
         <p class="text-xl text-muted-foreground">
-          Excellence in healthcare delivery
+          Committed to doing our best for the local Willesden Green community.
         </p>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -101,13 +103,13 @@ const story = await getStory("home");
         >
           <NumberCounter
             client:visible
-            target={95}
+            target={90}
             suffix="%"
             className="text-5xl font-bold text-primary"
           />
           <h3 class="text-xl font-semibold">Good Patient Rating</h3>
           <p class="text-muted-foreground">
-            In both national GP, patient survey and friends and family test
+            In the national GP patient survey. One of the highest in England.
           </p>
         </div>
         <div
@@ -135,7 +137,7 @@ const story = await getStory("home");
           />
           <h3 class="text-xl font-semibold">Ultrasound Guided Surgery</h3>
           <p class="text-muted-foreground">
-            GP practice in the UK to provide this service
+            First GP practice in the UK to provide this service
           </p>
         </div>
         <div
@@ -149,7 +151,7 @@ const story = await getStory("home");
           />
           <h3 class="text-xl font-semibold">Early Cancer Detection</h3>
           <p class="text-muted-foreground">
-            5 year rolling rate, the highest in Brent
+            5 year rolling rate, one of the highest in London.
           </p>
         </div>
       </div>
@@ -197,7 +199,7 @@ const story = await getStory("home");
     <div class="max-w-6xl mx-auto">
       <div class="text-center space-y-4 mb-12">
         <h2 class="text-3xl md:text-4xl font-bold">
-          Our Accreditations and Awards
+          Our accreditations and awards
         </h2>
         <p class="text-xl text-muted-foreground">
           The commitments and recognition behind our practice
