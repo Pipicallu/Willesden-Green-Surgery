@@ -2,7 +2,7 @@ import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
-const headingVariants = cva("font-bold tracking-tight text-balance", {
+const headingVariants = cva("tracking-tight text-balance", {
   variants: {
     level: {
       h1: "text-5xl md:text-6xl",
@@ -31,7 +31,7 @@ const headingVariants = cva("font-bold tracking-tight text-balance", {
   defaultVariants: {
     level: "h2",
     align: "start",
-    weight: "bold",
+    weight: "normal",
     color: "foreground",
   },
 });
