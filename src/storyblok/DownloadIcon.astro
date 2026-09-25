@@ -5,20 +5,18 @@ const { blok } = Astro.props;
 
 <div
   {...storyblokEditable(blok)}
-  class="flex flex-row items-center justify-center gap-2 mt-8"
+  class="mt-8 flex flex-row items-center justify-center gap-2"
 >
-  <h2 class="text-xl font-medium">
-    Download in person registration form here:
-  </h2>
+  {blok.label && <h2 class="text-xl font-medium">{blok.label}</h2>}
   <a
     href={blok.href || "#"}
-    download="registration_form.pdf"
-    class="text-primary underline inline-flex items-center gap-2"
+    download={blok.filename || "registration_form.pdf"}
+    class="inline-flex items-center gap-2 text-primary underline"
   >
     <img
       src={blok.img?.filename}
       alt={blok.alt || "Download"}
-      class="w-10 h-10"
+      class="h-10 w-10"
     />
   </a>
 </div>

@@ -24,13 +24,13 @@ type Card = {
     <img
       src="/background-altered.png"
       alt="Willesden Green Surgery Building"
-      class="absolute inset-0 h-full w-full object-scale-down animate-fade-in"
+      class="absolute inset-0 h-full w-full hidden md:block md:object-scale-down animate-fade-in"
       style="object-position: center top;"
     />
   </div>
 
   <div
-    class="max-w-4xl mx-auto text-center space-y-12 relative z-10 -translate-y-16"
+    class="max-w-4xl mx-auto text-center space-y-12 relative z-10 md:-translate-y-16"
   >
     <div class="space-y-4">
       <h1 class="text-5xl md:text-6xl font-bold tracking-tight">
@@ -41,7 +41,7 @@ type Card = {
       </p>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto translate-y-3/4">
+    <div class="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto md:translate-y-3/4">
       {
         blok.cards?.map((card: Card, index: number) => (
           <AppearOnScrollWrapper
@@ -69,7 +69,7 @@ type Card = {
 
     {
       blok.show_button && (
-        <div class="pt-6 translate-y-3/4 gap-6">
+        <div class="pt-6 md:translate-y-3/4 gap-6">
           <Button
             href="https://www.nhs.uk/nhs-app/"
             target="_blank"

@@ -22,7 +22,7 @@ export default function Navbar({ pages = [] }: NavbarProps) {
       className="
         relative
         pt-[env(safe-area-inset-top)]
-        bg-background md:bg-background/40 md:backdrop-blur-md
+        bg-background/40 backdrop-blur-md
       "
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
