@@ -6,11 +6,11 @@ import { cn } from "@/lib/utils";
  * Label / eyebrow text — small descriptive line above a heading.
  * Not to be confused with a form <label>.
  */
-const labelVariants = cva("inline-block font-semibold tracking-widest", {
+const labelVariants = cva("inline-block font-sans font-semibold tracking-widest", {
   variants: {
     size: {
-      xs: "text-xs",
-      sm: "text-sm",
+      xs: "text-label",
+      sm: "text-label",
     },
     align: {
       start: "text-start",

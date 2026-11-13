@@ -25,12 +25,12 @@ export function TeamMemberCard({
         className="w-24 h-24 mx-auto rounded-full object-cover"
       />
       <div className="space-y-2">
-        <h3 className="text-xl font-semibold">{name}</h3>
-        <p className="text-sm font-medium text-foreground">{role}</p>
+        <h3 className="card-title">{name}</h3>
+        <p className="text-foreground">{role}</p>
         {speciality && (
-          <p className="text-sm text-muted-foreground italic">{speciality}</p>
+          <p className="text-muted-foreground italic">{speciality}</p>
         )}
-        {bio && <p className="text-sm text-muted-foreground">{bio}</p>}
+        {bio && <p className="text-muted-foreground">{bio}</p>}
       </div>
     </div>
   );

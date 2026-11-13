@@ -36,7 +36,7 @@ export function DetailsCard({
     >
       <h3
         className={cn(
-          "text-lg font-bold flex items-center gap-2",
+          "card-title flex items-center gap-2",
           alertVariant ? "text-destructive" : "text-foreground",
         )}
       >
@@ -58,7 +58,7 @@ export function DetailsCard({
         {heading}
       </h3>
       {description && (
-        <p className="text-sm text-muted-foreground pb-2">{description}</p>
+        <p className="text-muted-foreground pb-2">{description}</p>
       )}
       <div>
         {details.map((item, index) => (

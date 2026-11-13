@@ -4,7 +4,7 @@
  *   text      (Text)
  *   level     (Single-option: h1 / h2 / h3 / h4 / h5 / h6)  default: h2
  *   align     (Single-option: start / center / end)           default: start
- *   weight    (Single-option: normal / medium / semibold / bold) default: bold
+ *   weight    (Single-option: normal / medium / semibold / bold) default: 500 for h1, 600 otherwise
  *   color     (Single-option: foreground / muted / primary)   default: foreground
  */
 import { storyblokEditable } from "@storyblok/astro";
@@ -17,7 +17,7 @@ const { blok } = Astro.props;
   {...storyblokEditable(blok)}
   level={blok.level || "h2"}
   align={blok.align || "start"}
-  weight={blok.weight || "bold"}
+  weight={blok.weight || undefined}
   color={blok.color || "foreground"}
   text={blok.text}
 />

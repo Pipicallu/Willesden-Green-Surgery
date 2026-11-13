@@ -85,9 +85,9 @@ function StarRating({
         ))}
       </div>
       {active > 0 && (
-        <p className="text-sm text-muted-foreground">{labels[active - 1]}</p>
+        <p className="text-muted-foreground">{labels[active - 1]}</p>
       )}
-      {error && <p className="text-sm text-destructive">{error}</p>}
+      {error && <p className="text-destructive">{error}</p>}
     </div>
   );
 }
@@ -123,10 +123,10 @@ export function FeedbackForm({
         <div className="mx-auto flex size-12 items-center justify-center rounded-full bg-icon-background text-icon">
           <Check className="size-7" aria-hidden="true" />
         </div>
-        <h2 className="text-xl font-semibold text-foreground">
+        <h2 className="card-title text-foreground">
           Thank you for your feedback
         </h2>
-        <p className="text-sm text-muted-foreground">
+        <p className="text-muted-foreground">
           Your response has been sent to Willesden Green Surgery. We appreciate
           you taking the time to share your experience.
         </p>
@@ -145,7 +145,7 @@ export function FeedbackForm({
       <div className="space-y-1.5">
         <label
           htmlFor="feedback-name"
-          className="text-sm font-medium text-foreground"
+          className="small-label text-foreground"
         >
           Full name{" "}
           <span aria-hidden="true" className="text-destructive">
@@ -173,7 +173,7 @@ export function FeedbackForm({
         {errors.name && (
           <p
             id="feedback-name-error"
-            className="text-sm text-destructive"
+            className="text-destructive"
             role="alert"
           >
             {errors.name.message}
@@ -183,7 +183,7 @@ export function FeedbackForm({
 
       {/* Date picker */}
       <div className="space-y-1.5">
-        <label className="text-sm font-medium text-foreground">
+        <label className="small-label text-foreground">
           Date of appointment{" "}
           <span aria-hidden="true" className="text-destructive">
             *
@@ -233,7 +233,7 @@ export function FeedbackForm({
         {errors.date && (
           <p
             id="feedback-date-error"
-            className="text-sm text-destructive"
+            className="text-destructive"
             role="alert"
           >
             {errors.date.message}
@@ -245,7 +245,7 @@ export function FeedbackForm({
       <div className="space-y-1.5">
         <label
           htmlFor="feedback-experience"
-          className="text-sm font-medium text-foreground"
+          className="small-label text-foreground"
         >
           Your experience{" "}
           <span aria-hidden="true" className="text-destructive">
@@ -273,13 +273,13 @@ export function FeedbackForm({
         <div className="flex justify-between items-start">
           <div>
             {errors.experience ? (
-              <p className="text-sm text-destructive" role="alert">
+              <p className="text-destructive" role="alert">
                 {errors.experience.message}
               </p>
             ) : (
               <p
                 id="feedback-experience-hint"
-                className="text-xs text-muted-foreground"
+                className="text-caption text-muted-foreground"
               >
                 Your feedback helps us improve our service.
               </p>
@@ -289,7 +289,7 @@ export function FeedbackForm({
             id="feedback-experience-count"
             aria-live="polite"
             className={cn(
-              "text-xs tabular-nums shrink-0 ml-4",
+              "text-caption font-normal tabular-nums shrink-0 ml-4",
               experienceValue.length > 900
                 ? "text-destructive"
                 : "text-muted-foreground",
@@ -302,7 +302,7 @@ export function FeedbackForm({
 
       {/* Star rating */}
       <div className="space-y-1.5">
-        <p className="text-sm font-medium text-foreground">
+        <p className="small-label text-foreground">
           Overall rating{" "}
           <span aria-hidden="true" className="text-destructive">
             *

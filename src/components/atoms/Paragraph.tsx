@@ -2,14 +2,14 @@ import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
-const paragraphVariants = cva("leading-relaxed text-balance", {
+const paragraphVariants = cva("font-sans font-normal text-balance", {
   variants: {
     size: {
-      xs: "text-xs",
-      sm: "text-sm",
-      base: "text-base",
-      lg: "text-lg",
-      xl: "text-xl",
+      xs: "text-caption",
+      sm: "text-caption",
+      base: "text-body",
+      lg: "text-body",
+      xl: "text-body",
     },
     align: {
       start: "text-start",

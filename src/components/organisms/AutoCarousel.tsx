@@ -78,7 +78,7 @@ export default function AutoCarousel() {
                   }}
                 />
               </div>
-              <p className="flex min-h-12 items-center justify-center px-2 text-center text-sm text-muted-foreground">
+              <p className="text-caption flex min-h-12 items-center justify-center px-2 text-center text-muted-foreground">
                 {image.caption}
               </p>
             </div>

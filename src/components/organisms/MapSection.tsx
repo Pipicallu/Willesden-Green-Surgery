@@ -91,8 +91,8 @@ function MapSection() {
     <section id="mapSection" className="scroll-mt-16 py-10 lg:py-20 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="text-center space-y-4 mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold">Find Us</h2>
-          <p className="text-xl text-muted-foreground">
+          <h2>Find Us</h2>
+          <p className="text-muted-foreground">
             Be seen at one of our two sites. <br /> Open on Saturdays.
           </p>
           <LabeledSwitch
@@ -135,13 +135,13 @@ function MapSection() {
                 />
                 <InfoWindow position={currentLocation}>
                   <div className="p-2">
-                    <h3 className="font-semibold text-base mb-1">
+                    <h3 className="card-title mb-1">
                       {currentLocation.name}
                     </h3>
-                    <p className="text-sm text-foreground mb-2">
+                    <p className="text-foreground mb-2">
                       {currentLocation.address}
                     </p>
-                    <p className="text-sm font-medium text-foreground">
+                    <p className="text-foreground">
                       {currentLocation.openingHours}
                     </p>
                   </div>

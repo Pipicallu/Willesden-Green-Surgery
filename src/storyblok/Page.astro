@@ -19,12 +19,12 @@ const { blok } = Astro.props;
       (blok.Title || blok.title || blok.Subtitle || blok.subtitle) && (
         <div class="max-w-4xl mx-auto text-center space-y-4 mb-12 pt-8">
           {(blok.Title || blok.title) && (
-            <h1 class="text-4xl md:text-5xl font-bold">
+            <h1>
               {blok.Title ?? blok.title}
             </h1>
           )}
           {(blok.Subtitle || blok.subtitle) && (
-            <p class="text-xl text-muted-foreground">
+            <p class="text-muted-foreground">
               {blok.Subtitle ?? blok.subtitle}
             </p>
           )}

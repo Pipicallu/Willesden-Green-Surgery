@@ -25,12 +25,12 @@ const pages = dynamicNavLinkSorter(links);
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@1,700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@1,700&family=Source+Sans+3:wght@400;600&family=Source+Serif+4:wght@500;600&display=swap"
       rel="stylesheet"
     />
     <title>Willsden Green Surgery</title>
   </head>
-  <body>
+  <body class="overflow-x-clip">
     <header class="fixed inset-x-0 top-4 z-50 flex justify-center pointer-events-none">
       <Navbar client:load pages={pages} />
     </header>

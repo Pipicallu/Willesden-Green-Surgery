@@ -29,7 +29,7 @@ export default function Navbar({ pages = [] }: NavbarProps) {
           flex w-full items-center justify-between
           gap-6 rounded-t-2xl
           bg-muted px-6 py-2
-          text-xs backdrop-blur-md
+          small-label backdrop-blur-md
         "
       >
         {/* Address */}
@@ -173,7 +173,7 @@ export default function Navbar({ pages = [] }: NavbarProps) {
                       aria-expanded={activeMenu === page.slug}
                       aria-controls="nav-expanded-menu"
                       className={`
-                        text-sm transition-colors
+                        transition-colors
                         hover:text-foreground
                         focus-visible:outline-none
                         focus-visible:ring-2
@@ -192,7 +192,7 @@ export default function Navbar({ pages = [] }: NavbarProps) {
                       href={`/${page.slug}`}
                       onMouseEnter={() => setActiveMenu(null)}
                       className="
-                        inline-block text-sm text-link
+                        inline-block text-link
                         transition-colors hover:text-foreground
                       "
                     >
@@ -256,7 +256,7 @@ export default function Navbar({ pages = [] }: NavbarProps) {
                       <a
                         href="/#mapSection"
                         className="
-                          block py-2 text-sm text-link
+                          block py-2 text-link
                           transition-colors hover:text-foreground
                         "
                       >
@@ -272,7 +272,7 @@ export default function Navbar({ pages = [] }: NavbarProps) {
                               className="
                                 flex w-full list-none items-center
                                 justify-between py-2
-                                text-sm text-link
+                                text-link
                                 transition-colors hover:text-foreground
                                 focus-visible:outline-none
                                 focus-visible:ring-2
@@ -297,7 +297,7 @@ export default function Navbar({ pages = [] }: NavbarProps) {
                                   <a
                                     href={`/${childPage.slug}`}
                                     className="
-                                      block py-1.5 text-sm
+                                      block py-1.5
                                       text-link
                                       transition-colors hover:text-foreground
                                     "
@@ -312,7 +312,7 @@ export default function Navbar({ pages = [] }: NavbarProps) {
                           <a
                             href={`/${page.slug}`}
                             className="
-                              block py-2 text-sm text-link
+                              block py-2 text-link
                               transition-colors hover:text-foreground
                             "
                           >
@@ -329,7 +329,7 @@ export default function Navbar({ pages = [] }: NavbarProps) {
                       className="
                         block w-full rounded-full
                         bg-primary px-6 py-2 text-center
-                        text-sm font-medium text-primary-foreground
+                        font-semibold leading-[1.2] tracking-button text-primary-foreground
                       "
                     >
                       Register New Patient
@@ -350,10 +350,7 @@ export default function Navbar({ pages = [] }: NavbarProps) {
           <div className="min-h-0 overflow-hidden">
             <div className="px-8 py-8">
               <h3
-                className="
-                  mb-6 text-xs font-semibold
-                  uppercase tracking-widest
-                "
+                className="small-label mb-6 uppercase tracking-widest"
               >
                 {activePage?.name}
               </h3>
@@ -365,7 +362,7 @@ export default function Navbar({ pages = [] }: NavbarProps) {
                       href={`/${child.slug}`}
                       tabIndex={activeMenu ? 0 : -1}
                       className="
-                        text-sm text-link
+                        text-link
                         transition-colors hover:text-foreground
                       "
                     >

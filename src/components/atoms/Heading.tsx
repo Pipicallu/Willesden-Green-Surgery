@@ -2,12 +2,12 @@ import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
-const headingVariants = cva("tracking-tight text-balance", {
+const headingVariants = cva("text-balance", {
   variants: {
     level: {
-      h1: "text-5xl md:text-6xl",
-      h2: "text-4xl md:text-5xl",
-      h3: "text-3xl md:text-4xl",
+      h1: "text-hero",
+      h2: "text-section",
+      h3: "text-subsection",
       h4: "text-2xl md:text-3xl",
       h5: "text-xl md:text-2xl",
       h6: "text-lg md:text-xl",
@@ -31,7 +31,6 @@ const headingVariants = cva("tracking-tight text-balance", {
   defaultVariants: {
     level: "h2",
     align: "start",
-    weight: "normal",
     color: "foreground",
   },
 });
@@ -66,7 +65,7 @@ export function Heading({
   return (
     <Comp
       className={cn(
-        headingVariants({ level, align, weight, color }),
+        headingVariants({ level, align, weight: weight ?? (level === "h1" ? "medium" : "semibold"), color }),
         className,
       )}
       {...props}

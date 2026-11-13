@@ -110,12 +110,12 @@ export function Banner({
         {/* Content */}
         <div className="flex-1 space-y-1">
           {title && (
-            <p
-              className="text-sm font-semibold leading-snug"
+            <h3
+              className="card-title leading-snug"
               style={{ color: v.text }}
             >
               {title}
-            </p>
+            </h3>
           )}
           <div className="text-sm leading-relaxed" style={{ color: v.text }}>
             {children}

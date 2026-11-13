@@ -18,7 +18,7 @@ const iconSize =
   {...storyblokEditable(blok)}
   class="mt-8 flex flex-row items-center justify-center gap-2"
 >
-  {blok.label && <h2 class="text-xl font-medium">{blok.label}</h2>}
+  {blok.label && <h2>{blok.label}</h2>}
   <a
     href={blok.href || "#"}
     download={blok.filename || "registration_form.pdf"}

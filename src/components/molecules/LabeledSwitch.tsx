@@ -79,7 +79,7 @@ function LabeledSwitch(props: LabeledSwitchProps) {
           <button
             key={label}
             onClick={() => handleSelect(index)}
-            className={`text-sm md:text-2xl relative z-10 px-2 py-2 md:px-6 md:py-4 rounded-full font-medium transition-all duration-300 font-[Vogun] text-center ${
+            className={`text-base relative z-10 px-2 py-2 md:px-6 md:py-4 rounded-full font-semibold leading-[1.2] tracking-button transition-all duration-300 font-sans text-center ${
               selectedIndex === index
                 ? "text-primary-foreground"
                 : "text-primary opacity-80"
@@ -141,7 +141,7 @@ function LabeledSwitch(props: LabeledSwitchProps) {
       {/* Buttons with relative positioning */}
       <button
         onClick={() => handleCheckedChange(false)}
-        className={`text-2xl relative z-10 px-4 py-2 rounded-full font-medium transition-all duration-300 font-[Vogun] ${
+        className={`text-base relative z-10 px-4 py-2 rounded-full font-semibold leading-[1.2] tracking-button transition-all duration-300 font-sans ${
           !isChecked ? "text-primary-foreground" : "text-primary opacity-80"
         }`}
       >
@@ -149,7 +149,7 @@ function LabeledSwitch(props: LabeledSwitchProps) {
       </button>
       <button
         onClick={() => handleCheckedChange(true)}
-        className={`text-2xl relative z-10 px-4 py-2 rounded-full font-medium transition-all duration-300 font-[Vogun] ${
+        className={`text-base relative z-10 px-4 py-2 rounded-full font-semibold leading-[1.2] tracking-button transition-all duration-300 font-sans ${
           isChecked ? "text-primary-foreground" : "text-primary opacity-80"
         }`}
       >

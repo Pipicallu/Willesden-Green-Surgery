@@ -45,7 +45,7 @@ export default function RegistrationCard({ option }: RegistrationCardProps) {
           />
         </div>
       )}
-      <h3 className="text-xl font-semibold">{option.title}</h3>
+      <h3 className="card-title">{option.title}</h3>
       <p className="text-muted-foreground">{option.description}</p>
       {option.link?.url && (
         <a

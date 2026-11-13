@@ -17,8 +17,8 @@ export default function Footer({ pages = [] }: { pages?: sortedLinksProps[] }) {
           <div className="lg:col-span-1 space-y-8">
             {/* NHS App Download */}
             <div className="space-y-4">
-              <h3 className="text-xl font-semibold">Download the NHS App</h3>
-              <p className="text-muted-foreground text-sm">
+              <h3>Download the NHS App</h3>
+              <p className="text-muted-foreground">
                 Access your health records, order prescriptions, and manage
                 appointments all in one place.
               </p>
@@ -36,8 +36,8 @@ export default function Footer({ pages = [] }: { pages?: sortedLinksProps[] }) {
 
             {/* Book Appointment CTA */}
             <div className="space-y-4">
-              <h3 className="text-xl font-semibold">Book an Appointment</h3>
-              <p className="text-muted-foreground text-sm">
+              <h3>Book an Appointment</h3>
+              <p className="text-muted-foreground">
                 Schedule your visit with our team of healthcare professionals.
               </p>
               <Button
@@ -54,26 +54,26 @@ export default function Footer({ pages = [] }: { pages?: sortedLinksProps[] }) {
           {/* Locations Section */}
           <div className="lg:col-span-1 space-y-6">
             <div>
-              <h3 className="text-xl font-semibold mb-4">Main Site</h3>
-              <p className="text-muted-foreground text-sm">
+              <h3 className="mb-4">Main Site</h3>
+              <p className="text-muted-foreground">
                 59 Anson Road
                 <br />
                 London, NW2 3UY
               </p>
-              <p className="text-muted-foreground text-sm font-medium mt-2">
+              <p className="text-muted-foreground mt-2">
                 Mon-Fri: 8am-6:30pm
                 <br />
                 Sat: 10am-1pm
               </p>
             </div>
             <div>
-              <h3 className="text-xl font-semibold mb-4">Branch Site</h3>
-              <p className="text-muted-foreground text-sm">
+              <h3 className="mb-4">Branch Site</h3>
+              <p className="text-muted-foreground">
                 Albert Road
                 <br />
                 London, NW6 5DE
               </p>
-              <p className="text-muted-foreground text-sm font-medium mt-2">
+              <p className="text-muted-foreground mt-2">
                 Mon-Fri: 9am-5pm
                 <br />
                 Sat: Closed
@@ -83,12 +83,12 @@ export default function Footer({ pages = [] }: { pages?: sortedLinksProps[] }) {
 
           {/* Resources Section */}
           <div className="lg:col-span-1 space-y-4">
-            <h3 className="text-xl font-semibold mb-4">Resources</h3>
+            <h3 className="mb-4">Resources</h3>
             <ul className="space-y-2">
               <li>
                 <a
                   href="/feedback"
-                  className="text-sm text-link hover:text-foreground hover:scale-[1.02] transition-all inline-block"
+                  className="text-link hover:text-foreground hover:scale-[1.02] transition-all inline-block"
                 >
                   Patient feedback
                 </a>
@@ -97,7 +97,7 @@ export default function Footer({ pages = [] }: { pages?: sortedLinksProps[] }) {
                 <li key={page.slug}>
                   {page.childLinks ? (
                     <DropdownMenu>
-                      <DropdownMenuTrigger className="flex items-center gap-1 text-link text-sm outline-none hover:text-foreground hover:scale-[1.02] transition-all">
+                      <DropdownMenuTrigger className="flex items-center gap-1 text-link outline-none hover:text-foreground hover:scale-[1.02] transition-all">
                         {page.name}
                         <ChevronDown className="h-4 w-4 text-icon" />
                       </DropdownMenuTrigger>
@@ -117,7 +117,7 @@ export default function Footer({ pages = [] }: { pages?: sortedLinksProps[] }) {
                   ) : (
                     <a
                       href={`/${page.slug}`}
-                      className="text-sm text-link hover:text-foreground hover:scale-[1.02] transition-all inline-block"
+                      className="text-link hover:text-foreground hover:scale-[1.02] transition-all inline-block"
                     >
                       {page.name}
                     </a>
@@ -129,8 +129,8 @@ export default function Footer({ pages = [] }: { pages?: sortedLinksProps[] }) {
         </nav>
 
         {/* Copyright */}
-        <div className="mt-12 pt-8 text-center text-sm text-muted-foreground">
-          <p>
+        <div className="mt-12 pt-8 text-center text-muted-foreground">
+          <p className="text-caption">
             &copy; {new Date().getFullYear()} Willesden Green Surgery. All
             rights reserved.
           </p>

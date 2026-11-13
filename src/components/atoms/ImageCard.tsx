@@ -125,7 +125,7 @@ export function ImageCard({
         style={imageEffectStyles[effect]}
       />
       {caption && (
-        <figcaption className="absolute bottom-0 left-0 right-0 px-4 py-2 bg-background/70 backdrop-blur-sm text-xs text-muted-foreground">
+        <figcaption className="absolute bottom-0 left-0 right-0 px-4 py-2 bg-background/70 backdrop-blur-sm text-caption font-normal text-muted-foreground">
           {caption}
         </figcaption>
       )}

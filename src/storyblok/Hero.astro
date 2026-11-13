@@ -1,95 +1,191 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
 import { Button } from "@/components/atoms/button";
-import { Banner } from "@/components/molecules/Banner";
-import AppearOnScrollWrapper from "@/components/atoms/AppearOnScrollWrapper";
+import { ArrowRight, Check, FileCheck2, Pill, Stethoscope, type LucideIcon } from "lucide-react";
 const { blok } = Astro.props;
+const doctorPhoto = "/smiling_doctor.png";
+const blobGradientId = `hero-blob-${blok._uid || "doctor"}`;
+const titleParts = String(blok.title || "").split(/(\bgreen\b)/i);
+const practiceHighlights = [
+  "NHS GP services",
+  "Online consultations 24/7",
+  "Open on Saturdays",
+];
+const cardDescriptions: Record<string, string> = {
+  "Book an appointment": "Arrange a consultation with our practice team.",
+  "Order prescription": "Request a repeat prescription for your regular medication.",
+  "Check results": "Find out how to access your latest test results.",
+};
+const cardIcons: Record<string, LucideIcon> = {
+  "Book an appointment": Stethoscope,
+  "Order prescription": Pill,
+  "Check results": FileCheck2,
+};
 type Card = {
-  icon?: string;
-
   heading?: string;
-
   description?: string;
-
   link?: string;
 };
 ---
 
 <section
-  class="min-h-screen flex items-center justify-center px-4 relative overflow-hidden"
+  class="hero relative isolate px-4 pb-8 pt-20 md:min-h-[calc(100svh-5rem)] md:pt-16"
   {...storyblokEditable(blok)}
 >
-  <!-- Background Image with Overlay -->
-  <div class="absolute inset-0 z-0">
-    <img
-      src="/building-hero.png"
-      alt="Willesden Green Surgery Building"
-      class="absolute inset-0 h-full w-full hidden md:block md:object-scale-down animate-fade-in"
-      style="object-position: center top;"
-    />
-  </div>
+  <div class="mx-auto max-w-6xl space-y-6">
+    <div class="grid grid-cols-1 items-center gap-8 md:min-h-[520px] md:grid-cols-2 md:gap-12">
+      <div class="relative z-10 min-w-0 space-y-6 text-left">
+        <h1 class="text-5xl leading-[1.1] md:text-7xl">
+          {titleParts.map((part) => (
+            part.toLowerCase() === "green"
+              ? <span class="hero-title-accent">{part}</span>
+              : part
+          ))}
+        </h1>
+        <p class="text-muted-foreground">{blok.subtitle}</p>
+        {
+          blok.show_button && (
+            <Button
+              href="https://www.nhs.uk/nhs-app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              size="lg"
+              className="h-auto min-h-12 w-full max-w-[320px] justify-between gap-4 px-6 py-3 shadow-lg"
+            >
+              <span>Download the NHS App</span>
+              <img
+                src="/nhs.png"
+                alt="NHS App"
+                class="h-auto w-16 shrink-0 object-contain"
+              />
+            </Button>
+          )
+        }
+        <ul
+          aria-label="Practice highlights"
+          class="flex flex-nowrap gap-3 overflow-x-auto pt-2 text-base"
+        >
+          {
+            practiceHighlights.map((highlight) => (
+              <li class="flex shrink-0 items-center gap-2 whitespace-nowrap">
+                <span class="flex size-6 shrink-0 items-center justify-center rounded-full bg-icon-background text-icon">
+                  <Check className="size-4" strokeWidth={2.5} aria-hidden="true" />
+                </span>
+                <span>{highlight}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
 
-  <div
-    class="max-w-4xl mx-auto text-center space-y-12 relative z-10 md:-translate-y-16"
-  >
-    <div class="space-y-4">
-      <h1 class="text-5xl md:text-6xl font-bold tracking-tight">
-        {blok.title}
-      </h1>
-      <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
-        {blok.subtitle}
-      </p>
+      <div class="hero-portrait pointer-events-none relative mx-auto w-[88%] min-w-0 max-w-[372px] md:absolute md:right-4 md:top-12 md:z-0 md:w-[54%] md:max-w-[640px]">
+        <svg
+          class="hero-blob"
+          viewBox="0 0 640 720"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+          focusable="false"
+        >
+          <defs>
+            <linearGradient id={blobGradientId} x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="var(--pale-teal)" />
+              <stop offset="100%" stop-color="color-mix(in srgb, var(--medical-blue) 18%, var(--cloud))" />
+            </linearGradient>
+          </defs>
+          <path
+            fill={`url(#${blobGradientId})`}
+            d="M100 100C160 48 226 60 300 32C380 2 458 10 516 52C575 95 580 162 606 232C634 307 622 377 600 444C579 509 604 564 558 614C510 667 447 654 376 680C302 707 238 705 174 670C114 638 99 584 57 530C15 477 7 415 25 346C43 277 23 220 51 162C63 137 80 117 100 100Z"
+          />
+        </svg>
+        <img
+          src={doctorPhoto}
+          alt="Doctor holding a phone displaying the NHS App"
+          width="1122"
+          height="1402"
+          fetchpriority="high"
+          class="hero-photo relative z-10 block h-auto w-full object-contain"
+        />
+      </div>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto md:translate-y-3/4">
+    <div class="relative z-10 grid gap-6 md:grid-cols-3">
       {
-        blok.cards?.map((card: Card, index: number) => (
-          <AppearOnScrollWrapper
-            client:visible
-            className="w-full h-fit"
-            transitionDuration={500 + index * 500}
-          >
+        blok.cards?.map((card: Card) => {
+          const description =
+            card.description || cardDescriptions[card.heading || ""];
+          const Icon = cardIcons[card.heading || ""] || Stethoscope;
+          return (
             <a
               href={card.link || "#"}
               data-slot="link"
-              class="flex flex-col items-center text-center gap-2 group p-4 rounded-lg border bg-card/80 backdrop-blur-md hover:bg-muted/90 transition-all h-fit shadow-lg"
+              class="group flex flex-col items-start gap-3 rounded-2xl border bg-card p-6 text-left shadow-lg transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
             >
-              <div class="rounded-lg bg-icon-background p-2 text-icon [&_svg]:w-8 [&_svg]:h-10 [&_[fill]:not([fill=none])]:fill-current [&_[stroke]:not([stroke=none])]:stroke-current" set:html={card.icon} />
-              <div>
-                <h2 class="text-lg font-sans font-semibold group-hover:text-foreground">
-                  {card.heading}
-                </h2>
-                {/* <p class="text-sm text-muted-foreground">{card.description}</p> */}
+              <Icon
+                className="size-8 shrink-0 text-icon"
+                aria-hidden="true"
+              />
+              <h2 class="card-title">{card.heading}</h2>
+              <div class="flex w-full items-end gap-4">
+                {description && (
+                  <p class="min-w-0 flex-1 text-muted-foreground">{description}</p>
+                )}
+                <ArrowRight
+                  className="mb-1 size-5 shrink-0 text-secondary transition-transform group-hover:translate-x-1"
+                  aria-hidden="true"
+                />
               </div>
             </a>
-          </AppearOnScrollWrapper>
-        ))
+          );
+        })
       }
     </div>
-
-    {
-      blok.show_button && (
-        <div class="pt-6 md:translate-y-3/4 gap-6">
-          <Button
-            href="https://www.nhs.uk/nhs-app/"
-            target="_blank"
-            rel="noopener noreferrer"
-            size="lg"
-            className="h-auto min-h-12 w-full max-w-[320px] flex-col gap-2 border border-primary/20 bg-primary px-4 py-2 text-primary-foreground shadow-lg transition-all hover:bg-primary/90 sm:flex-row sm:justify-between sm:gap-4"
-          >
-            <div class="w-full text-left">
-              <span class="block text-base font-semibold">
-                Download the NHS App
-              </span>
-            </div>
-            <img
-              src="/nhs.png"
-              alt="NHS App"
-              class=" w-auto max-w-[64px] object-scale-down shrink-0"
-            />
-          </Button>
-        </div>
-      )
-    }
   </div>
 </section>
+
+<style>
+  .hero-title-accent {
+    color: var(--deep-teal);
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+    top: -5rem;
+    bottom: 0;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    background:
+      radial-gradient(
+        ellipse at 88% 30%,
+        color-mix(in srgb, var(--medical-blue) 9%, transparent),
+        transparent 65%
+      ),
+      linear-gradient(
+        115deg,
+        var(--background) 18%,
+        color-mix(in srgb, var(--pale-teal) 50%, var(--cloud)) 100%
+      );
+    -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+  }
+
+  .hero-blob {
+    position: absolute;
+    z-index: 0;
+    top: 8%;
+    left: 3%;
+    width: 96%;
+    height: 82%;
+    transform: rotate(-4deg);
+    -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
+  }
+
+  .hero-photo {
+    -webkit-mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 72%, transparent 100%);
+  }
+</style>

@@ -18,7 +18,7 @@ export function Detail({
   return (
     <div className={cn("flex flex-col gap-1", className)}>
       <div className="flex flex-col gap-1 py-2">
-        <h5 className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+        <h5 className="small-label uppercase tracking-wide text-muted-foreground">
           {title}
         </h5>
         {href ? (
