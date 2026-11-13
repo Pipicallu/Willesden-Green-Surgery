@@ -9,25 +9,21 @@ export default function FloatingActionButton() {
       name: "Facebook",
       icon: Facebook,
       url: "https://facebook.com/willesdengreensurgery",
-      color: "hover:text-primary",
     },
     {
       name: "Twitter",
       icon: Twitter,
       url: "https://twitter.com/willesdengreensurgery",
-      color: "hover:text-primary",
     },
     {
       name: "Instagram",
       icon: Instagram,
       url: "https://instagram.com/willesdengreensurgery",
-      color: "hover:text-primary",
     },
     {
       name: "LinkedIn",
       icon: Linkedin,
       url: "https://linkedin.com/company/willesdengreensurgery",
-      color: "hover:text-primary",
     },
   ];
 
@@ -42,7 +38,7 @@ export default function FloatingActionButton() {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className={`flex items-center justify-center w-12 h-12 bg-background border rounded-full shadow-lg transition-all hover:scale-110 ${link.color}`}
+              className="flex items-center justify-center w-12 h-12 bg-icon-background text-icon border rounded-full shadow-lg transition-all hover:scale-110 hover:bg-icon-background/80"
               aria-label={link.name}
             >
               <link.icon className="w-5 h-5" />

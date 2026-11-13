@@ -4,19 +4,19 @@ import { ArrowRight, ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const linkVariants = cva(
-  "inline-flex items-center gap-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm",
+  "inline-flex items-center gap-1.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm [&_svg]:text-icon",
   {
     variants: {
       variant: {
-        /** Primary colour, no underline — pairs well with icons */
-        default: "text-primary hover:text-primary/80",
+        /** Medical Blue — pairs well with icons */
+        default: "text-link hover:text-foreground",
         /** Classic underlined hyperlink */
         underline:
-          "text-primary underline underline-offset-4 decoration-primary/40 hover:decoration-primary",
-        /** Neutral foreground, becomes primary on hover */
-        subtle: "text-foreground hover:text-primary",
+          "text-link underline underline-offset-4 decoration-current hover:text-foreground",
+        /** Neutral foreground, becomes Medical Blue on hover */
+        subtle: "text-foreground hover:text-link",
         /** Dimmed — for secondary / footnote links */
-        muted: "text-muted-foreground hover:text-foreground",
+        muted: "text-link hover:text-foreground",
       },
       size: {
         sm: "text-sm [&_svg]:size-3.5",

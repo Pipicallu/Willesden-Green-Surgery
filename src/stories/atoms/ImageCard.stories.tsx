@@ -16,7 +16,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "A rounded card that wraps an image with optional CSS filter effects. `invert-dark` is especially useful for PNGs/logos that need to flip colours in dark mode.",
+          "A rounded card that wraps an image with optional CSS filter effects.",
       },
     },
   },
@@ -24,7 +24,7 @@ const meta = {
   argTypes: {
     effect: {
       control: "select",
-      options: ["none", "grayscale", "invert-dark", "fade", "sepia"],
+      options: ["none", "grayscale", "fade", "sepia"],
     },
     fit: {
       control: "select",
@@ -85,11 +85,6 @@ export const Sepia: Story = {
 
 export const Fade: Story = {
   args: { ...Default.args, effect: "fade" },
-};
-
-export const InvertDark: Story = {
-  name: "Invert in dark mode",
-  args: { ...Default.args, effect: "invert-dark" },
 };
 
 export const Square: Story = {

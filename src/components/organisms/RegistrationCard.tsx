@@ -27,11 +27,21 @@ export default function RegistrationCard({ option }: RegistrationCardProps) {
   return (
     <div className="flex flex-col items-center text-center p-8 rounded-lg border bg-card hover:bg-muted transition-colors space-y-4">
       {option.icon?.filename && (
-        <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
-          <img
-            src={option.icon.filename}
-            alt={option.icon.alt || option.title}
-            className="w-8 h-8"
+        <div className="w-16 h-16 rounded-full bg-icon-background flex items-center justify-center">
+          <span
+            role="img"
+            aria-label={option.icon.alt || option.title}
+            className="block w-8 h-8 bg-icon"
+            style={{
+              maskImage: `url("${option.icon.filename}")`,
+              maskRepeat: "no-repeat",
+              maskPosition: "center",
+              maskSize: "contain",
+              WebkitMaskImage: `url("${option.icon.filename}")`,
+              WebkitMaskRepeat: "no-repeat",
+              WebkitMaskPosition: "center",
+              WebkitMaskSize: "contain",
+            }}
           />
         </div>
       )}

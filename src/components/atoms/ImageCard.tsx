@@ -2,15 +2,10 @@ import * as React from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
-/**
- * CSS filter effects applied to the image itself.
- * "invert-dark" uses a CSS class that inverts the image only in dark mode —
- * useful for logos/PNGs that are dark on white and need to flip for dark backgrounds.
- */
+/** CSS filter effects applied to the image itself. */
 export type ImageEffect =
   | "none"
   | "grayscale"
-  | "invert-dark"
   | "fade"
   | "sepia";
 
@@ -66,7 +61,6 @@ const ratioClasses: Record<ImageRatio, string> = {
 const imageEffectStyles: Record<ImageEffect, React.CSSProperties> = {
   none: {},
   grayscale: { filter: "grayscale(100%)" },
-  "invert-dark": {}, // applied via className below
   fade: { opacity: 0.7 },
   sepia: { filter: "sepia(100%)" },
 };
@@ -127,7 +121,6 @@ export function ImageCard({
             ? "w-full h-auto block"
             : "absolute inset-0 w-full h-full",
           imageFitClasses[fit],
-          effect === "invert-dark" && "dark:invert dark:brightness-90",
         )}
         style={imageEffectStyles[effect]}
       />

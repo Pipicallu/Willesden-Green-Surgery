@@ -26,7 +26,7 @@ function renderCell(cell: string | TableCellData) {
   return cell.href ? (
     <a
       href={cell.href}
-      className="text-primary underline underline-offset-4 hover:text-primary/80 transition-colors"
+      className="text-link underline underline-offset-4 hover:text-foreground transition-colors"
     >
       {cell.value}
     </a>

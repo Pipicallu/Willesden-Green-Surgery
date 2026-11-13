@@ -15,15 +15,15 @@ const spacingClasses: Record<BannerSpacing, string> = {
 
 // Share the site palette while retaining distinct icons for each notice type.
 const noticeStyle = {
-  border: "hsl(var(--secondary))",
-  bg: "hsl(var(--card) / 0.9)",
-  text: "hsl(var(--foreground))",
-  icon: "hsl(var(--secondary))",
+  border: "var(--secondary)",
+  bg: "var(--card)",
+  text: "var(--foreground)",
+  icon: "var(--deep-teal)",
 };
 const variantStyles = {
   info: noticeStyle,
   warning: noticeStyle,
-  alert: { ...noticeStyle, border: "hsl(var(--destructive))", icon: "hsl(var(--destructive))" },
+  alert: { ...noticeStyle, border: "var(--destructive)", icon: "var(--destructive)" },
 };
 
 // Icons

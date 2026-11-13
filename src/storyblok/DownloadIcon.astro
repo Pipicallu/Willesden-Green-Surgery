@@ -22,12 +22,16 @@ const iconSize =
   <a
     href={blok.href || "#"}
     download={blok.filename || "registration_form.pdf"}
-    class="inline-flex items-center gap-2 text-primary underline"
+    class="inline-flex items-center gap-2 text-link underline hover:text-foreground transition-colors"
   >
-    <img
-      src={blok.img?.filename}
-      alt={blok.alt || "Download"}
-      class={iconSize}
+    <span
+      role="img"
+      aria-label={blok.alt || "Download"}
+      class={`block bg-icon ${iconSize}`}
+      style={{
+        mask: `url("${blok.img?.filename}") center / contain no-repeat`,
+        "-webkit-mask": `url("${blok.img?.filename}") center / contain no-repeat`,
+      }}
     />
   </a>
 </div>

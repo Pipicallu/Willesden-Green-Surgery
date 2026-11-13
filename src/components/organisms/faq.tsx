@@ -34,7 +34,7 @@ export default function Faq({ faqs }: { faqs: FaqProps[] }) {
                   data-slot="link"
                   href={faq.href}
                   target="_blank"
-                  className="text-primary w-max border rounded border-current px-2 py-1 hover:border-current"
+                  className="text-link w-max border rounded border-current px-2 py-1 hover:text-foreground"
                 >
                   {faq.linkCta}
                 </a>

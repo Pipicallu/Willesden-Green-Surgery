@@ -9,7 +9,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "A full-width or contained alert banner with `info` (blue) and `warning` (amber) variants. Follows the same heavy left-border style as DetailsCard.",
+          "A full-width or contained notice with Medical Blue borders and Deep Teal icons. Alerts use a distinct error colour. Follows the same heavy left-border style as DetailsCard.",
       },
     },
   },

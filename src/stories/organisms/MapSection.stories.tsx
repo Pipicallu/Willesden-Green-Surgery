@@ -9,7 +9,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Interactive map section showing practice locations with switchable map/list view. Uses Google Maps API with custom styling for light/dark themes.",
+          "Interactive map section showing practice locations with switchable map/list view. Uses Google Maps API styled with the site colour palette.",
       },
     },
   },

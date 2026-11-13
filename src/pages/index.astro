@@ -52,7 +52,8 @@ const story = await getStory("home");
         <Button
           href="https://accurx.nhs.uk/patient-initiated/E84702"
           size="lg"
-          className="h-auto min-h-14 w-full flex-col gap-1 border border-primary bg-card px-5 py-3 text-foreground hover:bg-muted hover:text-foreground sm:w-fit sm:flex-row sm:gap-3 lg:shrink-0"
+          variant="outline"
+          className="h-auto min-h-14 w-full flex-col gap-1 border-secondary bg-card px-5 py-3 text-link hover:bg-muted hover:text-foreground sm:w-fit sm:flex-row sm:gap-3 lg:shrink-0"
         >
           <span>Start an online request</span>
           <img src="/accurx-logo.png" alt="Accurx" class="h-5 w-auto" />
@@ -62,7 +63,7 @@ const story = await getStory("home");
   </section>
 
   <!-- Statistics Section -->
-  <section class="pt-10 pb-20">
+  <section class="bg-muted pt-10 pb-20">
     <div class="max-w-6xl mx-auto">
       <div class="text-center space-y-4 mb-12">
         <h2 class="text-3xl md:text-4xl font-bold">Our impact in numbers</h2>
@@ -78,7 +79,7 @@ const story = await getStory("home");
             client:visible
             target={24}
             suffix="/7"
-            className="text-5xl font-bold text-primary"
+            className="text-5xl font-bold text-foreground"
           />
           <h3 class="text-xl font-semibold">Online Consultation Access</h3>
           <p class="text-muted-foreground">That we never switch off</p>
@@ -91,7 +92,7 @@ const story = await getStory("home");
             duration={2000}
             target={80}
             suffix="%"
-            className="text-5xl font-bold text-primary"
+            className="text-5xl font-bold text-foreground"
           />
           <h3 class="text-xl font-semibold">More GP Appointments</h3>
           <p class="text-muted-foreground">
@@ -105,7 +106,7 @@ const story = await getStory("home");
             client:visible
             target={90}
             suffix="%"
-            className="text-5xl font-bold text-primary"
+            className="text-5xl font-bold text-foreground"
           />
           <h3 class="text-xl font-semibold">Good Patient Rating</h3>
           <p class="text-muted-foreground">
@@ -120,7 +121,7 @@ const story = await getStory("home");
             reverse
             target={2}
             suffix=" min"
-            className="text-5xl font-bold text-primary"
+            className="text-5xl font-bold text-foreground"
           />
           <h3 class="text-xl font-semibold">Average Call Wait</h3>
           <p class="text-muted-foreground">With callback options</p>
@@ -133,7 +134,7 @@ const story = await getStory("home");
             reverse
             target={1}
             suffix="st"
-            className="text-5xl font-bold text-primary"
+            className="text-5xl font-bold text-foreground"
           />
           <h3 class="text-xl font-semibold">Ultrasound Guided Surgery</h3>
           <p class="text-muted-foreground">
@@ -147,7 +148,7 @@ const story = await getStory("home");
             client:visible
             target={65}
             suffix="%"
-            className="text-5xl font-bold text-primary"
+            className="text-5xl font-bold text-foreground"
           />
           <h3 class="text-xl font-semibold">Early Cancer Detection</h3>
           <p class="text-muted-foreground">
@@ -168,7 +169,7 @@ const story = await getStory("home");
           <source src="/team.mp4" type="video/mp4" />
         </video>
         <div
-          class="absolute inset-0 bg-black/25 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-lg"
+          class="absolute inset-0 bg-primary/25 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-lg"
         >
           <div
             class="absolute inset-0 flex items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500"
@@ -176,7 +177,7 @@ const story = await getStory("home");
             <Button
               client:load
               size="lg"
-              className="pointer-events-auto text-white text-base px-8"
+              className="pointer-events-auto text-primary-foreground text-base px-8"
             >
               <a href="/team">Meet the Team</a>
             </Button>
@@ -195,7 +196,7 @@ const story = await getStory("home");
   <!-- Map Section -->
   <MapSection client:load />
   <!-- Carousel Section -->
-  <section class="py-10 lg:py-20 overflow-hidden">
+  <section class="bg-muted py-10 lg:py-20 overflow-hidden">
     <div class="max-w-6xl mx-auto">
       <div class="text-center space-y-4 mb-12">
         <h2 class="text-3xl md:text-4xl font-bold">

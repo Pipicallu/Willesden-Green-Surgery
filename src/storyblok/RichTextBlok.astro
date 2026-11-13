@@ -7,7 +7,7 @@ const renderedContent = renderRichText(blok.content);
 
 <div
   id="rich-text-wrapper"
-  class="prose prose-md max-w-default"
+  class="prose prose-md max-w-default [&_a]:text-link [&_a]:underline [&_a]:underline-offset-4 [&_a:hover]:text-foreground"
   {...storyblokEditable(blok)}
 >
   <div {...storyblokEditable(blok)} set:html={renderedContent} />

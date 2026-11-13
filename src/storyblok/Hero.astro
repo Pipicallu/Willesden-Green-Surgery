@@ -54,7 +54,7 @@ type Card = {
               data-slot="link"
               class="flex flex-col items-center text-center gap-2 group p-4 rounded-lg border bg-card/80 backdrop-blur-md hover:bg-muted/90 transition-all h-fit shadow-lg"
             >
-              <div class="rounded-lg bg-accent p-2 text-accent-foreground [&_svg]:w-8 [&_svg]:h-10" set:html={card.icon} />
+              <div class="rounded-lg bg-icon-background p-2 text-icon [&_svg]:w-8 [&_svg]:h-10 [&_[fill]:not([fill=none])]:fill-current [&_[stroke]:not([stroke=none])]:stroke-current" set:html={card.icon} />
               <div>
                 <h2 class="text-lg font-sans font-semibold group-hover:text-foreground">
                   {card.heading}
@@ -75,7 +75,7 @@ type Card = {
             target="_blank"
             rel="noopener noreferrer"
             size="lg"
-            className="h-auto min-h-12 w-full max-w-[320px] flex-col gap-2 rounded-lg border border-primary/20 bg-primary px-4 py-2 text-primary-foreground shadow-lg transition-all hover:bg-primary/90 sm:flex-row sm:justify-between sm:gap-4"
+            className="h-auto min-h-12 w-full max-w-[320px] flex-col gap-2 border border-primary/20 bg-primary px-4 py-2 text-primary-foreground shadow-lg transition-all hover:bg-primary/90 sm:flex-row sm:justify-between sm:gap-4"
           >
             <div class="w-full text-left">
               <span class="block text-base font-semibold">

@@ -24,7 +24,7 @@ export function Detail({
         {href ? (
           <a
             href={href}
-            className="text-sm text-primary underline underline-offset-4 hover:text-primary/80 transition-colors"
+            className="text-sm text-link underline underline-offset-4 hover:text-foreground transition-colors"
           >
             {value}
           </a>

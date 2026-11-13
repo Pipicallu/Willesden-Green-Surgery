@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   APIProvider,
   Map,
@@ -27,112 +27,57 @@ const locations = {
 
 const GOOGLE_MAPS_API_KEY = import.meta.env.PUBLIC_GOOGLE_MAPS_API_KEY || "";
 
-// Light mode map styling
-const lightMapStyles = [
+// Match map surfaces, labels and parks to the site palette.
+const mapStyles = [
   {
     featureType: "all",
     elementType: "geometry",
-    stylers: [{ color: "#FAF9F7" }],
+    stylers: [{ color: "#F2F7FA" }],
+  },
+  {
+    featureType: "all",
+    elementType: "labels.text.fill",
+    stylers: [{ color: "#203D64" }],
   },
   {
     featureType: "water",
     elementType: "geometry",
-    stylers: [{ color: "#7667DF" }],
+    stylers: [{ color: "#397DB5" }],
   },
   {
     featureType: "water",
     elementType: "labels.text.fill",
-    stylers: [{ color: "#FAF9F7" }],
+    stylers: [{ color: "#F2F7FA" }],
   },
   {
     featureType: "road",
     elementType: "geometry",
-    stylers: [{ color: "#FAF9F7" }],
+    stylers: [{ color: "#ffffff" }],
   },
   {
     featureType: "road",
     elementType: "labels.text.fill",
-    stylers: [{ color: "#17171A" }],
+    stylers: [{ color: "#203D64" }],
   },
   {
     featureType: "poi",
     elementType: "geometry",
-    stylers: [{ color: "#FAF9F7" }],
+    stylers: [{ color: "#F2F7FA" }],
   },
   {
     featureType: "poi.park",
     elementType: "geometry",
-    stylers: [{ color: "#A99AF2" }],
+    stylers: [{ color: "#E6F1EE" }],
   },
   {
     featureType: "transit",
     elementType: "geometry",
-    stylers: [{ color: "#FAF9F7" }],
-  },
-];
-
-// Dark mode map styling
-const darkMapStyles = [
-  {
-    featureType: "all",
-    elementType: "geometry",
-    stylers: [{ color: "#17171A" }],
-  },
-  {
-    featureType: "all",
-    elementType: "labels.text.fill",
-    stylers: [{ color: "#FAF9F7" }],
-  },
-  {
-    featureType: "all",
-    elementType: "labels.text.stroke",
-    stylers: [{ color: "#17171A" }],
-  },
-  {
-    featureType: "water",
-    elementType: "geometry",
-    stylers: [{ color: "#7667DF" }],
-  },
-  {
-    featureType: "water",
-    elementType: "labels.text.fill",
-    stylers: [{ color: "#FAF9F7" }],
-  },
-  {
-    featureType: "road",
-    elementType: "geometry",
-    stylers: [{ color: "#7667DF" }],
-  },
-  {
-    featureType: "road",
-    elementType: "labels.text.fill",
-    stylers: [{ color: "#FAF9F7" }],
-  },
-  {
-    featureType: "road.highway",
-    elementType: "geometry",
-    stylers: [{ color: "#7667DF" }],
-  },
-  {
-    featureType: "poi",
-    elementType: "geometry",
-    stylers: [{ color: "#7667DF" }],
-  },
-  {
-    featureType: "poi.park",
-    elementType: "geometry",
-    stylers: [{ color: "#7667DF" }],
-  },
-  {
-    featureType: "transit",
-    elementType: "geometry",
-    stylers: [{ color: "#7667DF" }],
+    stylers: [{ color: "#F2F7FA" }],
   },
 ];
 
 function MapSection() {
   const [isQueensPark, setIsQueensPark] = useState(false);
-  const [isDark, setIsDark] = useState(false);
 
   const currentLocation = isQueensPark
     ? locations.queensPark
@@ -141,26 +86,6 @@ function MapSection() {
   const handleLocationChange = () => {
     setIsQueensPark(!isQueensPark);
   };
-
-  // Detect dark mode
-  useEffect(() => {
-    const checkDarkMode = () => {
-      setIsDark(document.documentElement.classList.contains("dark"));
-    };
-
-    checkDarkMode();
-
-    // Watch for dark mode changes
-    const observer = new MutationObserver(checkDarkMode);
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  const mapStyles = isDark ? darkMapStyles : lightMapStyles;
 
   return (
     <section id="mapSection" className="scroll-mt-16 py-10 lg:py-20 px-4">
@@ -193,6 +118,14 @@ function MapSection() {
                 <Marker
                   position={currentLocation}
                   title={currentLocation.name}
+                  icon={{
+                    path: "M0 0C-2-3-10-12-10-18a10 10 0 0 1 20 0C10-12 2-3 0 0Z",
+                    fillColor: "#317F7B",
+                    fillOpacity: 1,
+                    strokeColor: "#E6F1EE",
+                    strokeWeight: 2,
+                    scale: 1.25,
+                  }}
                   onClick={() =>
                     window.open(
                       `https://www.google.com/maps/search/?api=1&query=${currentLocation.lat},${currentLocation.lng}`,

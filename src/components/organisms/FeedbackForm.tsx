@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { format } from "date-fns";
 import { DayPicker } from "react-day-picker";
-import { CalendarIcon, Star } from "lucide-react";
+import { CalendarIcon, Check, Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/atoms/button";
 import {
@@ -75,10 +75,10 @@ function StarRating({
           >
             <Star
               className={cn(
-                "size-8 transition-colors",
+                "size-8 text-icon transition-colors",
                 star <= active
-                  ? "fill-accent text-foreground"
-                  : "fill-transparent text-muted-foreground",
+                  ? "fill-icon"
+                  : "fill-transparent",
               )}
             />
           </button>
@@ -120,7 +120,9 @@ export function FeedbackForm({
   if (submitted) {
     return (
       <div className="rounded-lg border border-border bg-card p-8 text-center space-y-3">
-        <div className="text-4xl">✅</div>
+        <div className="mx-auto flex size-12 items-center justify-center rounded-full bg-icon-background text-icon">
+          <Check className="size-7" aria-hidden="true" />
+        </div>
         <h2 className="text-xl font-semibold text-foreground">
           Thank you for your feedback
         </h2>
@@ -209,7 +211,7 @@ export function FeedbackForm({
                     !field.value && "text-muted-foreground",
                   )}
                 >
-                  <CalendarIcon className="size-4 shrink-0 text-muted-foreground" />
+                  <CalendarIcon className="size-4 shrink-0 text-icon" />
                   {field.value
                     ? format(field.value, "d MMMM yyyy")
                     : "Pick a date"}

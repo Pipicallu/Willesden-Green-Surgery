@@ -10,7 +10,7 @@ import { type sortedLinksProps } from "@/lib/dynamicNavLinks/dynamicNavLinkSorte
 
 export default function Footer({ pages = [] }: { pages?: sortedLinksProps[] }) {
   return (
-    <footer className="bg-muted/30 border-t rounded-xl mt-10 lg:mt-20 shadow-sm">
+    <footer className="bg-muted border-t rounded-xl mt-10 lg:mt-20 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <nav className="grid grid-cols-1  p-4 lg:grid-cols-3 gap-12 lg:gap-16">
           {/* CTAs Section */}
@@ -88,7 +88,7 @@ export default function Footer({ pages = [] }: { pages?: sortedLinksProps[] }) {
               <li>
                 <a
                   href="/feedback"
-                  className="text-sm text-foreground hover:scale-[1.02] transition-transform inline-block"
+                  className="text-sm text-link hover:text-foreground hover:scale-[1.02] transition-all inline-block"
                 >
                   Patient feedback
                 </a>
@@ -97,16 +97,16 @@ export default function Footer({ pages = [] }: { pages?: sortedLinksProps[] }) {
                 <li key={page.slug}>
                   {page.childLinks ? (
                     <DropdownMenu>
-                      <DropdownMenuTrigger className="flex items-center gap-1 text-foreground text-sm outline-none hover:scale-[1.02] transition-transform">
+                      <DropdownMenuTrigger className="flex items-center gap-1 text-link text-sm outline-none hover:text-foreground hover:scale-[1.02] transition-all">
                         {page.name}
-                        <ChevronDown className="h-4 w-4" />
+                        <ChevronDown className="h-4 w-4 text-icon" />
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="start" className="w-56">
                         {page.childLinks.map((childPage) => (
                           <DropdownMenuItem key={childPage.slug} asChild>
                             <a
                               href={`/${childPage.slug}`}
-                              className="cursor-pointer"
+                              className="cursor-pointer text-link hover:text-foreground"
                             >
                               {childPage.name}
                             </a>
@@ -117,7 +117,7 @@ export default function Footer({ pages = [] }: { pages?: sortedLinksProps[] }) {
                   ) : (
                     <a
                       href={`/${page.slug}`}
-                      className="text-sm text-foreground hover:scale-[1.02] transition-transform inline-block"
+                      className="text-sm text-link hover:text-foreground hover:scale-[1.02] transition-all inline-block"
                     >
                       {page.name}
                     </a>

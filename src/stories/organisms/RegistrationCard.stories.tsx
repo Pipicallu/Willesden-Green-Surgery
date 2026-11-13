@@ -25,7 +25,7 @@ export const OnlineRegistration: Story = {
     option: {
       icon: {
         filename:
-          "https://api.iconify.design/mdi/web.svg?color=%234f46e5&width=32&height=32",
+          "https://api.iconify.design/mdi/web.svg?color=%23317F7B&width=32&height=32",
         alt: "Online icon",
       },
       title: "Register Online",
@@ -46,7 +46,7 @@ export const DownloadForm: Story = {
     option: {
       icon: {
         filename:
-          "https://api.iconify.design/mdi/file-download.svg?color=%2310b981&width=32&height=32",
+          "https://api.iconify.design/mdi/file-download.svg?color=%23317F7B&width=32&height=32",
         alt: "Download icon",
       },
       title: "Download Form",
@@ -67,7 +67,7 @@ export const InPerson: Story = {
     option: {
       icon: {
         filename:
-          "https://api.iconify.design/mdi/hospital-building.svg?color=%23f59e0b&width=32&height=32",
+          "https://api.iconify.design/mdi/hospital-building.svg?color=%23317F7B&width=32&height=32",
         alt: "In person icon",
       },
       title: "Register In Person",

@@ -1,7 +1,6 @@
 ---
 // @ts-nocheck
 import "../styles/global.css";
-import ThemeToggle from "@/components/molecules/ThemeToggle";
 import Navbar from "@/components/organisms/Navbar";
 import Footer from "@/components/organisms/Footer";
 import FloatingActionButton from "@/components/organisms/FloatingActionButton";
@@ -45,16 +44,3 @@ const pages = dynamicNavLinkSorter(links);
     <FloatingActionButton client:load />
   </body>
 </html>
-
-<style>
-  html,
-  body {
-    background: linear-gradient(180deg, hsl(var(--wash)), hsl(var(--background)) 80vh);
-    min-height: 100vh;
-  }
-
-  :global(.dark) body {
-    background: linear-gradient(180deg, hsl(var(--secondary) / 0.2), transparent 80vh),
-      hsl(var(--background));
-  }
-</style>
