@@ -1,4 +1,4 @@
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X, MapPin, Clock3, Phone } from "lucide-react";
 
 import { logo } from "@/assets/logo";
 import { Button } from "@/components/atoms/button";
@@ -17,211 +17,263 @@ type NavbarProps = {
 
 export default function Navbar({ pages = [] }: NavbarProps) {
   return (
-    <nav
-      aria-label="Main navigation"
-      className="
-        relative
-        pt-[env(safe-area-inset-top)]
-        bg-background/40 backdrop-blur-md
-      "
-    >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-18 items-center justify-between">
-          {/* Logo */}
-          <a
-            href="/"
-            aria-label="Willesden Green Surgery home"
-            className="
+    <div className="pointer-events-none flex flex-col items-center justify-center ">
+      <div
+        className="
+    pointer-events-auto
+    flex w-full items-center justify-between
+    gap-6 rounded-t-2xl
+    bg-blue-100/60 px-6 py-2
+    text-xs backdrop-blur-md
+  "
+      >
+        {/* Left: Address */}
+        <span className="flex items-center gap-2">
+          <MapPin className="h-4 w-4 shrink-0" />
+          <div className="h-4 overflow-hidden">
+            <div className="animate-[slideAddresses_8s_ease-in-out_infinite]">
+              <div className="h-6">
+                Willesden Green | 59 Anson Road, London, England, NW2 3UY
+              </div>
+              <div className="h-6">
+                Queen's Park | Albert Road, London, England, NW6 5DE
+              </div>
+              <div className="h-6">
+                Willesden Green |59 Anson Road, London, England, NW2 3UY
+              </div>
+            </div>
+          </div>
+        </span>
+
+        {/* Right: Opening hours and phone */}
+        <div className="flex items-center gap-10">
+          <span className="flex items-center gap-2">
+            <Clock3 className="h-4 w-4 shrink-0" />
+            <div className="h-4 overflow-hidden">
+              <div className="animate-[slideAddresses_8s_ease-in-out_infinite]">
+                <div className="h-6"> Mon-Fri 8am-6:30pm | Sat 10am-1pm</div>
+                <div className="h-6">Mon-Fri 9am-5pm | Sat Closed</div>
+                <div className="h-6">Mon-Fri 8am-6:30pm | Sat 10am-1pm</div>
+              </div>
+            </div>
+          </span>
+
+          <span className="flex items-center gap-2">
+            <Phone className="h-4 w-4 shrink-0" />
+            0208 208 4141
+          </span>
+        </div>
+      </div>
+
+      <nav
+        aria-label="Main navigation"
+        className="
+        pointer-events-auto
+        w-fit max-w-[calc(100vw-2rem)]
+        rounded-b-2xl
+        bg-background/50
+        backdrop-blur-md
+        shadow-sm
+        "
+      >
+        <div className="mx-auto w-fit px-4 sm:px-6">
+          <div className="flex h-18 items-center items-center gap-6">
+            {/* Logo */}
+            <a
+              href="/"
+              aria-label="Willesden Green Surgery home"
+              className="
               flex min-w-0 items-center text-foreground
               [&_svg]:h-auto [&_svg]:max-h-14 [&_svg]:max-w-full [&_svg]:w-auto
               [&_path]:fill-current
               [&_line]:stroke-current
             "
-          >
-            {logo}
-          </a>
+            >
+              {logo}
+            </a>
 
-          {/* Desktop navigation */}
-          <ul className="hidden items-center gap-8 md:flex">
-            <li>
-              <a
-                href="/#mapSection"
-                className="
+            {/* Desktop navigation */}
+            <ul className="hidden items-center gap-8 md:flex">
+              <li>
+                <a
+                  href="/#mapSection"
+                  className="
                   inline-block text-sm text-foreground
                   transition-colors hover:text-primary
                 "
-              >
-                Locations
-              </a>
-            </li>
+                >
+                  Locations
+                </a>
+              </li>
 
-            {pages.map((page) => {
-              if (!page.childLinks?.length) {
-                return (
-                  <li key={page.slug}>
-                    <a
-                      href={`/${page.slug}`}
-                      className="
+              {pages.map((page) => {
+                if (!page.childLinks?.length) {
+                  return (
+                    <li key={page.slug}>
+                      <a
+                        href={`/${page.slug}`}
+                        className="
                         inline-block text-sm text-foreground
                         transition-colors hover:text-primary
                       "
-                    >
-                      {page.name}
-                    </a>
-                  </li>
-                );
-              }
+                      >
+                        {page.name}
+                      </a>
+                    </li>
+                  );
+                }
 
-              return (
-                <li key={page.slug}>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger
-                      className="
+                return (
+                  <li key={page.slug}>
+                    <DropdownMenu>
+                      <DropdownMenuTrigger
+                        className="
                         flex items-center gap-1 text-sm text-foreground
                         outline-none transition-colors hover:text-primary
                         focus-visible:ring-2 focus-visible:ring-ring
                         focus-visible:ring-offset-2
                       "
-                    >
-                      {page.name}
+                      >
+                        {page.name}
 
-                      <ChevronDown aria-hidden="true" className="h-4 w-4" />
-                    </DropdownMenuTrigger>
+                        <ChevronDown aria-hidden="true" className="h-4 w-4" />
+                      </DropdownMenuTrigger>
 
-                    <DropdownMenuContent align="start" className="w-56">
-                      {page.childLinks.map((childPage) => (
-                        <DropdownMenuItem key={childPage.slug} asChild>
-                          <a
-                            href={`/${childPage.slug}`}
-                            className="cursor-pointer"
-                          >
-                            {childPage.name}
-                          </a>
-                        </DropdownMenuItem>
-                      ))}
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                </li>
-              );
-            })}
-          </ul>
+                      <DropdownMenuContent align="start" className="w-56">
+                        {page.childLinks.map((childPage) => (
+                          <DropdownMenuItem key={childPage.slug} asChild>
+                            <a
+                              href={`/${childPage.slug}`}
+                              className="cursor-pointer"
+                            >
+                              {childPage.name}
+                            </a>
+                          </DropdownMenuItem>
+                        ))}
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </li>
+                );
+              })}
+            </ul>
 
-          {/* Desktop actions */}
-          <div className="hidden items-center gap-2 md:flex">
-            <Button
-              size="lg"
-              onClick={() => {
-                window.location.href = "/new-patients";
-              }}
-            >
-              Register New Patient
-            </Button>
+            {/* Desktop actions */}
+            <div className="hidden items-center gap-2 md:flex">
+              <Button
+                size="lg"
+                onClick={() => {
+                  window.location.href = "/new-patients";
+                }}
+              >
+                Register New Patient
+              </Button>
 
-            <ThemeToggle />
-          </div>
+              <ThemeToggle />
+            </div>
 
-          {/* Mobile actions */}
-          <div className="flex shrink-0 items-center gap-2 md:hidden">
-            <ThemeToggle />
+            {/* Mobile actions */}
+            <div className="flex shrink-0 items-center gap-2 md:hidden">
+              <ThemeToggle />
 
-            <details className="group md:hidden">
-              <summary
-                aria-label="Toggle menu"
-                className="
+              <details className="group md:hidden">
+                <summary
+                  aria-label="Toggle menu"
+                  className="
                   list-none rounded-md p-2 text-foreground
                   transition-colors hover:bg-accent
                   focus-visible:outline-none focus-visible:ring-2
                   focus-visible:ring-ring focus-visible:ring-offset-2
                   [&::-webkit-details-marker]:hidden
                 "
-              >
-                <Menu
-                  aria-hidden="true"
-                  className="h-5 w-5 group-open:hidden"
-                />
-                <X
-                  aria-hidden="true"
-                  className="hidden h-5 w-5 group-open:block"
-                />
-              </summary>
+                >
+                  <Menu
+                    aria-hidden="true"
+                    className="h-5 w-5 group-open:hidden"
+                  />
+                  <X
+                    aria-hidden="true"
+                    className="hidden h-5 w-5 group-open:block"
+                  />
+                </summary>
 
-              {/* Mobile navigation remains usable before React hydrates. */}
-              <div
-                id="mobile-navigation"
-                className="
+                {/* Mobile navigation remains usable before React hydrates. */}
+                <div
+                  id="mobile-navigation"
+                  className="
                   absolute inset-x-0 top-full
                   max-h-[calc(100svh-4rem)]
                   overflow-y-auto overscroll-contain
                   border-t border-border
                   bg-background
                 "
-              >
-                <ul className="flex flex-col gap-1 px-4 py-4">
-                  <li>
-                    <a
-                      href="/#mapSection"
-                      className="block py-2 text-sm text-foreground transition-colors hover:text-primary"
-                    >
-                      Locations
-                    </a>
-                  </li>
+                >
+                  <ul className="flex flex-col gap-1 px-4 py-4">
+                    <li>
+                      <a
+                        href="/#mapSection"
+                        className="block py-2 text-sm text-foreground transition-colors hover:text-primary"
+                      >
+                        Locations
+                      </a>
+                    </li>
 
-                  {pages.map((page) => (
-                    <li key={page.slug}>
-                      {page.childLinks?.length ? (
-                        <details className="group/submenu">
-                          <summary
-                            className="
+                    {pages.map((page) => (
+                      <li key={page.slug}>
+                        {page.childLinks?.length ? (
+                          <details className="group/submenu">
+                            <summary
+                              className="
                               flex w-full list-none items-center justify-between py-2
                               text-sm text-foreground transition-colors hover:text-primary
                               focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring
                               [&::-webkit-details-marker]:hidden
                             "
+                            >
+                              {page.name}
+                              <ChevronDown
+                                aria-hidden="true"
+                                className="h-4 w-4 transition-transform group-open/submenu:rotate-180"
+                              />
+                            </summary>
+                            <ul className="mb-1 mt-1 flex flex-col gap-1 pl-4">
+                              {page.childLinks.map((childPage) => (
+                                <li key={childPage.slug}>
+                                  <a
+                                    href={`/${childPage.slug}`}
+                                    className="block py-1.5 text-sm text-muted-foreground transition-colors hover:text-primary"
+                                  >
+                                    {childPage.name}
+                                  </a>
+                                </li>
+                              ))}
+                            </ul>
+                          </details>
+                        ) : (
+                          <a
+                            href={`/${page.slug}`}
+                            className="block py-2 text-sm text-foreground transition-colors hover:text-primary"
                           >
                             {page.name}
-                            <ChevronDown
-                              aria-hidden="true"
-                              className="h-4 w-4 transition-transform group-open/submenu:rotate-180"
-                            />
-                          </summary>
-                          <ul className="mb-1 mt-1 flex flex-col gap-1 pl-4">
-                            {page.childLinks.map((childPage) => (
-                              <li key={childPage.slug}>
-                                <a
-                                  href={`/${childPage.slug}`}
-                                  className="block py-1.5 text-sm text-muted-foreground transition-colors hover:text-primary"
-                                >
-                                  {childPage.name}
-                                </a>
-                              </li>
-                            ))}
-                          </ul>
-                        </details>
-                      ) : (
-                        <a
-                          href={`/${page.slug}`}
-                          className="block py-2 text-sm text-foreground transition-colors hover:text-primary"
-                        >
-                          {page.name}
-                        </a>
-                      )}
-                    </li>
-                  ))}
-                </ul>
+                          </a>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
 
-                <div className="px-4 pb-4">
-                  <a
-                    href="/new-patients"
-                    className="block w-full rounded-md bg-primary px-6 py-2 text-center text-sm font-medium text-primary-foreground"
-                  >
-                    Register New Patient
-                  </a>
+                  <div className="px-4 pb-4">
+                    <a
+                      href="/new-patients"
+                      className="block w-full rounded-md bg-primary px-6 py-2 text-center text-sm font-medium text-primary-foreground"
+                    >
+                      Register New Patient
+                    </a>
+                  </div>
                 </div>
-              </div>
-            </details>
+              </details>
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </div>
   );
 }

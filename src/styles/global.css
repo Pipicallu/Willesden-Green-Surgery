@@ -57,8 +57,8 @@
   --radius: 0.625rem;
   /* Primary aliases the secondary brand colour for existing CTA components. */
   /* Background #FAF9F7, wash #A99AF2, secondary #7667DF, accent #B9F56A, text #17171A. */
-  --background: 40.000000 23.076923% 97.450980%;
-  --foreground: 240.000000 6.122449% 9.607843%;
+  --background: 40 23.076923% 97.45098%;
+  --foreground: 240 6.122449% 9.607843%;
   --wash: 250.227273 77.192982% 77.647059%;
   --card: var(--background);
   --card-foreground: var(--foreground);
@@ -66,12 +66,12 @@
   --popover-foreground: var(--foreground);
   --primary: var(--secondary);
   --primary-foreground: 0 0% 100%;
-  --secondary: 247.500000 65.217391% 63.921569%;
+  --secondary: 247.5 65.217391% 63.921569%;
   --secondary-foreground: var(--primary-foreground);
   --muted: 252 25% 94%;
   --muted-foreground: var(--foreground);
   --accent: 85.899281 87.421384% 68.823529%;
-  --accent-foreground: 240.000000 6.122449% 9.607843%;
+  --accent-foreground: 240 6.122449% 9.607843%;
   --destructive: 0 72% 42%;
   --border: 250.227273 77.192982% 77.647059%;
   --input: var(--border);
@@ -92,8 +92,8 @@
 }
 
 .dark {
-  --background: 240.000000 6.122449% 9.607843%;
-  --foreground: 40.000000 23.076923% 97.450980%;
+  --background: 240 6.122449% 9.607843%;
+  --foreground: 40 23.076923% 97.45098%;
   --card: 240 6% 14%;
   --popover: var(--card);
   --muted: 240 6% 19%;
@@ -296,4 +296,21 @@
 /* Outside month */
 .rdp-wgs .rdp-outside .rdp-day_button {
   color: hsl(var(--muted-foreground));
+}
+
+/* nav slide animation*/
+@keyframes slideAddresses {
+  0%,
+  43.75% {
+    transform: translateY(0);
+  }
+
+  50%,
+  93.75% {
+    transform: translateY(-33.333%);
+  }
+
+  100% {
+    transform: translateY(-66.666%);
+  }
 }
