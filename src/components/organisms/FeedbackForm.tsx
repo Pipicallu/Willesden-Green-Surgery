@@ -77,7 +77,7 @@ function StarRating({
               className={cn(
                 "size-8 transition-colors",
                 star <= active
-                  ? "fill-amber-400 text-amber-400"
+                  ? "fill-accent text-foreground"
                   : "fill-transparent text-muted-foreground",
               )}
             />

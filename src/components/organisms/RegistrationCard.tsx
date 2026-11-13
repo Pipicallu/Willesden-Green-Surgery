@@ -25,7 +25,7 @@ export default function RegistrationCard({ option }: RegistrationCardProps) {
   );
 
   return (
-    <div className="flex flex-col items-center text-center p-8 rounded-lg border bg-card hover:bg-accent transition-colors space-y-4">
+    <div className="flex flex-col items-center text-center p-8 rounded-lg border bg-card hover:bg-muted transition-colors space-y-4">
       {option.icon?.filename && (
         <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
           <img

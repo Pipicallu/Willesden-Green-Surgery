@@ -26,7 +26,7 @@ const story = await getStory("home");
     aria-labelledby="contact-online-title"
   >
     <div
-      class="mx-auto max-w-6xl rounded-2xl border border-[#0B8888]/20 bg-card/90 p-6 shadow-sm sm:p-8 lg:p-10"
+      class="mx-auto max-w-6xl rounded-2xl border border-primary/20 bg-card/90 p-6 shadow-sm sm:p-8 lg:p-10"
     >
       <div
         class="flex flex-col gap-7 lg:flex-row lg:items-center lg:justify-between lg:gap-10"
@@ -34,7 +34,7 @@ const story = await getStory("home");
         <div class="max-w-2xl space-y-3">
           <h2 id="contact-online-title" class="sr-only">Contact us online</h2>
           <p
-            class="text-xs font-bold uppercase tracking-[0.18em] text-[#0B8888] dark:text-[#0c8888]"
+            class="text-xs font-bold uppercase tracking-[0.18em] text-foreground"
           >
             Contact the practice
           </p>
@@ -52,7 +52,7 @@ const story = await getStory("home");
         <Button
           href="https://accurx.nhs.uk/patient-initiated/E84702"
           size="lg"
-          className="h-auto min-h-14 w-full flex-col gap-1 border border-[#0B8888] bg-white px-5 py-3 text-[#0B8888] hover:bg-[#eaf7f4] hover:text-[#0B8888] sm:w-fit sm:flex-row sm:gap-3 lg:shrink-0"
+          className="h-auto min-h-14 w-full flex-col gap-1 border border-primary bg-card px-5 py-3 text-foreground hover:bg-muted hover:text-foreground sm:w-fit sm:flex-row sm:gap-3 lg:shrink-0"
         >
           <span>Start an online request</span>
           <img src="/accurx-logo.png" alt="Accurx" class="h-5 w-auto" />
@@ -72,7 +72,7 @@ const story = await getStory("home");
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div
-          class="text-center space-y-4 rounded-lg border border-border bg-white p-8 shadow-sm"
+          class="text-center space-y-4 rounded-lg border border-border bg-card p-8 shadow-sm"
         >
           <NumberCounter
             client:visible
@@ -84,7 +84,7 @@ const story = await getStory("home");
           <p class="text-muted-foreground">That we never switch off</p>
         </div>
         <div
-          class="text-center space-y-4 rounded-lg border border-border bg-white p-8 shadow-sm"
+          class="text-center space-y-4 rounded-lg border border-border bg-card p-8 shadow-sm"
         >
           <NumberCounter
             client:visible
@@ -99,7 +99,7 @@ const story = await getStory("home");
           </p>
         </div>
         <div
-          class="text-center space-y-4 rounded-lg border border-border bg-white p-8 shadow-sm"
+          class="text-center space-y-4 rounded-lg border border-border bg-card p-8 shadow-sm"
         >
           <NumberCounter
             client:visible
@@ -113,7 +113,7 @@ const story = await getStory("home");
           </p>
         </div>
         <div
-          class="text-center space-y-4 rounded-lg border border-border bg-white p-8 shadow-sm"
+          class="text-center space-y-4 rounded-lg border border-border bg-card p-8 shadow-sm"
         >
           <NumberCounter
             client:visible
@@ -126,7 +126,7 @@ const story = await getStory("home");
           <p class="text-muted-foreground">With callback options</p>
         </div>
         <div
-          class="text-center space-y-4 rounded-lg border border-border bg-white p-8 shadow-sm"
+          class="text-center space-y-4 rounded-lg border border-border bg-card p-8 shadow-sm"
         >
           <NumberCounter
             client:visible
@@ -141,7 +141,7 @@ const story = await getStory("home");
           </p>
         </div>
         <div
-          class="text-center space-y-4 rounded-lg border border-border bg-white p-8 shadow-sm"
+          class="text-center space-y-4 rounded-lg border border-border bg-card p-8 shadow-sm"
         >
           <NumberCounter
             client:visible

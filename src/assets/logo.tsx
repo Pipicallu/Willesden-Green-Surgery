@@ -24,7 +24,7 @@ export const logo = (
       y1="30"
       x2="400"
       y2="115"
-      stroke="#0d2d5e"
+      stroke="currentColor"
       strokeWidth="1.5"
     />
     {/* NHS text — Frutiger (commercial) fallback to Cabin from Google Fonts */}
@@ -37,8 +37,8 @@ export const logo = (
       fontSize="44"
       fontWeight="700"
       fontStyle="italic"
-      fill="#0d2d5e"
-      stroke="#0d2d5e"
+      fill="currentColor"
+      stroke="currentColor"
       strokeWidth="2"
       paintOrder="stroke"
     >

@@ -9,25 +9,25 @@ export default function FloatingActionButton() {
       name: "Facebook",
       icon: Facebook,
       url: "https://facebook.com/willesdengreensurgery",
-      color: "hover:text-blue-600",
+      color: "hover:text-primary",
     },
     {
       name: "Twitter",
       icon: Twitter,
       url: "https://twitter.com/willesdengreensurgery",
-      color: "hover:text-sky-500",
+      color: "hover:text-primary",
     },
     {
       name: "Instagram",
       icon: Instagram,
       url: "https://instagram.com/willesdengreensurgery",
-      color: "hover:text-pink-600",
+      color: "hover:text-primary",
     },
     {
       name: "LinkedIn",
       icon: Linkedin,
       url: "https://linkedin.com/company/willesdengreensurgery",
-      color: "hover:text-blue-700",
+      color: "hover:text-primary",
     },
   ];
 

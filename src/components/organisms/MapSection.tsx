@@ -32,42 +32,42 @@ const lightMapStyles = [
   {
     featureType: "all",
     elementType: "geometry",
-    stylers: [{ color: "#eff6ff" }], // blue-50
+    stylers: [{ color: "#FAF9F7" }],
   },
   {
     featureType: "water",
     elementType: "geometry",
-    stylers: [{ color: "#3b82f6" }], // blue-500
+    stylers: [{ color: "#7667DF" }],
   },
   {
     featureType: "water",
     elementType: "labels.text.fill",
-    stylers: [{ color: "#ffffff" }],
+    stylers: [{ color: "#FAF9F7" }],
   },
   {
     featureType: "road",
     elementType: "geometry",
-    stylers: [{ color: "#ffffff" }],
+    stylers: [{ color: "#FAF9F7" }],
   },
   {
     featureType: "road",
     elementType: "labels.text.fill",
-    stylers: [{ color: "#1e3a5f" }], // blue-950 tone
+    stylers: [{ color: "#17171A" }],
   },
   {
     featureType: "poi",
     elementType: "geometry",
-    stylers: [{ color: "#dbeafe" }], // blue-100
+    stylers: [{ color: "#FAF9F7" }],
   },
   {
     featureType: "poi.park",
     elementType: "geometry",
-    stylers: [{ color: "#bfdbfe" }], // blue-200
+    stylers: [{ color: "#A99AF2" }],
   },
   {
     featureType: "transit",
     elementType: "geometry",
-    stylers: [{ color: "#dbeafe" }], // blue-100
+    stylers: [{ color: "#FAF9F7" }],
   },
 ];
 
@@ -76,57 +76,57 @@ const darkMapStyles = [
   {
     featureType: "all",
     elementType: "geometry",
-    stylers: [{ color: "#1e3a5f" }], // blue-950
+    stylers: [{ color: "#17171A" }],
   },
   {
     featureType: "all",
     elementType: "labels.text.fill",
-    stylers: [{ color: "#eff6ff" }], // blue-50
+    stylers: [{ color: "#FAF9F7" }],
   },
   {
     featureType: "all",
     elementType: "labels.text.stroke",
-    stylers: [{ color: "#1e3a5f" }],
+    stylers: [{ color: "#17171A" }],
   },
   {
     featureType: "water",
     elementType: "geometry",
-    stylers: [{ color: "#3b82f6" }], // blue-500
+    stylers: [{ color: "#7667DF" }],
   },
   {
     featureType: "water",
     elementType: "labels.text.fill",
-    stylers: [{ color: "#ffffff" }],
+    stylers: [{ color: "#FAF9F7" }],
   },
   {
     featureType: "road",
     elementType: "geometry",
-    stylers: [{ color: "#1d4ed8" }], // blue-700
+    stylers: [{ color: "#7667DF" }],
   },
   {
     featureType: "road",
     elementType: "labels.text.fill",
-    stylers: [{ color: "#eff6ff" }],
+    stylers: [{ color: "#FAF9F7" }],
   },
   {
     featureType: "road.highway",
     elementType: "geometry",
-    stylers: [{ color: "#2563eb" }], // blue-600
+    stylers: [{ color: "#7667DF" }],
   },
   {
     featureType: "poi",
     elementType: "geometry",
-    stylers: [{ color: "#1e40af" }], // blue-800
+    stylers: [{ color: "#7667DF" }],
   },
   {
     featureType: "poi.park",
     elementType: "geometry",
-    stylers: [{ color: "#1d4ed8" }], // blue-700
+    stylers: [{ color: "#7667DF" }],
   },
   {
     featureType: "transit",
     elementType: "geometry",
-    stylers: [{ color: "#1d4ed8" }], // blue-700
+    stylers: [{ color: "#7667DF" }],
   },
 ];
 
@@ -205,10 +205,10 @@ function MapSection() {
                     <h3 className="font-semibold text-base mb-1">
                       {currentLocation.name}
                     </h3>
-                    <p className="text-sm text-gray-600 mb-2">
+                    <p className="text-sm text-foreground mb-2">
                       {currentLocation.address}
                     </p>
-                    <p className="text-sm font-medium text-gray-700">
+                    <p className="text-sm font-medium text-foreground">
                       {currentLocation.openingHours}
                     </p>
                   </div>

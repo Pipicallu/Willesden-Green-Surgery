@@ -15,7 +15,7 @@ export function TeamMemberCard({
 }: TeamMemberCardProps) {
   const avatarSrc = photo
     ? photo
-    : `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&size=96&background=3b82f6&color=fff&bold=true&font-size=0.4`;
+    : `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&size=96&background=7667DF&color=fff&bold=true&font-size=0.4`;
 
   return (
     <div className="p-6 rounded-lg border bg-card text-center space-y-3 h-full">

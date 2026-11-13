@@ -52,11 +52,11 @@ type Card = {
             <a
               href={card.link || "#"}
               data-slot="link"
-              class="flex flex-col items-center text-center gap-2 group p-4 rounded-lg border bg-card/80 backdrop-blur-md hover:bg-accent/90 transition-all h-fit shadow-lg"
+              class="flex flex-col items-center text-center gap-2 group p-4 rounded-lg border bg-card/80 backdrop-blur-md hover:bg-muted/90 transition-all h-fit shadow-lg"
             >
-              <div class="[&_svg]:w-8 [&_svg]:h-10" set:html={card.icon} />
+              <div class="rounded-lg bg-accent p-2 text-accent-foreground [&_svg]:w-8 [&_svg]:h-10" set:html={card.icon} />
               <div>
-                <h2 class="text-lg font-sans font-semibold group-hover:text-accent-foreground">
+                <h2 class="text-lg font-sans font-semibold group-hover:text-foreground">
                   {card.heading}
                 </h2>
                 {/* <p class="text-sm text-muted-foreground">{card.description}</p> */}

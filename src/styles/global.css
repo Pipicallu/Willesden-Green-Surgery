@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @font-face {
   font-family: "Vogun";
   src: url("/fonts/vogun.ttf") format("truetype");
@@ -17,6 +19,8 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+  --color-foreground: hsl(var(--foreground));
+  --color-wash: hsl(var(--wash));
   --color-background: hsl(var(--background));
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
@@ -51,71 +55,49 @@
 
 :root {
   --radius: 0.625rem;
-  --background: 214 100% 97%;
-  --foreground: 222 47% 11%;
-  --card: 0 0% 100%;
-  --card-foreground: 222 47% 11%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 222 47% 11%;
-  --primary: 217 91% 60%;
+  /* Primary aliases the secondary brand colour for existing CTA components. */
+  /* Background #FAF9F7, wash #A99AF2, secondary #7667DF, accent #B9F56A, text #17171A. */
+  --background: 40.000000 23.076923% 97.450980%;
+  --foreground: 240.000000 6.122449% 9.607843%;
+  --wash: 250.227273 77.192982% 77.647059%;
+  --card: var(--background);
+  --card-foreground: var(--foreground);
+  --popover: var(--background);
+  --popover-foreground: var(--foreground);
+  --primary: var(--secondary);
   --primary-foreground: 0 0% 100%;
-  --secondary: 214 100% 97%;
-  --secondary-foreground: 221 83% 35%;
-  --muted: 214 100% 97%;
-  --muted-foreground: 215 25% 40%;
-  --accent: 214 100% 97%;
-  --accent-foreground: 221 83% 35%;
-  --destructive: 0 84.2% 60.2%;
-  --border: 213 97% 87%;
-  --input: 213 97% 87%;
-  --ring: 217 91% 60%;
-  --chart-1: 217 91% 60%;
-  --chart-2: 262 83% 58%;
-  --chart-3: 291 64% 42%;
-  --chart-4: 270 95% 75%;
-  --chart-5: 252 95% 85%;
-  --sidebar: 0 0% 98%;
-  --sidebar-foreground: 215 25% 27%;
-  --sidebar-primary: 217 91% 60%;
-  --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 214 100% 97%;
-  --sidebar-accent-foreground: 221 83% 35%;
-  --sidebar-border: 213 97% 87%;
-  --sidebar-ring: 217 91% 60%;
+  --secondary: 247.500000 65.217391% 63.921569%;
+  --secondary-foreground: var(--primary-foreground);
+  --muted: 252 25% 94%;
+  --muted-foreground: var(--foreground);
+  --accent: 85.899281 87.421384% 68.823529%;
+  --accent-foreground: 240.000000 6.122449% 9.607843%;
+  --destructive: 0 72% 42%;
+  --border: 250.227273 77.192982% 77.647059%;
+  --input: var(--border);
+  --ring: var(--secondary);
+  --chart-1: var(--secondary);
+  --chart-2: var(--wash);
+  --chart-3: var(--accent);
+  --chart-4: var(--foreground);
+  --chart-5: var(--background);
+  --sidebar: var(--card);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--muted);
+  --sidebar-accent-foreground: var(--foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
 }
 
 .dark {
-  --background: 222 47% 11%;
-  --foreground: 210 40% 98%;
-  --card: 222 47% 15%;
-  --card-foreground: 210 40% 98%;
-  --popover: 222 47% 15%;
-  --popover-foreground: 210 40% 98%;
-  --primary: 217 91% 60%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 217 33% 22%;
-  --secondary-foreground: 210 40% 98%;
-  --muted: 217 33% 22%;
-  --muted-foreground: 215 20% 65%;
-  --accent: 217 33% 22%;
-  --accent-foreground: 210 40% 98%;
-  --destructive: 0 62.8% 50%;
-  --border: 217 33% 28%;
-  --input: 217 33% 28%;
-  --ring: 217 91% 60%;
-  --chart-1: 217 91% 60%;
-  --chart-2: 262 83% 58%;
-  --chart-3: 291 64% 52%;
-  --chart-4: 270 95% 75%;
-  --chart-5: 252 95% 85%;
-  --sidebar: 222 47% 15%;
-  --sidebar-foreground: 210 40% 98%;
-  --sidebar-primary: 217 91% 60%;
-  --sidebar-primary-foreground: 0 0% 100%;
-  --sidebar-accent: 217 33% 22%;
-  --sidebar-accent-foreground: 210 40% 98%;
-  --sidebar-border: 217 33% 28%;
-  --sidebar-ring: 217 91% 60%;
+  --background: 240.000000 6.122449% 9.607843%;
+  --foreground: 40.000000 23.076923% 97.450980%;
+  --card: 240 6% 14%;
+  --popover: var(--card);
+  --muted: 240 6% 19%;
+  --border: 252 20% 36%;
 }
 
 @layer base {
@@ -192,16 +174,16 @@
 }
 
 /* ─── react-day-picker v9 — full custom stylesheet ──────────────────────────── */
-/* Matches the site's white card / indigo-primary design language.               */
+/* Matches the site's warm card / purple-primary design language.               */
 /* Scoped to .rdp-wgs — only affects the FeedbackForm calendar.                  */
 
 .rdp-wgs {
   font-family: inherit;
   font-size: 0.875rem;
-  background: #ffffff;
+  background: hsl(var(--card));
   border-radius: 0.625rem;
   padding: 0.75rem;
-  color: #16161f;
+  color: hsl(var(--foreground));
 }
 
 /* Month caption & nav row */
@@ -211,7 +193,7 @@
   justify-content: center;
   padding-bottom: 0.5rem;
   font-weight: 600;
-  color: #16161f;
+  color: hsl(var(--foreground));
 }
 
 .rdp-wgs .rdp-nav {
@@ -228,15 +210,15 @@
   width: 2rem;
   height: 2rem;
   border-radius: 0.375rem;
-  border: 1px solid #e0e3f5;
-  background: #ffffff;
-  color: #16161f;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--card));
+  color: hsl(var(--foreground));
   cursor: pointer;
   transition: background 0.15s;
 }
 
 .rdp-wgs .rdp-nav button:hover {
-  background: #eceeff;
+  background: hsl(var(--muted));
 }
 
 /* Weekday header row */
@@ -249,7 +231,7 @@
   text-align: center;
   font-size: 0.75rem;
   font-weight: 500;
-  color: #6b6f9a;
+  color: hsl(var(--muted-foreground));
   padding: 0.25rem 0;
 }
 
@@ -274,7 +256,7 @@
   border-radius: 0.375rem;
   border: none;
   background: transparent;
-  color: #16161f;
+  color: hsl(var(--foreground));
   cursor: pointer;
   font-size: 0.875rem;
   transition:
@@ -283,35 +265,35 @@
 }
 
 .rdp-wgs .rdp-day_button:hover:not([disabled]) {
-  background: #eceeff;
-  color: #3730a3;
+  background: hsl(var(--muted));
+  color: hsl(var(--foreground));
 }
 
 .rdp-wgs .rdp-day_button[disabled] {
-  color: #b0b3cc;
+  color: hsl(var(--muted-foreground));
   cursor: default;
   pointer-events: none;
 }
 
 /* Today */
 .rdp-wgs .rdp-today .rdp-day_button {
-  color: #5b63f5;
+  color: hsl(var(--primary));
   font-weight: 700;
 }
 
 /* Selected */
 .rdp-wgs .rdp-selected .rdp-day_button {
-  background: #5b63f5;
-  color: #ffffff;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
   font-weight: 600;
 }
 
 .rdp-wgs .rdp-selected .rdp-day_button:hover {
-  background: #4348d4;
-  color: #ffffff;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
 }
 
 /* Outside month */
 .rdp-wgs .rdp-outside .rdp-day_button {
-  color: #b0b3cc;
+  color: hsl(var(--muted-foreground));
 }

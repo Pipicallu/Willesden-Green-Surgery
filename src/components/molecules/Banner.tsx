@@ -13,45 +13,17 @@ const spacingClasses: Record<BannerSpacing, string> = {
   xl: "py-16",
 };
 
-// Using inline styles for variant colours so Tailwind's scanner
-// doesn't need to find them in string literals.
-const variantStyles: Record<
-  BannerVariant,
-  { border: string; bg: string; text: string; icon: string }
-> = {
-  info: {
-    border: "#2563eb", // blue-600
-    bg: "rgb(239 246 255 / 0.6)", // blue-50 @ 60%
-    text: "#1d4ed8", // blue-700
-    icon: "#2563eb",
-  },
-  warning: {
-    border: "#d97706", // amber-600
-    bg: "rgb(255 251 235 / 0.6)", // amber-50 @ 60%
-    text: "#b45309", // amber-700
-    icon: "#d97706",
-  },
-  alert: {
-    border: "#dc2626", // red-600
-    bg: "rgb(254 242 242 / 0.6)", // red-50 @ 60%
-    text: "#b91c1c", // red-700
-    icon: "#dc2626",
-  },
+// Share the site palette while retaining distinct icons for each notice type.
+const noticeStyle = {
+  border: "hsl(var(--secondary))",
+  bg: "hsl(var(--card) / 0.9)",
+  text: "hsl(var(--foreground))",
+  icon: "hsl(var(--secondary))",
 };
-
-const darkVariantStyles: Record<BannerVariant, { bg: string; text: string }> = {
-  info: {
-    bg: "rgb(30 58 138 / 0.15)", // blue-900 tint
-    text: "#93c5fd", // blue-300
-  },
-  warning: {
-    bg: "rgb(120 53 15 / 0.15)", // amber-900 tint
-    text: "#fcd34d", // amber-300
-  },
-  alert: {
-    bg: "rgb(127 29 29 / 0.15)", // red-900 tint
-    text: "#fca5a5", // red-300
-  },
+const variantStyles = {
+  info: noticeStyle,
+  warning: noticeStyle,
+  alert: { ...noticeStyle, border: "hsl(var(--destructive))", icon: "hsl(var(--destructive))" },
 };
 
 // Icons
