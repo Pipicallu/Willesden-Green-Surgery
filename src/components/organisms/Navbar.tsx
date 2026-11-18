@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { ChevronDown, Menu, X, MapPin, Clock3, Phone } from "lucide-react";
+import { MapPin, Clock3, Phone } from "lucide-react";
 import { logo } from "@/assets/logo";
 import { Button } from "@/components/atoms/button";
+import MobileNavigation from "@/components/organisms/MobileNavigation";
 import { type sortedLinksProps } from "@/lib/dynamicNavLinks/dynamicNavLinkSorter";
 
 type NavbarProps = {
@@ -246,128 +247,7 @@ export default function Navbar({ pages = [] }: NavbarProps) {
             </div>
 
             {/* MOBILE ACTIONS */}
-            <div className="flex shrink-0 items-center gap-2 md:hidden">
-              <details className="group md:hidden">
-                <summary
-                  aria-label="Toggle menu"
-                  className="
-                    list-none rounded-full bg-icon-background p-2 text-icon
-                    transition-colors hover:bg-icon-background/80
-                    focus-visible:outline-none
-                    focus-visible:ring-2
-                    focus-visible:ring-ring
-                    focus-visible:ring-offset-2
-                    [&::-webkit-details-marker]:hidden
-                  "
-                >
-                  <Menu
-                    aria-hidden="true"
-                    className="h-5 w-5 group-open:hidden"
-                  />
-                  <X
-                    aria-hidden="true"
-                    className="hidden h-5 w-5 group-open:block"
-                  />
-                </summary>
-
-                {/* MOBILE NAVIGATION */}
-                <div
-                  id="mobile-navigation"
-                  className="
-                    absolute inset-x-0 top-full
-                    max-h-[calc(100svh-4rem)]
-                    overflow-y-auto overscroll-contain
-                    border-t border-border
-                    bg-card
-                  "
-                >
-                  <ul className="flex flex-col gap-1 px-4 py-4">
-                    <li>
-                      <a
-                        href="/#mapSection"
-                        className="
-                          block py-2 text-link
-                          transition-colors hover:text-foreground
-                        "
-                      >
-                        Locations
-                      </a>
-                    </li>
-
-                    {pages.map((page) => (
-                      <li key={page.slug}>
-                        {page.childLinks?.length ? (
-                          <details className="group/submenu">
-                            <summary
-                              className="
-                                flex w-full list-none items-center
-                                justify-between py-2
-                                text-link
-                                transition-colors hover:text-foreground
-                                focus-visible:outline-none
-                                focus-visible:ring-2
-                                focus-visible:ring-ring
-                                [&::-webkit-details-marker]:hidden
-                              "
-                            >
-                              {page.name}
-
-                              <ChevronDown
-                                aria-hidden="true"
-                                className="
-                                  h-4 w-4 text-icon transition-transform
-                                  group-open/submenu:rotate-180
-                                "
-                              />
-                            </summary>
-
-                            <ul className="mb-1 mt-1 flex flex-col gap-1 pl-4">
-                              {page.childLinks.map((childPage) => (
-                                <li key={childPage.slug}>
-                                  <a
-                                    href={`/${childPage.slug}`}
-                                    className="
-                                      block py-1.5
-                                      text-link
-                                      transition-colors hover:text-foreground
-                                    "
-                                  >
-                                    {childPage.name}
-                                  </a>
-                                </li>
-                              ))}
-                            </ul>
-                          </details>
-                        ) : (
-                          <a
-                            href={`/${page.slug}`}
-                            className="
-                              block py-2 text-link
-                              transition-colors hover:text-foreground
-                            "
-                          >
-                            {page.name}
-                          </a>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="px-4 pb-4">
-                    <a
-                      href="/new-patients"
-                      className="
-                        block w-full rounded-full
-                        bg-primary px-6 py-2 text-center
-                        font-semibold leading-[1.2] tracking-button text-primary-foreground
-                      "
-                    >
-                      Register New Patient
-                    </a>
-                  </div>
-                </div>
-              </details>
-            </div>
+            <MobileNavigation pages={pages} />
           </div>
         </div>
 
