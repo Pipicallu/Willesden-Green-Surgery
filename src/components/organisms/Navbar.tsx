@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { ChevronDown, Menu, X, MapPin, Clock3, Phone } from "lucide-react";
-
 import { logo } from "@/assets/logo";
 import { Button } from "@/components/atoms/button";
 import { type sortedLinksProps } from "@/lib/dynamicNavLinks/dynamicNavLinkSorter";
@@ -21,13 +20,14 @@ export default function Navbar({ pages = [] }: NavbarProps) {
   };
 
   return (
-    <div className="pointer-events-none flex flex-col items-center justify-center">
+    <div className="pointer-events-none mx-auto flex flex-col items-center justify-center max-md:w-fit max-md:max-w-[calc(100vw-2rem)]">
       {/* TOP INFORMATION BAR */}
       <div
         className="
           pointer-events-auto
-          flex w-full items-center justify-between
-          gap-6 rounded-t-2xl
+          max-md:[contain:inline-size]
+          flex flex-col md:flex-row w-full md:items-center justify-between
+          gap-2 md:gap-6 rounded-t-2xl
           bg-muted px-6 py-2
           small-label backdrop-blur-md
         "
@@ -39,15 +39,39 @@ export default function Navbar({ pages = [] }: NavbarProps) {
           <div className="h-6 overflow-hidden">
             <div className="animate-[slideAddresses_12s_ease-in-out_infinite]">
               <div className="h-6 whitespace-nowrap leading-6">
-                Willesden Green | 59 Anson Road, London, England, NW2 3UY
+                <a
+                  className="cursor-pointer"
+                  target="_blank"
+                  aria-label="Willesden Green Surgery Location"
+                  href="https://www.google.com/maps/dir/?api=1&destination=59+Anson+Road,+London,+England+NW2+3UY"
+                >
+                  {" "}
+                  Willesden Green | 59 Anson Road, London, England, NW2 3UY
+                </a>
               </div>
 
               <div className="h-6 whitespace-nowrap leading-6">
-                Queen's Park | Albert Road, London, England, NW6 5DE
+                <a
+                  className="cursor-pointer"
+                  target="_blank"
+                  aria-label="Queen's Park Surgery Location"
+                  href="https://www.google.com/maps/dir/?api=1&destination=Queen's+Park,+London,+England+NW6+5DE"
+                >
+                  {" "}
+                  Queen's Park | Albert Road, London, England, NW6 5DE
+                </a>
               </div>
 
               <div className="h-6 whitespace-nowrap leading-6">
-                Willesden Green | 59 Anson Road, London, England, NW2 3UY
+                <a
+                  className="cursor-pointer"
+                  target="_blank"
+                  aria-label="Willesden Green Surgery Location"
+                  href="https://www.google.com/maps/dir/?api=1&destination=59+Anson+Road,+London,+England+NW2+3UY"
+                >
+                  {" "}
+                  Willesden Green | 59 Anson Road, London, England, NW2 3UY
+                </a>
               </div>
             </div>
           </div>
@@ -55,7 +79,7 @@ export default function Navbar({ pages = [] }: NavbarProps) {
 
         {/* Opening hours and phone */}
         <div className="flex items-center gap-10">
-          <div className="flex items-center gap-2">
+          <div className="flex min-w-0 items-center gap-2">
             <Clock3 className="h-4 w-4 shrink-0 text-icon" />
 
             <div className="h-6 overflow-hidden">
@@ -74,12 +98,18 @@ export default function Navbar({ pages = [] }: NavbarProps) {
               </div>
             </div>
           </div>
-
-          <span className="flex items-center gap-2">
-            <Phone className="h-4 w-4 shrink-0 text-icon" />
-            0208 208 4141
-          </span>
         </div>
+        <span className="flex items-center gap-2">
+          <Phone className="h-4 w-4 shrink-0 text-icon" />
+          <a
+            className="cursor-pointer"
+            target="_blank"
+            aria-label="Willesden Green Surgery Phone Number"
+            href="tel:02082084141"
+          >
+            0208 208 4141
+          </a>
+        </span>
       </div>
 
       {/* MAIN NAVIGATION */}
@@ -349,9 +379,7 @@ export default function Navbar({ pages = [] }: NavbarProps) {
         >
           <div className="min-h-0 overflow-hidden">
             <div className="px-8 py-8">
-              <h3
-                className="small-label mb-6 uppercase tracking-widest"
-              >
+              <h3 className="small-label mb-6 uppercase tracking-widest">
                 {activePage?.name}
               </h3>
 
