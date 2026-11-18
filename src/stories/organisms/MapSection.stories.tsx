@@ -9,7 +9,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Interactive map section showing practice locations with switchable map/list view. Uses Google Maps API styled with the site colour palette.",
+          "Interactive map showing all practice locations together. Hover over a pin for its address and opening hours, or tap on touch devices to reveal details and a Google Maps link. Desktop pin clicks open Google Maps directly. Uses the site colour palette.",
       },
     },
   },
