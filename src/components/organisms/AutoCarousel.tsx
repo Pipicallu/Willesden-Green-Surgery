@@ -1,13 +1,9 @@
-import * as React from "react";
 import { ImageCard } from "@/components/atoms/ImageCard";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/organisms/carousel";
-import Autoplay from "embla-carousel-autoplay";
 
 const images = [
   {
@@ -25,6 +21,13 @@ const images = [
     height: 400,
   },
   {
+    src: "/general-practice-awards-2025.png",
+    alt: "General Practice Awards 2025: shortlisted for General Practice Team of the Year",
+    caption: "Shortlisted for General Practice Team of the Year 2025.",
+    width: 800,
+    height: 800,
+  },
+  {
     src: "/climate-essentials.png",
     alt: "Climate Essentials Net Zero Community logo",
     caption: "Part of the Net Zero Community.",
@@ -32,29 +35,19 @@ const images = [
     height: 256,
   },
   {
-    src: "/general-practice-awards-2025.png",
-    alt: "General Practice Awards 2025: shortlisted for General Practice Team of the Year",
-    caption: "Shortlisted for General Practice Team of the Year 2025.",
+    src: "/general-practice-awards-2026.png",
+    alt: "General Practice Awards 2026: shortlisted for General Practice Team of the Year",
+    caption: "Shortlisted for General Practice Team of the Year 2026.",
     width: 800,
     height: 800,
   },
 ];
 
 export default function AutoCarousel() {
-  const plugin = React.useRef(
-    Autoplay({ delay: 3000, stopOnInteraction: true }),
-  );
-
   return (
     <Carousel
-      plugins={[plugin.current]}
       className="w-full max-w-5xl mx-auto"
-      onMouseEnter={plugin.current.stop}
-      onMouseLeave={plugin.current.reset}
-      opts={{
-        align: "start",
-        loop: true,
-      }}
+      aria-label="Accreditations and awards"
     >
       <CarouselContent className="-ml-2 md:-ml-4">
         {images.map((image) => (
@@ -85,8 +78,6 @@ export default function AutoCarousel() {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
     </Carousel>
   );
 }

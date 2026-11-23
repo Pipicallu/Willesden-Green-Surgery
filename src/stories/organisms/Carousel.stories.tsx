@@ -3,8 +3,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/organisms/carousel";
 
 const meta = {
@@ -15,7 +13,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "A carousel component built with Embla Carousel. Supports horizontal and vertical orientations with navigation buttons.",
+          "A continuously scrolling horizontal carousel built with Embla Carousel. Loops automatically without navigation or playback buttons and respects reduced motion preferences.",
       },
     },
   },
@@ -28,7 +26,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: () => (
-    <Carousel className="w-full max-w-xs">
+    <Carousel aria-label="Numbered slides" className="w-full max-w-xs">
       <CarouselContent>
         {Array.from({ length: 5 }).map((_, index) => (
           <CarouselItem key={index}>
@@ -40,8 +38,6 @@ export const Default: Story = {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
     </Carousel>
   ),
 };
@@ -49,6 +45,7 @@ export const Default: Story = {
 export const Multiple: Story = {
   render: () => (
     <Carousel
+      aria-label="Multiple numbered slides"
       opts={{
         align: "start",
       }}
@@ -65,15 +62,13 @@ export const Multiple: Story = {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
     </Carousel>
   ),
 };
 
 export const WithContent: Story = {
   render: () => (
-    <Carousel className="w-full max-w-md">
+    <Carousel aria-label="Introduction" className="w-full max-w-md">
       <CarouselContent>
         <CarouselItem>
           <div className="p-6 bg-card border rounded-lg">
@@ -100,8 +95,6 @@ export const WithContent: Story = {
           </div>
         </CarouselItem>
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
     </Carousel>
   ),
 };

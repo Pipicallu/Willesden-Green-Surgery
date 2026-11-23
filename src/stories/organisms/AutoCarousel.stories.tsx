@@ -9,7 +9,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "An auto-playing carousel of the surgery's accreditations and awards. Auto-plays every 3 seconds and pauses on hover.",
+          "A continuously scrolling carousel of the surgery's accreditations and awards. Loops automatically without navigation or playback buttons and respects reduced motion preferences.",
       },
     },
   },
