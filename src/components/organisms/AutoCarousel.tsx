@@ -53,16 +53,16 @@ export default function AutoCarousel() {
         {images.map((image) => (
           <CarouselItem
             key={image.src}
-            className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/4"
+            className="basis-2/3 pl-2 md:basis-1/2 md:pl-4 lg:basis-1/4"
           >
-            <div className="flex h-96 w-full flex-col gap-3 rounded-lg border border-border p-4">
+            <div className="flex h-64 w-full flex-col gap-2 rounded-lg border border-border p-3 md:h-96 md:gap-3 md:p-4">
               <div className="flex min-h-0 flex-1 items-center justify-center">
                 <ImageCard
                   src={image.src}
                   alt={image.alt}
                   fit="contain"
                   ratio="auto"
-                  className="border-0 bg-transparent shadow-none [&_img]:rounded-lg"
+                  className="flex h-full items-center justify-center border-0 bg-transparent shadow-none md:block md:h-auto [&_img]:max-h-full [&_img]:w-auto [&_img]:max-w-full [&_img]:rounded-lg md:[&_img]:max-h-none md:[&_img]:w-full"
                   style={{
                     maxWidth: Math.min(
                       image.width,
