@@ -56,30 +56,6 @@ const story = await getStory("home");
       </div>
     </div>
   </section>
-  <!-- Specialists section -->
-  <SpecialistsSection client:load />
-
-  <!--Team video section-->
-  <section class="py-10 lg:py-20">
-    <div class="max-w-6xl mx-auto">
-      <div class="relative group rounded-lg shadow-lg cursor-pointer transition-all duration-500 ease-in-out lg:hover:scale-110 lg:hover:my-12">
-        <video autoplay loop muted playsinline class="w-full rounded-lg">
-          <source src="/team.mp4" type="video/mp4" />
-        </video>
-        <div class="absolute inset-0 bg-primary/25 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-lg">
-          <div class="absolute inset-0 flex items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500">
-            <Button
-              client:load
-              size="lg"
-              className="pointer-events-auto text-primary-foreground text-base px-8"
-            >
-              <a href="/team">Meet the Team</a>
-            </Button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Statistics Section -->
   <section class="bg-muted px-10 py-10 lg:py-20 border-rounded rounded-lg">
@@ -165,6 +141,31 @@ const story = await getStory("home");
       </div>
     </div>
   </section>
+
+  <!--Team video section-->
+  <section class="py-10 lg:py-20">
+    <div class="max-w-6xl mx-auto">
+      <div class="relative group rounded-lg shadow-lg cursor-pointer transition-all duration-500 ease-in-out lg:hover:scale-110 lg:hover:my-12">
+        <video autoplay loop muted playsinline class="w-full rounded-lg">
+          <source src="/team.mp4" type="video/mp4" />
+        </video>
+        <div class="absolute inset-0 bg-primary/25 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-lg">
+          <div class="absolute inset-0 flex items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500">
+            <Button
+              client:load
+              size="lg"
+              className="pointer-events-auto text-primary-foreground text-base px-8"
+            >
+              <a href="/team">Meet the Team</a>
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Specialists section -->
+  <SpecialistsSection client:load />
+
   <!-- Meet the Team Section - From Storyblok -->
   <!-- {
     story.content.body

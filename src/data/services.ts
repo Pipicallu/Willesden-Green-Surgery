@@ -24,7 +24,7 @@ const serviceDefinitions: Omit<Service, "href">[] = [
     id: "dermatology",
     label: "Dermatology",
     name: "Dermatology and dermatoscopy",
-    title: "a dermatology special interest Doctor or dermatoscopy?",
+    title: "dermatology advice?",
     description:
       "Meet the doctor providing dermatology and dermatoscopy consultations at the practice.",
     sourceUrl: "https://www.willesdengreensurgery.nhs.uk/dermatology",
@@ -43,7 +43,7 @@ const serviceDefinitions: Omit<Service, "href">[] = [
     id: "joint-injections",
     label: "Joint injections",
     name: "Ultrasound-guided joint injections",
-    title: "ultrasound guided joint injections?",
+    title: "joint injections?",
     description:
       "Meet the doctor providing ultrasound-guided joint injections at the practice.",
     sourceUrl: "https://www.willesdengreensurgery.nhs.uk/usg-injections",
@@ -62,7 +62,7 @@ const serviceDefinitions: Omit<Service, "href">[] = [
     id: "ent-microsuction",
     label: "ENT & microsuction",
     name: "ENT and ear microsuction",
-    title: "an ENT special interest doctor or ear microsuction?",
+    title: "ENT care?",
     description:
       "Meet the doctors providing ear, nose and throat consultations at the practice.",
     sourceUrl: "https://www.willesdengreensurgery.nhs.uk/ent",
@@ -89,7 +89,7 @@ const serviceDefinitions: Omit<Service, "href">[] = [
     id: "dietitian",
     label: "Dietitian",
     name: "Personal dietitian",
-    title: "a personal dietitian?",
+    title: "a dietitian?",
     description: "Meet the practice’s dietitian.",
     sourceUrl: "https://www.willesdengreensurgery.nhs.uk/dietitian",
     clinicians: [
@@ -113,7 +113,7 @@ const serviceDefinitions: Omit<Service, "href">[] = [
     id: "diabetes",
     label: "Diabetes",
     name: "Diabetes consultation",
-    title: "a diabetes consultation?",
+    title: "diabetes advice?",
     description: "Clinician details and service information to be confirmed.",
     clinicians: [],
   },

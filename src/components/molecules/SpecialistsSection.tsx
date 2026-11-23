@@ -144,9 +144,9 @@ export default function SpecialistsSection() {
             id="services-title"
             className="text-4xl leading-[1.1] sm:text-2xl lg:text-5xl lg:mb-4"
           >
-            Do you need,
+            Do you need
           </h2>
-          <div className="text-[var(--deep-teal)] [--service-row-height:8.1em] min-[375px]:[--service-row-height:5.9em] sm:[--service-row-height:3.7em] lg:[--service-row-height:3.7em] xl:[--service-row-height:2.6em]">
+          <div className="text-[var(--deep-teal)] [--service-row-height:2.6em] sm:[--service-row-height:1.5em]">
             <div className="h-[var(--service-row-height)] overflow-hidden">
               <div
                 ref={titleTrackRef}
