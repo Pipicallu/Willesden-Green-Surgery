@@ -1,7 +1,14 @@
 ---
 import { storyblokEditable } from "@storyblok/astro";
 import { Button } from "@/components/atoms/button";
-import { ArrowRight, Check, FileCheck2, Pill, Stethoscope, type LucideIcon } from "lucide-react";
+import {
+  ArrowRight,
+  Check,
+  FileCheck2,
+  Pill,
+  Stethoscope,
+  type LucideIcon,
+} from "lucide-react";
 const { blok } = Astro.props;
 const doctorPhoto = "/smiling_doctor.png";
 const blobGradientId = `hero-blob-${blok._uid || "doctor"}`;
@@ -13,7 +20,8 @@ const practiceHighlights = [
 ];
 const cardDescriptions: Record<string, string> = {
   "Book an appointment": "Arrange a consultation with our practice team.",
-  "Order prescription": "Request a repeat prescription for your regular medication.",
+  "Order prescription":
+    "Request a repeat prescription for your regular medication.",
   "Check results": "Find out how to access your latest test results.",
 };
 const cardIcons: Record<string, LucideIcon> = {
@@ -29,52 +37,54 @@ type Card = {
 ---
 
 <section
-  class="hero relative isolate px-4 pb-10 pt-20 md:pt-12 lg:pb-20"
+  class="hero relative isolate px-4 pb-10 pt-32 md:pt-12 lg:pb-20"
   {...storyblokEditable(blok)}
 >
   <div class="mx-auto max-w-6xl space-y-6">
     <div class="grid grid-cols-1 items-center gap-8 md:min-h-[520px] md:grid-cols-2 md:gap-12">
       <div class="relative z-10 min-w-0 space-y-6 text-left">
         <h1 class="text-5xl leading-[1.1] md:text-7xl">
-          {titleParts.map((part) => (
-            part.toLowerCase() === "green"
-              ? <span class="hero-title-accent">{part}</span>
-              : part
-          ))}
+          {titleParts.map((part) =>
+            part.toLowerCase() === "green" ? (
+              <span class="hero-title-accent">{part}</span>
+            ) : (
+              part
+            ),
+          )}
         </h1>
         <p class="text-3xl text-muted-foreground">{blok.subtitle}</p>
-        {
-          blok.show_button && (
-            <Button
-              href="https://www.nhs.uk/nhs-app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              size="lg"
-              className="h-auto min-h-12 w-full max-w-[320px] justify-between gap-4 px-6 py-3 shadow-lg"
-            >
-              <span>Download the NHS App</span>
-              <img
-                src="/nhs.png"
-                alt="NHS App"
-                class="h-auto w-16 shrink-0 object-contain"
-              />
-            </Button>
-          )
-        }
+        {blok.show_button && (
+          <Button
+            href="https://www.nhs.uk/nhs-app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            size="lg"
+            className="h-auto min-h-12 w-full max-w-[320px] justify-between gap-4 px-6 py-3 shadow-lg"
+          >
+            <span>Download the NHS App</span>
+            <img
+              src="/nhs.png"
+              alt="NHS App"
+              class="h-auto w-16 shrink-0 object-contain"
+            />
+          </Button>
+        )}
         <ul
           aria-label="Practice highlights"
           class="flex flex-wrap lg:flex-row gap-3 overflow-x-auto pt-2 text-base"
         >
-          {
-            practiceHighlights.map((highlight) => (
-              <li class="flex shrink-0 items-center gap-2 whitespace-nowrap">
-                <span class="flex size-6 shrink-0 items-center justify-center rounded-full bg-icon-background text-icon">
-                  <Check className="size-4" strokeWidth={2.5} aria-hidden="true" />
-                </span>
-                <span>{highlight}</span>
-              </li>
-            ))
-          }
+          {practiceHighlights.map((highlight) => (
+            <li class="flex shrink-0 items-center gap-2 whitespace-nowrap">
+              <span class="flex size-6 shrink-0 items-center justify-center rounded-full bg-icon-background text-icon">
+                <Check
+                  className="size-4"
+                  strokeWidth={2.5}
+                  aria-hidden="true"
+                />
+              </span>
+              <span>{highlight}</span>
+            </li>
+          ))}
         </ul>
       </div>
 
@@ -89,7 +99,10 @@ type Card = {
           <defs>
             <linearGradient id={blobGradientId} x1="0" y1="0" x2="1" y2="1">
               <stop offset="0%" stop-color="var(--pale-teal)" />
-              <stop offset="100%" stop-color="color-mix(in srgb, var(--medical-blue) 18%, var(--cloud))" />
+              <stop
+                offset="100%"
+                stop-color="color-mix(in srgb, var(--medical-blue) 18%, var(--cloud))"
+              />
             </linearGradient>
           </defs>
           <path
@@ -109,35 +122,32 @@ type Card = {
     </div>
 
     <div class="relative z-10 grid gap-6 md:grid-cols-3">
-      {
-        blok.cards?.map((card: Card) => {
-          const description =
-            card.description || cardDescriptions[card.heading || ""];
-          const Icon = cardIcons[card.heading || ""] || Stethoscope;
-          return (
-            <a
-              href={card.link || "#"}
-              data-slot="link"
-              class="group flex flex-col items-start gap-3 rounded-2xl border bg-card p-6 text-left shadow-lg transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring "
-            >
-              <Icon
-                className="size-8 shrink-0 text-icon"
+      {blok.cards?.map((card: Card) => {
+        const description =
+          card.description || cardDescriptions[card.heading || ""];
+        const Icon = cardIcons[card.heading || ""] || Stethoscope;
+        return (
+          <a
+            href={card.link || "#"}
+            data-slot="link"
+            class="group flex flex-col items-start gap-3 rounded-2xl border bg-card p-6 text-left shadow-lg transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
+          >
+            <Icon className="size-8 shrink-0 text-icon" aria-hidden="true" />
+            <h2 class="card-title">{card.heading}</h2>
+            <div class="flex w-full items-end gap-4">
+              {description && (
+                <p class="min-w-0 flex-1 text-muted-foreground">
+                  {description}
+                </p>
+              )}
+              <ArrowRight
+                className="mb-1 size-5 shrink-0 text-secondary transition-transform group-hover:translate-x-1"
                 aria-hidden="true"
               />
-              <h2 class="card-title">{card.heading}</h2>
-              <div class="flex w-full items-end gap-4">
-                {description && (
-                  <p class="min-w-0 flex-1 text-muted-foreground">{description}</p>
-                )}
-                <ArrowRight
-                  className="mb-1 size-5 shrink-0 text-secondary transition-transform group-hover:translate-x-1"
-                  aria-hidden="true"
-                />
-              </div>
-            </a>
-          );
-        })
-      }
+            </div>
+          </a>
+        );
+      })}
     </div>
   </div>
 </section>

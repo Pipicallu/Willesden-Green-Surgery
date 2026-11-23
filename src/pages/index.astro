@@ -9,38 +9,33 @@ import { getStory } from "@/lib/storyblok";
 import type { SbBlokData } from "@storyblok/astro";
 import NumberCounter from "@/components/atoms/NumberCounter";
 import MapSection from "@/components/organisms/MapSection";
+import SpecialistsSection from "@/components/molecules/SpecialistsSection";
 const story = await getStory("home");
 ---
 
 <Layout>
   <!-- Hero Section - From Storyblok -->
-  {
-    story.content.body
-      ?.filter((blok: SbBlokData) => blok.component === "Hero")
-      .map((blok: SbBlokData) => <StoryblokComponent blok={blok} />)
-  }
+  {story.content.body
+    ?.filter((blok: SbBlokData) => blok.component === "Hero")
+    .map((blok: SbBlokData) => (
+      <StoryblokComponent blok={blok} />
+    ))}
 
   <!-- Accurx Section -->
   <section
     class="relative z-10 px-4 py-10 sm:px-6 lg:py-20"
     aria-labelledby="contact-online-title"
   >
-    <div
-      class="mx-auto max-w-6xl rounded-2xl border border-primary/20 bg-card/90 p-6 shadow-sm sm:p-8 lg:p-10"
-    >
-      <div
-        class="flex flex-col gap-7 lg:flex-row lg:items-center lg:justify-between lg:gap-10"
-      >
+    <div class="mx-auto max-w-6xl rounded-2xl border border-primary/20 bg-card/90 p-6 shadow-md sm:p-8 lg:p-10">
+      <div class="flex flex-col gap-7 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
         <div class="max-w-2xl space-y-3">
-          <h2 id="contact-online-title" class="sr-only">Contact us online</h2>
-          <p
-            class="small-label uppercase tracking-[0.18em] text-foreground"
-          >
+          <h2 id="contact-online-title" class="sr-only">
+            Contact us online
+          </h2>
+          <p class="small-label uppercase tracking-[0.18em] text-foreground">
             Contact the practice
           </p>
-          <h3
-            class="card-title leading-snug text-foreground"
-          >
+          <h3 class="card-title leading-snug text-foreground">
             Submit an online consultation
           </h3>
           <p class="text-muted-foreground">
@@ -61,6 +56,30 @@ const story = await getStory("home");
       </div>
     </div>
   </section>
+  <!-- Specialists section -->
+  <SpecialistsSection client:load />
+
+  <!--Team video section-->
+  <section class="py-10 lg:py-20">
+    <div class="max-w-6xl mx-auto">
+      <div class="relative group rounded-lg shadow-lg cursor-pointer transition-all duration-500 ease-in-out lg:hover:scale-110 lg:hover:my-12">
+        <video autoplay loop muted playsinline class="w-full rounded-lg">
+          <source src="/team.mp4" type="video/mp4" />
+        </video>
+        <div class="absolute inset-0 bg-primary/25 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-lg">
+          <div class="absolute inset-0 flex items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500">
+            <Button
+              client:load
+              size="lg"
+              className="pointer-events-auto text-primary-foreground text-base px-8"
+            >
+              <a href="/team">Meet the Team</a>
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Statistics Section -->
   <section class="bg-muted px-10 py-10 lg:py-20 border-rounded rounded-lg">
@@ -72,9 +91,7 @@ const story = await getStory("home");
         </p>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div
-          class="text-center space-y-4 rounded-lg border border-border bg-card p-8 shadow-sm"
-        >
+        <div class="text-center space-y-4 rounded-lg border border-border bg-card p-8 shadow-sm">
           <NumberCounter
             client:visible
             target={24}
@@ -84,9 +101,7 @@ const story = await getStory("home");
           <h3 class="card-title">Online Consultation Access</h3>
           <p class="text-muted-foreground">That we never switch off</p>
         </div>
-        <div
-          class="text-center space-y-4 rounded-lg border border-border bg-card p-8 shadow-sm"
-        >
+        <div class="text-center space-y-4 rounded-lg border border-border bg-card p-8 shadow-sm">
           <NumberCounter
             client:visible
             duration={2000}
@@ -99,9 +114,7 @@ const story = await getStory("home");
             Per patient compared to the national average
           </p>
         </div>
-        <div
-          class="text-center space-y-4 rounded-lg border border-border bg-card p-8 shadow-sm"
-        >
+        <div class="text-center space-y-4 rounded-lg border border-border bg-card p-8 shadow-sm">
           <NumberCounter
             client:visible
             target={90}
@@ -113,9 +126,7 @@ const story = await getStory("home");
             In the national GP patient survey. One of the highest in England.
           </p>
         </div>
-        <div
-          class="text-center space-y-4 rounded-lg border border-border bg-card p-8 shadow-sm"
-        >
+        <div class="text-center space-y-4 rounded-lg border border-border bg-card p-8 shadow-sm">
           <NumberCounter
             client:visible
             reverse
@@ -126,9 +137,7 @@ const story = await getStory("home");
           <h3 class="card-title">Average Call Wait</h3>
           <p class="text-muted-foreground">With callback options</p>
         </div>
-        <div
-          class="text-center space-y-4 rounded-lg border border-border bg-card p-8 shadow-sm"
-        >
+        <div class="text-center space-y-4 rounded-lg border border-border bg-card p-8 shadow-sm">
           <NumberCounter
             client:visible
             reverse
@@ -141,9 +150,7 @@ const story = await getStory("home");
             First GP practice in the UK to provide this service
           </p>
         </div>
-        <div
-          class="text-center space-y-4 rounded-lg border border-border bg-card p-8 shadow-sm"
-        >
+        <div class="text-center space-y-4 rounded-lg border border-border bg-card p-8 shadow-sm">
           <NumberCounter
             client:visible
             target={65}
@@ -154,34 +161,6 @@ const story = await getStory("home");
           <p class="text-muted-foreground">
             5 year rolling rate, one of the highest in London.
           </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!--Team video section-->
-  <section class="py-10 lg:py-20">
-    <div class="max-w-6xl mx-auto">
-      <div
-        class="relative group rounded-lg shadow-lg cursor-pointer transition-all duration-500 ease-in-out lg:hover:scale-150 lg:hover:my-12"
-      >
-        <video autoplay loop muted playsinline class="w-full rounded-lg">
-          <source src="/team.mp4" type="video/mp4" />
-        </video>
-        <div
-          class="absolute inset-0 bg-primary/25 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-lg"
-        >
-          <div
-            class="absolute inset-0 flex items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500"
-          >
-            <Button
-              client:load
-              size="lg"
-              className="pointer-events-auto text-primary-foreground text-base px-8"
-            >
-              <a href="/team">Meet the Team</a>
-            </Button>
-          </div>
         </div>
       </div>
     </div>
@@ -199,9 +178,7 @@ const story = await getStory("home");
   <section class="bg-muted py-10 lg:py-20 overflow-hidden border-rounded rounded-lg">
     <div class="max-w-6xl mx-auto">
       <div class="text-center space-y-4 mb-12">
-        <h2>
-          Our accreditations and awards
-        </h2>
+        <h2>Our accreditations and awards</h2>
         <p class="text-muted-foreground">
           The commitments and recognition behind our practice
         </p>

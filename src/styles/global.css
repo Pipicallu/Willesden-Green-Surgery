@@ -61,11 +61,11 @@
   --type-body-size: 1rem;
 
   /* Brand palette — keep the five colours in one place. */
-  --navy: #203D64;
-  --medical-blue: #397DB5;
-  --deep-teal: #317F7B;
-  --pale-teal: #E6F1EE;
-  --cloud: #F2F7FA;
+  --navy: #203d64;
+  --medical-blue: #397db5;
+  --deep-teal: #317f7b;
+  --pale-teal: #e6f1ee;
+  --cloud: #f2f7fa;
 
   color-scheme: light;
   --background: #ffffff;
