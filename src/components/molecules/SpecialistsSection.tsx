@@ -147,12 +147,19 @@ export default function SpecialistsSection() {
             Do you need
           </h2>
           <div className="text-[var(--deep-teal)] [--service-row-height:2.6em] sm:[--service-row-height:1.5em]">
-            <div className="h-[var(--service-row-height)] overflow-hidden">
+            <div className="relative overflow-hidden sm:h-[var(--service-row-height)]">
+              {/* Fit the mobile viewport to the title while keeping animation rows equal. */}
+              <div
+                aria-hidden="true"
+                className="invisible py-[0.2em] [overflow-wrap:anywhere] sm:hidden"
+              >
+                {selectedService.title}
+              </div>
               <div
                 ref={titleTrackRef}
                 aria-hidden="true"
                 data-service-track="titles"
-                className={`motion-reduce:animate-none ${
+                className={`absolute inset-x-0 top-0 motion-reduce:animate-none sm:static ${
                   isRotating
                     ? "animate-[slideServices_var(--service-cycle-duration)_ease-in-out_infinite]"
                     : ""
@@ -182,7 +189,7 @@ export default function SpecialistsSection() {
           </div>
         </div>
       </div>
-      <div className="mt-6 flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+      <div className="mt-2 flex flex-col items-start justify-between gap-4 sm:mt-6 sm:flex-row sm:items-center">
         <p className="max-w-xl text-base leading-relaxed text-muted-foreground">
           Select a service to stop the rotation and read about the clinician.
         </p>
