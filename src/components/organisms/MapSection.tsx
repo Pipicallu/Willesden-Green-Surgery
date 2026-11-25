@@ -93,8 +93,8 @@ function MapSection() {
   return (
     <section id="mapSection" className="scroll-mt-16 py-10 lg:py-20 px-4">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center space-y-4 mb-12">
-          <h2>Find Us</h2>
+        <div className="text-left md:text-center space-y-4 mb-12">
+          <h2 className="text-2xl md:text-section">Find Us</h2>
           <p className="text-muted-foreground">Be seen at one of our sites.</p>
         </div>
         <APIProvider apiKey={GOOGLE_MAPS_API_KEY}>

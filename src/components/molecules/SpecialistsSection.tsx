@@ -80,11 +80,13 @@ export default function SpecialistsSection() {
         return;
       }
 
-      const animation = track.getAnimations().find(
-        (animation) =>
-          animation instanceof CSSAnimation &&
-          animation.animationName === "slideServices",
-      );
+      const animation = track
+        .getAnimations()
+        .find(
+          (animation) =>
+            animation instanceof CSSAnimation &&
+            animation.animationName === "slideServices",
+        );
       if (!animation) return;
 
       let previousIndex = -1;
@@ -132,17 +134,17 @@ export default function SpecialistsSection() {
   return (
     <section
       id="services"
-      className="mx-auto w-full max-w-6xl rounded-2xl bg-muted p-3 text-left sm:p-6 lg:p-8"
+      className="mx-auto w-full max-w-6xl rounded-2xl bg-muted px-4 py-3 text-left sm:py-6 md:p-6 lg:p-8"
       aria-labelledby="services-title"
       style={
         { "--service-cycle-duration": serviceCycleDuration } as CSSProperties
       }
     >
-      <div className="font-serif text-4xl font-normal tracking-section leading-[1.1] sm:text-2xl lg:text-5xl">
+      <div className="font-serif text-2xl font-normal tracking-section leading-[1.1] md:text-section">
         <div className="min-w-0">
           <h2
             id="services-title"
-            className="text-4xl leading-[1.1] sm:text-2xl lg:text-5xl lg:mb-4"
+            className="text-2xl leading-[1.1] md:text-section lg:mb-4"
           >
             Do you need
           </h2>
@@ -191,7 +193,8 @@ export default function SpecialistsSection() {
       </div>
       <div className="mt-2 flex flex-col items-start justify-between gap-4 sm:mt-6 sm:flex-row sm:items-center">
         <p className="max-w-xl text-base leading-relaxed text-muted-foreground">
-          Select a service to stop the rotation and read about the clinician.
+          Select from our specialist NHS In-House Services below to view more
+          information about each service.
         </p>
         <Button
           type="button"
