@@ -13,7 +13,10 @@ const story = data.story;
 ---
 
 <Layout>
-  <main class="page-gradient mx-auto max-w-6xl pb-12 pt-4 md:pt-20 lg:pt-0" {...storyblokEditable(story.content)}>
+  <main
+    class="page-gradient mx-auto max-w-6xl pb-12 pt-4 md:pt-20 lg:pt-0"
+    {...storyblokEditable(story.content)}
+  >
     <section
       class="grid items-center gap-8 py-10 sm:py-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12 lg:py-20"
       aria-labelledby="team-title"
@@ -26,7 +29,9 @@ const story = data.story;
           id="team-title"
           class="text-4xl leading-[1.08] tracking-hero text-primary sm:text-5xl lg:text-6xl"
         >
-          Local people.<br />Personal care.
+          Local people.
+          <br />
+          Personal care.
         </h1>
         <div class="my-7 h-1 w-16 bg-icon" aria-hidden="true"></div>
         <p class="max-w-lg text-lg leading-relaxed text-primary/80 sm:text-xl">
@@ -49,10 +54,8 @@ const story = data.story;
         </figcaption>
       </figure>
     </section>
-    {
-      story.content.body?.map((blok: SbBlokData) => (
-        <StoryblokComponent blok={blok} />
-      ))
-    }
+    {story.content.body?.map((blok: SbBlokData) => (
+      <StoryblokComponent blok={blok} />
+    ))}
   </main>
 </Layout>
