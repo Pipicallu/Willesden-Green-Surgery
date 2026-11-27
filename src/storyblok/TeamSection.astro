@@ -10,13 +10,15 @@
  *   members  Blocks — only allows: teamMemberCard
  */
 import { storyblokEditable } from "@storyblok/astro";
-import TeamSectionComponent from "@/components/organisms/TeamSection";
+import TeamDirectory from "@/components/organisms/TeamDirectory";
 
 const { blok } = Astro.props;
 
-const categories = (blok.categories ?? []).map((cat: any) => ({
+const categories = (blok.categories ?? []).map((cat: any, categoryIndex: number) => ({
+  id: cat._uid ?? `category-${categoryIndex}`,
   label: cat.label ?? "",
-  members: (cat.members ?? []).map((m: any) => ({
+  members: (cat.members ?? []).map((m: any, memberIndex: number) => ({
+    id: m._uid ?? `${cat._uid ?? categoryIndex}-${memberIndex}`,
     name: m.name ?? "",
     role: m.role ?? "",
     speciality: m.speciality || undefined,
@@ -26,18 +28,12 @@ const categories = (blok.categories ?? []).map((cat: any) => ({
 }));
 ---
 
-<section class="py-20" {...storyblokEditable(blok)}>
-  <div class="max-w-6xl mx-auto px-4">
-    {
-      blok.title && (
-        <div class="text-center space-y-4 mb-12">
-          <h2>{blok.title}</h2>
-          {blok.subtitle && (
-            <p class="text-muted-foreground">{blok.subtitle}</p>
-          )}
-        </div>
-      )
-    }
-    <TeamSectionComponent client:load categories={categories} />
+<section class="py-6 sm:py-10" {...storyblokEditable(blok)}>
+  <div class="mb-10 space-y-3 sm:mb-12">
+    <h2 class="text-3xl tracking-section text-primary sm:text-4xl">
+      Meet the people behind your care
+    </h2>
+    {blok.subtitle && <p class="text-primary/80">{blok.subtitle}</p>}
   </div>
+  <TeamDirectory client:visible categories={categories} />
 </section>
