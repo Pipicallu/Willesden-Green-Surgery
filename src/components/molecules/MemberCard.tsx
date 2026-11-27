@@ -1,5 +1,5 @@
 import { useId } from "react";
-import { Cross } from "lucide-react";
+import { Cross, Pencil, PencilOff } from "lucide-react";
 
 export interface Member {
   photo?: string;
@@ -14,6 +14,7 @@ interface MemberCardProps {
   memberId: string;
   isExpanded: boolean;
   onToggle: (memberId: string) => void;
+  variant?: "clinical" | "support";
 }
 
 export default function MemberCard({
@@ -21,11 +22,19 @@ export default function MemberCard({
   memberId,
   isExpanded,
   onToggle,
+  variant = "clinical",
 }: MemberCardProps) {
   const detailsId = useId();
   const hasDetails = Boolean(member.speciality || member.bio);
+  const isClinical = variant === "clinical";
+  const ToggleIcon = isClinical ? Cross : isExpanded ? PencilOff : Pencil;
   return (
-    <div className="w-full min-w-0 rounded-lg border bg-card p-4 shadow-sm">
+    <div
+      className={`w-full min-w-0 rounded-lg border bg-card p-4 shadow-sm ${
+        hasDetails ? "cursor-pointer transition-colors hover:border-icon/50" : ""
+      }`}
+      onClick={hasDetails ? () => onToggle(memberId) : undefined}
+    >
       <div
         className={`flex flex-row items-center gap-3 ${isExpanded ? "mb-3" : ""}`}
       >
@@ -52,13 +61,16 @@ export default function MemberCard({
               aria-label={`${isExpanded ? "Hide" : "Show"} details for ${member.name}`}
               aria-expanded={isExpanded}
               aria-controls={detailsId}
-              onClick={() => onToggle(memberId)}
+              onClick={(event) => {
+                event.stopPropagation();
+                onToggle(memberId);
+              }}
             >
-              <Cross
+              <ToggleIcon
                 aria-hidden="true"
                 fill={isExpanded ? "currentColor" : "none"}
                 className={`text-icon hover:scale-110 transition-transform duration-200 ease-in-out motion-reduce:transition-none ${
-                  isExpanded ? "rotate-135" : "rotate-0"
+                  isClinical && isExpanded ? "rotate-135" : "rotate-0"
                 }`}
               />
             </button>

@@ -37,7 +37,7 @@ type Card = {
 ---
 
 <section
-  class="hero relative isolate px-4 pb-10 pt-32 md:pt-12 lg:pb-20"
+  class="hero page-gradient relative isolate px-4 pb-10 pt-32 md:pt-12 lg:pb-20"
   {...storyblokEditable(blok)}
 >
   <div class="mx-auto max-w-6xl space-y-6">
@@ -155,31 +155,6 @@ type Card = {
 <style>
   .hero-title-accent {
     color: var(--deep-teal);
-  }
-
-  .hero::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    pointer-events: none;
-    top: -5rem;
-    bottom: 0;
-    left: 50%;
-    width: 100vw;
-    transform: translateX(-50%);
-    background:
-      radial-gradient(
-        ellipse at 88% 30%,
-        color-mix(in srgb, var(--medical-blue) 9%, transparent),
-        transparent 65%
-      ),
-      linear-gradient(
-        115deg,
-        var(--background) 18%,
-        color-mix(in srgb, var(--pale-teal) 50%, var(--cloud)) 100%
-      );
-    -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
-    mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
   }
 
   .hero-blob {

@@ -80,6 +80,36 @@
   --destructive: #b91c1c;
 }
 
+.page-gradient {
+  position: relative;
+  isolation: isolate;
+}
+
+.page-gradient::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  top: -5rem;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background:
+    radial-gradient(
+      ellipse at 88% 30%,
+      color-mix(in srgb, var(--medical-blue) 9%, transparent),
+      transparent 65%
+    ),
+    linear-gradient(
+      115deg,
+      var(--background) 18%,
+      color-mix(in srgb, var(--pale-teal) 50%, var(--cloud)) 100%
+    );
+  -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 70%, transparent 100%);
+}
+
 @media (min-width: 768px) {
   :root {
     --type-hero-size: 3.75rem;
@@ -353,6 +383,20 @@
 .rdp-wgs .rdp-outside .rdp-day_button {
   color: var(--foreground);
   opacity: 0.5;
+}
+
+/* A faint ripple, followed by a pause until the next three-second cycle. */
+@keyframes information-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.2;
+  }
+
+  30%,
+  100% {
+    transform: scale(1.35);
+    opacity: 0;
+  }
 }
 
 /* nav slide animation*/

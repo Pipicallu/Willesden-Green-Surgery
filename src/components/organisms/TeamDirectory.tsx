@@ -40,6 +40,11 @@ export default function TeamDirectory({ categories }: { categories: Category[] }
                 memberId={member.id}
                 isExpanded={expandedMemberId === member.id}
                 onToggle={toggleMember}
+                variant={
+                  ["admin", "back of house"].includes(category.label.trim().toLowerCase())
+                    ? "support"
+                    : "clinical"
+                }
               />
             ))}
           </div>
